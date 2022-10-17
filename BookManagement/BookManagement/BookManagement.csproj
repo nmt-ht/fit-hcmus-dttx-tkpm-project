@@ -11,7 +11,10 @@
   <ItemGroup>
     <Folder Include="Bussiness\" />
     <Folder Include="DAO\" />
-    <Folder Include="DTO\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
   </ItemGroup>
 
 </Project>
