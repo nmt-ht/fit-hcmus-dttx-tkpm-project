@@ -19,7 +19,7 @@ namespace BookManagement
             string title = "Set up Database";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
-            if (result == DialogResult.No)
+            if (result == DialogResult.Yes)
             {
                 return;
             }
