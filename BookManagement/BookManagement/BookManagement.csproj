@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Bussiness\" />
-    <Folder Include="DAO\" />
+    <Folder Include="DataAccessObject\" />
   </ItemGroup>
 
   <ItemGroup>
