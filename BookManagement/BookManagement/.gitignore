@@ -50,4 +50,5 @@ bld/
 *.pidb
 *.svclog
 *.scc
-*.vs
+/.vs
+/BookManagement/.vs/BookManagement

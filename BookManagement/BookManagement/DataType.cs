@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookManagement
+﻿namespace BookManagement
 {
-    internal class DataType
+    public class DataType
     {
+        public enum eTypeOfBook
+        {
+            Book,
+        }
+
+        public enum eGender { 
+            Unknown = 0,
+            Male = 1,
+            Female = 2
+        }
+
+        public enum eUserType 
+        {
+            Admin = 0,
+            User = 1
+        }
     }
 }
