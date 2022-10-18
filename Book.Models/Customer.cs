@@ -1,6 +1,6 @@
-﻿using static BookManagement.DataType;
+﻿using static BookManagement.Models.DataType;
 
-namespace BookManagement.DTO
+namespace BookManagement.Models
 {
     public class Customer
     {

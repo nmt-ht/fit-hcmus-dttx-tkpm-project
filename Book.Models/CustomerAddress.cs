@@ -1,4 +1,4 @@
-﻿namespace BookManagement.DTO
+﻿namespace BookManagement.Models
 {
     public class CustomerAddress
     {

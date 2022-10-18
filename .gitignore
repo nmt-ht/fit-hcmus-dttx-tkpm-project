@@ -4,3 +4,9 @@
 
 /.vs
 /BookManagement/.vs/BookManagement
+/Book.Business/bin/Debug/net6.0
+/Book.Business/obj
+/Book.Infrastructure/bin/Debug/net6.0
+/Book.Infrastructure/obj
+/Book.Models/obj
+/Book.Models/bin/Debug/net6.0

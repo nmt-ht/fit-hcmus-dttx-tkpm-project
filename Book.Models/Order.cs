@@ -1,8 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace BookManagement.DTO
+﻿namespace BookManagement.Models
 {
-    [Table("Order")]
     public class Order
     {
         public Guid Id { get; set; }

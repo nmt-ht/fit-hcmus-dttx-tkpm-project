@@ -9,12 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Bussiness\" />
-    <Folder Include="DataAccessObject\" />
+    <Compile Remove="Bussiness\**" />
+    <Compile Remove="DataAccessObject\**" />
+    <EmbeddedResource Remove="Bussiness\**" />
+    <EmbeddedResource Remove="DataAccessObject\**" />
+    <None Remove="Bussiness\**" />
+    <None Remove="DataAccessObject\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
   </ItemGroup>
 
 </Project>

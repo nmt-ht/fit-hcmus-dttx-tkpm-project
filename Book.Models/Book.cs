@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using static BookManagement.DataType;
+﻿using static BookManagement.Models.DataType;
 
-namespace BookManagement.DTO
+namespace BookManagement.Models
 {
-    [Table("Book")]
     public class Book
     {
-        [Key]
         public Guid Id { get; set; }
         public string? Name { get; set; }
         public string? Author { get; set; }
@@ -18,6 +14,6 @@ namespace BookManagement.DTO
         public DateTime? CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public DateTime? ModifiedBy { get; set; }
-        public bool IsActived { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BookManagement
+﻿namespace BookManagement.Models
 {
     public class DataType
     {
@@ -17,6 +17,16 @@
         {
             Admin = 0,
             User = 1
+        }
+
+        public enum eReceiptStatus
+        {
+
+        }
+
+        public enum eParameterType
+        {
+
         }
     }
 }
