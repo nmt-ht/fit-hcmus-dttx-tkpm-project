@@ -1,5 +1,4 @@
-﻿
-using static BookManagement.Models.DataType;
+﻿using static BookManagement.Models.DataType;
 
 namespace BookManagement.Models
 {
