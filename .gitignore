@@ -12,3 +12,5 @@
 /Book.Models/bin/Debug/net6.0
 /Book.Database/bin/Debug
 /Book.Database/obj/Debug
+/Book.Database/Book.Database.jfm
+/Book.Database/Book.Database.dbmdl
