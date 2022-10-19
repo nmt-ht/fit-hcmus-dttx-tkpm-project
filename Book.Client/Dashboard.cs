@@ -1,6 +1,7 @@
-using FontAwesome.Sharp;
+﻿using FontAwesome.Sharp;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Windows;
+using static Book.Client.DataType;
 
 namespace BookManagement
 {
@@ -13,24 +14,25 @@ namespace BookManagement
         {
             InitializeComponent();
             leftBorderBtn = new Panel();
-            leftBorderBtn.Size = new System.Drawing.Size(10,60);
-            panel1.Controls.Add(leftBorderBtn);
+            leftBorderBtn.Size = new System.Drawing.Size(10, 60);
+            pnlLeftMenu.Controls.Add(leftBorderBtn);
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
+
         private struct RGBColors
         {
-            public static Color color1 = Color.FromArgb(172, 126, 241);
-            public static Color color2 = Color.FromArgb(249, 118, 176);
-            public static Color color3 = Color.FromArgb(253, 138, 114);
-            public static Color color4 = Color.FromArgb(95, 77, 221);
-            public static Color color5 = Color.FromArgb(249, 88, 155);
-            public static Color color6 = Color.FromArgb(24, 161, 251);
+            public static Color clrBooks = Color.FromArgb(172, 126, 241);
+            public static Color clrEmployee = Color.FromArgb(249, 118, 176);
+            public static Color clrCustomer = Color.FromArgb(253, 138, 114);
+            public static Color clrInvocie = Color.FromArgb(95, 77, 221);
+            public static Color clrReport = Color.FromArgb(249, 88, 155);
+            public static Color clrSetting = Color.FromArgb(24, 161, 251);
 
         }
-        private void ActivateButton(object senderBtn, Color color)
+        private void ActivateButton(object senderBtn, Color color, eDashboard eDashboard = eDashboard.Home)
         {
             if (senderBtn != null)
             {
@@ -50,8 +52,41 @@ namespace BookManagement
 
                 IconHome.IconChar = currentBtn.IconChar;
                 IconHome.IconColor = color;
+                GenerateTilte(eDashboard);
             }
         }
+
+        private void GenerateTilte(eDashboard eDashboard)
+        {
+            var title = string.Empty;
+            switch (eDashboard)
+            {
+                case eDashboard.Home:
+                    title = "Home";
+                    break;
+                case eDashboard.Books:
+                    title = "Danh Mục Sách";
+                    break;
+                case eDashboard.Employee:
+                    title = "Nhân Viên";
+                    break;
+                case eDashboard.Customer:
+                    title = "Khách Hàng";
+                    break;
+                case eDashboard.Invoice:
+                    title = "Hóa Đơn";
+                    break;
+                case eDashboard.Report:
+                    title = "Báo Cáo";
+                    break;
+                case eDashboard.Setting:
+                    title = "Cài Đặt";
+                    break;
+            }
+
+            lblTitle.Text = title;
+        }
+
         private void DisableButton()
         {
             if (currentBtn != null)
@@ -62,9 +97,9 @@ namespace BookManagement
                 currentBtn.IconColor = Color.Gainsboro;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
-
             }
         }
+
         private void OpenChildForm(Form chilForm)
         {
             if (IconHome != null)
@@ -78,41 +113,11 @@ namespace BookManagement
             chilForm.Show();
             lblTitle.Text = chilForm.Text;
         }
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color1);
-        }
-
-        private void SN2_NhanVien_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color2);
-        }
-
-        private void iconButton3_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color3);
-        }
-
-        private void iconButton5_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color4);
-        }
-
-        private void iconButton6_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color5);
-        }
-
-        private void iconButton2_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color6);
-        }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             Reset();
         }
-
         private void Reset()
         {
             DisableButton();
@@ -122,15 +127,10 @@ namespace BookManagement
             lblTitle.Text = "Home";
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
         private void pnlTitle_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -153,6 +153,36 @@ namespace BookManagement
         private void btnExit_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void btnDanhMucSach_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.clrBooks, eDashboard.Books);
+        }
+
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.clrEmployee, eDashboard.Employee);
+        }
+
+        private void btnKhachHang_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.clrCustomer, eDashboard.Customer);
+        }
+
+        private void btnHoaDon_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.clrInvocie, eDashboard.Invoice);
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.clrReport, eDashboard.Report);
+        }
+
+        private void btnCaiDat_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.clrSetting, eDashboard.Setting);
         }
     }
 }
