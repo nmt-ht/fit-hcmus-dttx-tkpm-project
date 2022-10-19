@@ -22,5 +22,5 @@ CREATE PROCEDURE [dbo].[spr_User_InsertData]
 AS
 BEGIN
 	INSERT INTO [User] (Id, UserName, [Password], FirstName, LastName, [Type], IsDeleted, CreatedDate)
-	VALUES(NEWID(), @UserName, @Password, @FirstName, @LastName, @Type, GETDATE())
+	VALUES(NEWID(), @UserName, @Password, @FirstName, @LastName, @Type, 0, GETDATE())
 END

@@ -1,4 +1,6 @@
 using Book.Infrastructure.DataAccess.Data;
+using BookManagement.Models;
+
 namespace BookManagement
 {
     public partial class Dashboard : Form
@@ -10,9 +12,13 @@ namespace BookManagement
             this.userData = userData;
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        private async void Dashboard_Load(object sender, EventArgs e)
         {
-            var users = this.userData.GetUsers();
+            var users = await this.userData.GetUsers();
+            if(users is not null)
+            {
+
+            }
         }
     }
 }

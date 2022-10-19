@@ -10,15 +10,12 @@ namespace Book.Infrastructure.DataAccess.Data
         {
             _db = db;
         }
-
-        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("spr_User_GetUsers", new { });
-
+        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("spr_User_GetAllUsers", new { });
         public async Task<User?> GetUser(Guid id)
         {
-            var results = await _db.LoadData<User, dynamic>("spr_User_GetUsers", new { Id = id });
+            var results = await _db.LoadData<User, dynamic>("spr_User_GetUserById", new { Id = id });
             return results.FirstOrDefault();
         }
-
         public Task InsertUser(User user) => _db.SaveData("spr_User_InsertData",
                 new
                 {
@@ -38,5 +35,9 @@ namespace Book.Infrastructure.DataAccess.Data
                     user.Type
                 });
         public Task DeleteUser(Guid id) => _db.SaveData("spr_User_DeleteData", new { Id = id });
+        public Task<User?> GetUser(string userName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

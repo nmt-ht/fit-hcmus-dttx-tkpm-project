@@ -56,17 +56,23 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Tables" />
-    <Folder Include="StoreProcedures" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\StoreProcedures" />
+    <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\User.sql" />
-    <Build Include="StoreProcedures\spr_User_InsertData.sql" />
-    <Build Include="StoreProcedures\spr_User_UpdateData.sql" />
-    <Build Include="StoreProcedures\spr_User_DeleteData.sql" />
-    <Build Include="StoreProcedures\spr_User_GetUser.sql" />
+    <Build Include="dbo\StoreProcedures\spr_User_DeleteData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_User_GetUserById.sql" />
+    <None Include="dbo\StoreProcedures\spr_User_GetAllUsers.sql" />
+    <Build Include="dbo\StoreProcedures\spr_User_InsertData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_User_UpdateData.sql" />
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\StoreProcedures\spr_User_GetUserByUserName.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="StoreProcedures\spr_User_GetUsers.sql" />
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Book.Database.publish.xml" />
   </ItemGroup>
 </Project>

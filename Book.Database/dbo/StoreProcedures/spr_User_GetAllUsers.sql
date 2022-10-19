@@ -1,19 +1,16 @@
 ﻿/*
 	Created By		:	Tu Nguyen
 	Created Date	:	Sep 19, 2022
-	Description		:	Book Management - Get User by Id
+	Description		:	Book Management - Get Users
 */
 
-CREATE PROCEDURE [dbo].[spr_User_GetUser]
-(
-	@Id UNIQUEIDENTIFIER = NULL
-)
+CREATE PROCEDURE [dbo].[spr_User_GetAllUsers]
 AS
 BEGIN
 	SET NOCOUNT ON  
 	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED  
 
-	SELECT * FROM [User] WHERE Id = @Id
+	SELECT * FROM [User]
 
 	SET NOCOUNT OFF  
 END

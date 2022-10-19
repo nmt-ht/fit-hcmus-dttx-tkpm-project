@@ -15,4 +15,8 @@
     <None Remove="Customer\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Book.Infrastructure\Book.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

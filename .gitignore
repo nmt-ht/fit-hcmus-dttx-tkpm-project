@@ -10,3 +10,5 @@
 /Book.Infrastructure/obj
 /Book.Models/obj
 /Book.Models/bin/Debug/net6.0
+/Book.Database/bin/Debug
+/Book.Database/obj/Debug
