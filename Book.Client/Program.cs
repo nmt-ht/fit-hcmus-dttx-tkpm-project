@@ -8,19 +8,6 @@ namespace BookManagement
 {
     public static class Program
     {
-        //public static IConfiguration Configuration;
-        //[STAThread]
-        //static void Main()
-        //{
-        //    var builder = new ConfigurationBuilder()
-        //    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-        //    Configuration = builder.Build();
-
-        //    ApplicationConfiguration.Initialize();
-        //    Application.Run(new Dashboard());
-        //}
-
         [STAThread]
         static void Main()
         {
@@ -28,9 +15,14 @@ namespace BookManagement
             var host = CreateHostBuilder().Build();
             Application.Run(host.Services.GetRequiredService<Dashboard>());
         }
+
         static IHostBuilder CreateHostBuilder() =>
             Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) =>
+            .ConfigureAppConfiguration((host, config) =>
+            {
+                var settingFile = "appsettings.json";
+                config.AddJsonFile(settingFile, optional: false, reloadOnChange: true);
+            }).ConfigureServices((context, services) =>
                 {
                     services.AddSingleton(context.Configuration);
                     services.AddTransient<Dashboard>();

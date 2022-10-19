@@ -1,11 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
 using Book.Infrastructure.DataAccess.Data;
-using FontAwesome.Sharp;
 namespace BookManagement
 {
     public partial class Dashboard : Form
@@ -19,7 +12,7 @@ namespace BookManagement
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            this.userData.GetUsers();
+            var users = this.userData.GetUsers();
         }
     }
 }

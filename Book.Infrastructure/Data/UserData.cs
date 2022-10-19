@@ -11,16 +11,32 @@ namespace Book.Infrastructure.DataAccess.Data
             _db = db;
         }
 
-        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("", new { });
+        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("spr_User_GetUsers", new { });
 
         public async Task<User?> GetUser(Guid id)
         {
-            var results = await _db.LoadData<User, dynamic>("", new { Id = id });
+            var results = await _db.LoadData<User, dynamic>("spr_User_GetUsers", new { Id = id });
             return results.FirstOrDefault();
         }
 
-        public Task InsertUser(User user) => _db.SaveData("", new { user.FirstName, user.LastName });
-        public Task UpdateUser(User user) => _db.SaveData("", new { user });
-        public Task DeleteUser(Guid id) => _db.SaveData("", new { Id = id });
+        public Task InsertUser(User user) => _db.SaveData("spr_User_InsertData",
+                new
+                {
+                    user.FirstName,
+                    user.LastName,
+                    user.UserName,
+                    user.Password,
+                    user.Type
+                });
+        public Task UpdateUser(User user) => _db.SaveData("spr_User_UpdateData",
+                new
+                {
+                    user.FirstName,
+                    user.LastName,
+                    user.UserName,
+                    user.Password,
+                    user.Type
+                });
+        public Task DeleteUser(Guid id) => _db.SaveData("spr_User_DeleteData", new { Id = id });
     }
 }
