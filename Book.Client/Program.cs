@@ -3,6 +3,7 @@ using Book.Infrastructure.DataAccess.DbAccess;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Book.Client.Dialog;
 
 namespace BookManagement
 {
@@ -13,7 +14,7 @@ namespace BookManagement
         {
             ApplicationConfiguration.Initialize();
             var host = CreateHostBuilder().Build();
-            Application.Run(host.Services.GetRequiredService<Dashboard>());
+            Application.Run(host.Services.GetRequiredService<frmLogin>());
         }
 
         static IHostBuilder CreateHostBuilder() =>
@@ -25,7 +26,7 @@ namespace BookManagement
             }).ConfigureServices((context, services) =>
                 {
                     services.AddSingleton(context.Configuration);
-                    services.AddTransient<Dashboard>();
+                    services.AddTransient<frmLogin>();
                     services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
                     services.AddSingleton<IUserData, UserData>();
                 });

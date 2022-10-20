@@ -1,5 +1,4 @@
 ﻿using FontAwesome.Sharp;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static Book.Client.DataType;
 
