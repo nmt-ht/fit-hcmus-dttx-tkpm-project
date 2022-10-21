@@ -1,4 +1,4 @@
-﻿namespace EnterpriseLibrary.Logging
+﻿namespace BookManagement.Infrastructure.Logging
 {
     public class Logger
     {

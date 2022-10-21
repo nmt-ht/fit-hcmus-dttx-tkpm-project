@@ -1,14 +1,14 @@
 ﻿using BookManagement.Models;
 
-namespace Book.Infrastructure.DataAccess.Data
+namespace BookManagement.Infrastructure.DataAccess.Data
 {
     public interface IUserData
     {
-        Task DeleteUser(Guid id);
-        Task<User?> GetUser(Guid id);
-        Task<User?> GetUser(string userName);
-        Task<IEnumerable<User>> GetUsers();
-        Task InsertUser(User user);
-        Task UpdateUser(User user);
+        User? GetUser(Guid id);
+        User? GetUser(string userName);
+        IEnumerable<User> GetUsers();
+        void InsertUser(User user);
+        void UpdateUser(User user);
+        void DeleteUser(Guid id);
     }
 }

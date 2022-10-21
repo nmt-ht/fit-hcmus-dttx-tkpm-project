@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 
-namespace Book.Infrastructure.DataAccess.DbAccess
+namespace BookManagement.Infrastructure.DataAccess.DbAccess
 {
     public class SqlDataAccess : ISqlDataAccess
     {
@@ -13,16 +13,24 @@ namespace Book.Infrastructure.DataAccess.DbAccess
             _configuration = configuration;
         }
 
-        public async Task<IEnumerable<T>> LoadData<T, U>(string storedProcedure, U parameters, string connectionId = "Default")
+        public IEnumerable<T> LoadData<T, U>(string storedProcedure, U parameters, string connectionId = "Default")
         {
-            using IDbConnection connection = new SqlConnection(_configuration.GetConnectionString(connectionId));
-            return await connection.QueryAsync<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            try
+            {
+                IDbConnection connection = new SqlConnection(_configuration.GetConnectionString(connectionId));
+                var result = connection.Query<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task SaveData<T>(string storedProcedure, T parameters, string connectionId = "Default")
+        public void SaveData<T>(string storedProcedure, T parameters, string connectionId = "Default")
         {
             using IDbConnection connection = new SqlConnection(_configuration.GetConnectionString(connectionId));
-            await connection.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            connection.Execute(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
         }
     }
 }

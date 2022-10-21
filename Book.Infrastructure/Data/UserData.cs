@@ -1,7 +1,7 @@
-﻿using Book.Infrastructure.DataAccess.DbAccess;
+﻿using BookManagement.Infrastructure.DataAccess.DbAccess;
 using BookManagement.Models;
 
-namespace Book.Infrastructure.DataAccess.Data
+namespace BookManagement.Infrastructure.DataAccess.Data
 {
     public class UserData : IUserData
     {
@@ -10,13 +10,16 @@ namespace Book.Infrastructure.DataAccess.Data
         {
             _db = db;
         }
-        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("spr_User_GetAllUsers", new { });
-        public async Task<User?> GetUser(Guid id)
+        public IEnumerable<User> GetUsers()
         {
-            var results = await _db.LoadData<User, dynamic>("spr_User_GetUserById", new { Id = id });
+            return _db.LoadData<User, dynamic>("spr_User_GetAllUsers", new { });
+        }
+        public User? GetUser(Guid id)
+        {
+            var results = _db.LoadData<User, dynamic>("spr_User_GetUserById", new { Id = id });
             return results.FirstOrDefault();
         }
-        public Task InsertUser(User user) => _db.SaveData("spr_User_InsertData",
+        public void InsertUser(User user) => _db.SaveData("spr_User_InsertData",
                 new
                 {
                     user.FirstName,
@@ -25,7 +28,7 @@ namespace Book.Infrastructure.DataAccess.Data
                     user.Password,
                     user.Type
                 });
-        public Task UpdateUser(User user) => _db.SaveData("spr_User_UpdateData",
+        public void UpdateUser(User user) => _db.SaveData("spr_User_UpdateData",
                 new
                 {
                     user.FirstName,
@@ -34,8 +37,8 @@ namespace Book.Infrastructure.DataAccess.Data
                     user.Password,
                     user.Type
                 });
-        public Task DeleteUser(Guid id) => _db.SaveData("spr_User_DeleteData", new { Id = id });
-        public Task<User?> GetUser(string userName)
+        public void DeleteUser(Guid id) => _db.SaveData("spr_User_DeleteData", new { Id = id });
+        public User? GetUser(string userName)
         {
             throw new NotImplementedException();
         }

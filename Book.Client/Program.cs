@@ -1,9 +1,10 @@
-using Book.Infrastructure.DataAccess.Data;
-using Book.Infrastructure.DataAccess.DbAccess;
+using Book.Client.Dialog;
+using BookManagement.Infrastructure.DataAccess.Data;
+using BookManagement.Infrastructure.DataAccess.DbAccess;
+using Book.Business;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Book.Client.Dialog;
 
 namespace BookManagement
 {
@@ -27,6 +28,9 @@ namespace BookManagement
                 {
                     services.AddSingleton(context.Configuration);
                     services.AddTransient<frmLogin>();
+                    //Init DI for Bussiness class
+                    services.AddSingleton<IUserBiz, UserBiz>();
+                    //Init DI for DAL class
                     services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
                     services.AddSingleton<IUserData, UserData>();
                 });

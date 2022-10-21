@@ -36,6 +36,7 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new FontAwesome.Sharp.IconButton();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -100,8 +101,9 @@
             this.txtUserName.Location = new System.Drawing.Point(67, 176);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(245, 22);
-            this.txtUserName.TabIndex = 3;
+            this.txtUserName.TabIndex = 1;
             this.txtUserName.Text = "Username";
+            this.txtUserName.Click += new System.EventHandler(this.txtUserName_Click);
             // 
             // txtPassword
             // 
@@ -111,32 +113,53 @@
             this.txtPassword.ForeColor = System.Drawing.Color.SlateGray;
             this.txtPassword.Location = new System.Drawing.Point(67, 236);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(245, 22);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.Text = "Password";
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             // 
             // btnLogin
             // 
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.IconChar = FontAwesome.Sharp.IconChar.SignIn;
             this.btnLogin.IconColor = System.Drawing.Color.DodgerBlue;
             this.btnLogin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLogin.IconSize = 30;
-            this.btnLogin.Location = new System.Drawing.Point(121, 284);
+            this.btnLogin.Location = new System.Drawing.Point(29, 291);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(96, 41);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Eject;
+            this.btnClose.IconColor = System.Drawing.Color.Salmon;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconSize = 30;
+            this.btnClose.Location = new System.Drawing.Point(216, 291);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(96, 41);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Exit";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(353, 344);
+            this.ClientSize = new System.Drawing.Size(346, 354);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
@@ -167,5 +190,6 @@
         private TextBox txtUserName;
         private TextBox txtPassword;
         private FontAwesome.Sharp.IconButton btnLogin;
+        private FontAwesome.Sharp.IconButton btnClose;
     }
 }
