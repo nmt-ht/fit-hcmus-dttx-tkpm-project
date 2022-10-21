@@ -16,7 +16,7 @@ namespace Book.Client.Dialog
         {
             var userName = txtUserName.Text;
             var password = txtPassword.Text;
-            if(userName == null || password == null)
+            if(string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("User name or password cannot be empty. Please try again.", "Login", MessageBoxButtons.OK);
                 return;
@@ -36,7 +36,6 @@ namespace Book.Client.Dialog
             }
         }
 
-
         private void txtUserName_Click(object sender, EventArgs e)
         {
             txtUserName.Text = string.Empty;
@@ -50,6 +49,17 @@ namespace Book.Client.Dialog
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin_Click(sender, e);
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            this.KeyPreview = true;
         }
     }
 }
