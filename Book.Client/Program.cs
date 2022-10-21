@@ -1,7 +1,6 @@
-using Book.Client.Dialog;
+using Book.Business;
 using BookManagement.Infrastructure.DataAccess.Data;
 using BookManagement.Infrastructure.DataAccess.DbAccess;
-using Book.Business;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +14,7 @@ namespace BookManagement
         {
             ApplicationConfiguration.Initialize();
             var host = CreateHostBuilder().Build();
-            Application.Run(host.Services.GetRequiredService<frmLogin>());
+            Application.Run(host.Services.GetRequiredService<Dashboard>());
         }
 
         static IHostBuilder CreateHostBuilder() =>
@@ -27,7 +26,7 @@ namespace BookManagement
             }).ConfigureServices((context, services) =>
                 {
                     services.AddSingleton(context.Configuration);
-                    services.AddTransient<frmLogin>();
+                    services.AddTransient<Dashboard>();
                     //Init DI for Bussiness class
                     services.AddSingleton<IUserBiz, UserBiz>();
                     //Init DI for DAL class

@@ -36,7 +36,8 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new FontAwesome.Sharp.IconButton();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.btnRegister = new FontAwesome.Sharp.IconButton();
+            this.btnExit = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -44,7 +45,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(105, 12);
+            this.pictureBox1.Image = global::Book.Client.Properties.Resources.login;
+            this.pictureBox1.Location = new System.Drawing.Point(108, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(127, 130);
             this.pictureBox1.TabIndex = 0;
@@ -102,7 +104,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(245, 22);
             this.txtUserName.TabIndex = 1;
-            this.txtUserName.Text = "Username";
+            this.txtUserName.Text = "User Name";
             this.txtUserName.Click += new System.EventHandler(this.txtUserName_Click);
             // 
             // txtPassword
@@ -121,45 +123,67 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.IconChar = FontAwesome.Sharp.IconChar.SignIn;
             this.btnLogin.IconColor = System.Drawing.Color.DodgerBlue;
             this.btnLogin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLogin.IconSize = 30;
-            this.btnLogin.Location = new System.Drawing.Point(29, 291);
+            this.btnLogin.Location = new System.Drawing.Point(29, 293);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(96, 41);
+            this.btnLogin.Size = new System.Drawing.Size(283, 41);
             this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "Sign in";
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // btnClose
+            // btnRegister
             // 
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Eject;
-            this.btnClose.IconColor = System.Drawing.Color.Salmon;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(216, 291);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(96, 41);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Exit";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnRegister.BackColor = System.Drawing.Color.LightGray;
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRegister.IconChar = FontAwesome.Sharp.IconChar.Registered;
+            this.btnRegister.IconColor = System.Drawing.Color.Salmon;
+            this.btnRegister.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegister.IconSize = 30;
+            this.btnRegister.Location = new System.Drawing.Point(29, 359);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(283, 41);
+            this.btnRegister.TabIndex = 4;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRegister.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.IconChar = FontAwesome.Sharp.IconChar.XmarkSquare;
+            this.btnExit.IconColor = System.Drawing.Color.Crimson;
+            this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnExit.IconSize = 30;
+            this.btnExit.Location = new System.Drawing.Point(313, 1);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(30, 27);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(346, 354);
-            this.Controls.Add(this.btnClose);
+            this.ClientSize = new System.Drawing.Size(346, 424);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
@@ -192,6 +216,7 @@
         private TextBox txtUserName;
         private TextBox txtPassword;
         private FontAwesome.Sharp.IconButton btnLogin;
-        private FontAwesome.Sharp.IconButton btnClose;
+        private FontAwesome.Sharp.IconButton btnRegister;
+        private FontAwesome.Sharp.IconButton btnExit;
     }
 }

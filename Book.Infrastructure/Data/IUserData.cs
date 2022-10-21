@@ -7,8 +7,8 @@ namespace BookManagement.Infrastructure.DataAccess.Data
         User GetUserById(Guid id);
         User GetUserByUserName(string userName);
         IEnumerable<User> GetUsers();
-        void InsertUser(User user);
-        void UpdateUser(User user);
-        void DeleteUser(Guid id);
+        bool InsertUser(User user);
+        bool UpdateUser(User user);
+        bool DeleteUser(Guid id);
     }
 }

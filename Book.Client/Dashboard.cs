@@ -1,4 +1,6 @@
-﻿using BookManagement.Models;
+﻿using Book.Business;
+using Book.Client.Dialog;
+using BookManagement.Models;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
 using static Book.Client.DataType;
@@ -11,9 +13,18 @@ namespace BookManagement
         private Panel leftBorderBtn;
         private Form currentChildform;
         public User CurrentUser { get; set; }
-        public Dashboard()
+
+        private readonly IUserBiz _userBiz;
+
+        public Dashboard(IUserBiz userBiz)
         {
             InitializeComponent();
+            InitDesignUI();
+            _userBiz = userBiz;
+        }
+
+        private void InitDesignUI()
+        {
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new System.Drawing.Size(10, 60);
             pnlLeftMenu.Controls.Add(leftBorderBtn);
@@ -192,6 +203,23 @@ namespace BookManagement
         private void btnCaiDat_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrSetting, eDashboard.Setting);
+        }
+        
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            using(var dialog = new frmLogin(_userBiz))
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    dialog.OnLoginCallback += SetCurrentUser;
+                    DataBind();
+                }
+            }
+        }
+
+        private void SetCurrentUser(User user)
+        {
+            this.CurrentUser = user;
         }
     }
 }

@@ -19,7 +19,35 @@ namespace BookManagement.Infrastructure.DataAccess.Data
             var results = _db.LoadData<User, dynamic>("spr_User_GetUserById", new { Id = id });
             return results.FirstOrDefault();
         }
-        public void InsertUser(User user) => _db.SaveData("spr_User_InsertData",
+        public bool InsertUser(User user)
+        {
+            var result = false;
+            try
+            {
+                _db.SaveData("spr_User_InsertData",
+               new
+               {
+                   user.FirstName,
+                   user.LastName,
+                   user.UserName,
+                   user.Password,
+                   user.Type
+               });
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return result;
+        }
+        public bool UpdateUser(User user)
+        {
+            var result = false;
+            try
+            {
+                _db.SaveData("spr_User_UpdateData",
                 new
                 {
                     user.FirstName,
@@ -28,16 +56,26 @@ namespace BookManagement.Infrastructure.DataAccess.Data
                     user.Password,
                     user.Type
                 });
-        public void UpdateUser(User user) => _db.SaveData("spr_User_UpdateData",
-                new
-                {
-                    user.FirstName,
-                    user.LastName,
-                    user.UserName,
-                    user.Password,
-                    user.Type
-                });
-        public void DeleteUser(Guid id) => _db.SaveData("spr_User_DeleteData", new { Id = id });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+        public bool DeleteUser(Guid id)
+        {
+            var result = false;
+            try
+            {
+                _db.SaveData("spr_User_DeleteData", new { Id = id });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
         public User GetUserByUserName(string userName)
         {
             var results = _db.LoadData<User, dynamic>("spr_User_GetUserByUserName", new { UserName = userName });

@@ -1,8 +1,9 @@
-﻿using BookManagement;
-using Book.Business;
+﻿using Book.Business;
+using BookManagement.Models;
 
 namespace Book.Client.Dialog
 {
+    public delegate void LoginCallbackHandler(User user);
     public partial class frmLogin : Form
     {
         IUserBiz _userBiz;
@@ -11,6 +12,9 @@ namespace Book.Client.Dialog
             InitializeComponent();
             _userBiz = userBiz; 
         }
+
+        
+        public event LoginCallbackHandler OnLoginCallback;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -26,17 +30,14 @@ namespace Book.Client.Dialog
                 var user = _userBiz.GetUserByUserName(userName);
                 if (user is not null)
                 {
-                    if(user.Password == password)
-                    {
-                        this.Hide();
-                        Dashboard dashboard = new Dashboard();
-                        dashboard.CurrentUser = user;
-                        dashboard.DataBind();
-                        dashboard.Show();
-                    }
-                    else
+                    if(user.Password != password)
                     {
                         MessageBox.Show("User name or password does not match.\nPlease try again.", "Login", MessageBoxButtons.OK);
+                    }
+                    else {
+                        //OnLoginCallback = new LoginCallbackHandler(user);
+                        OnLoginCallback?.Invoke(user);
+                        this.DialogResult = DialogResult.OK;
                     }
                 }
                 else
@@ -56,11 +57,6 @@ namespace Book.Client.Dialog
             txtPassword.Text = string.Empty;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void frmLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -70,6 +66,22 @@ namespace Book.Client.Dialog
         private void frmLogin_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            using (var register = new frmRegister(_userBiz))
+            {
+                if (register.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
         }
     }
 }
