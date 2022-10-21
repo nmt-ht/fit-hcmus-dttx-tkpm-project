@@ -42,6 +42,7 @@ namespace BookManagement
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.pnlTitle = new System.Windows.Forms.Panel();
+            this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnMaximinze = new FontAwesome.Sharp.IconButton();
             this.btnMiniminze = new FontAwesome.Sharp.IconButton();
             this.btnExit = new FontAwesome.Sharp.IconButton();
@@ -235,6 +236,7 @@ namespace BookManagement
             // pnlTitle
             // 
             this.pnlTitle.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlTitle.Controls.Add(this.lblWelcomeUser);
             this.pnlTitle.Controls.Add(this.btnMaximinze);
             this.pnlTitle.Controls.Add(this.btnMiniminze);
             this.pnlTitle.Controls.Add(this.btnExit);
@@ -246,6 +248,19 @@ namespace BookManagement
             this.pnlTitle.Size = new System.Drawing.Size(1021, 52);
             this.pnlTitle.TabIndex = 1;
             this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitle_MouseDown);
+            // 
+            // lblWelcomeUser
+            // 
+            this.lblWelcomeUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblWelcomeUser.AutoSize = true;
+            this.lblWelcomeUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblWelcomeUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblWelcomeUser.Location = new System.Drawing.Point(650, 9);
+            this.lblWelcomeUser.Margin = new System.Windows.Forms.Padding(10);
+            this.lblWelcomeUser.Name = "lblWelcomeUser";
+            this.lblWelcomeUser.Size = new System.Drawing.Size(260, 21);
+            this.lblWelcomeUser.TabIndex = 10;
+            this.lblWelcomeUser.Text = "Hello {userName}, have a nice day!!!";
             // 
             // btnMaximinze
             // 
@@ -300,7 +315,7 @@ namespace BookManagement
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitle.ForeColor = System.Drawing.Color.Cornsilk;
-            this.lblTitle.Location = new System.Drawing.Point(56, 17);
+            this.lblTitle.Location = new System.Drawing.Point(44, 19);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(63, 25);
@@ -315,10 +330,10 @@ namespace BookManagement
             this.IconHome.IconChar = FontAwesome.Sharp.IconChar.Home;
             this.IconHome.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.IconHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.IconHome.IconSize = 45;
+            this.IconHome.IconSize = 36;
             this.IconHome.Location = new System.Drawing.Point(6, 10);
             this.IconHome.Name = "IconHome";
-            this.IconHome.Size = new System.Drawing.Size(47, 39);
+            this.IconHome.Size = new System.Drawing.Size(37, 36);
             this.IconHome.TabIndex = 1;
             this.IconHome.TabStop = false;
             // 
@@ -377,5 +392,6 @@ namespace BookManagement
         private IconButton btnMaximinze;
         private IconButton btnMiniminze;
         private IconButton btnExit;
+        private Label lblWelcomeUser;
     }
 }

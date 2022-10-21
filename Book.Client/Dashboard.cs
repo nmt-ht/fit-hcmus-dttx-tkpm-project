@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿using BookManagement.Models;
+using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
 using static Book.Client.DataType;
 
@@ -9,6 +10,7 @@ namespace BookManagement
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildform;
+        public User CurrentUser { get; set; }
         public Dashboard()
         {
             InitializeComponent();
@@ -19,6 +21,14 @@ namespace BookManagement
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+        }
+
+        public void DataBind()
+        {
+            if (CurrentUser is not null)
+            {
+                lblWelcomeUser.Text = lblWelcomeUser.Text.Replace("{userName}", this.CurrentUser.FullName);
+            }
         }
 
         private struct RGBColors

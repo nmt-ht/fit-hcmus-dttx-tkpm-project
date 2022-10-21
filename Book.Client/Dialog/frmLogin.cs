@@ -18,20 +18,30 @@ namespace Book.Client.Dialog
             var password = txtPassword.Text;
             if(string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("User name or password cannot be empty. Please try again.", "Login", MessageBoxButtons.OK);
+                MessageBox.Show("User name or password cannot be empty.\nPlease try again.", "Login", MessageBoxButtons.OK);
                 return;
             }
             else
             {
-                var isChecked = _userBiz.CheckPassword4Login(userName, password);
-                if (isChecked)
+                var user = _userBiz.GetUserByUserName(userName);
+                if (user is not null)
                 {
-                    Dashboard dashboard = new Dashboard();
-                    dashboard.Show();
+                    if(user.Password == password)
+                    {
+                        this.Hide();
+                        Dashboard dashboard = new Dashboard();
+                        dashboard.CurrentUser = user;
+                        dashboard.DataBind();
+                        dashboard.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User name or password does not match.\nPlease try again.", "Login", MessageBoxButtons.OK);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("User name or password does not match. Please try again.", "Login", MessageBoxButtons.OK);
+                    MessageBox.Show("Account does not exist.", "Login", MessageBoxButtons.OK);
                 }
             }
         }

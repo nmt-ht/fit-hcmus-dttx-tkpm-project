@@ -14,7 +14,7 @@ namespace BookManagement.Infrastructure.DataAccess.Data
         {
             return _db.LoadData<User, dynamic>("spr_User_GetAllUsers", new { });
         }
-        public User? GetUser(Guid id)
+        public User GetUserById(Guid id)
         {
             var results = _db.LoadData<User, dynamic>("spr_User_GetUserById", new { Id = id });
             return results.FirstOrDefault();
@@ -38,9 +38,10 @@ namespace BookManagement.Infrastructure.DataAccess.Data
                     user.Type
                 });
         public void DeleteUser(Guid id) => _db.SaveData("spr_User_DeleteData", new { Id = id });
-        public User? GetUser(string userName)
+        public User GetUserByUserName(string userName)
         {
-            throw new NotImplementedException();
+            var results = _db.LoadData<User, dynamic>("spr_User_GetUserByUserName", new { UserName = userName });
+            return results.FirstOrDefault();
         }
     }
 }

@@ -4,8 +4,8 @@ namespace BookManagement.Infrastructure.DataAccess.Data
 {
     public interface IUserData
     {
-        User? GetUser(Guid id);
-        User? GetUser(string userName);
+        User GetUserById(Guid id);
+        User GetUserByUserName(string userName);
         IEnumerable<User> GetUsers();
         void InsertUser(User user);
         void UpdateUser(User user);

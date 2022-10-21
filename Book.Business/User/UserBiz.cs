@@ -1,4 +1,5 @@
 ﻿using BookManagement.Infrastructure.DataAccess.Data;
+using BookManagement.Models;
 
 namespace Book.Business;
 public class UserBiz : IUserBiz
@@ -9,15 +10,8 @@ public class UserBiz : IUserBiz
         _userData = userData;
     }
 
-    public bool CheckPassword4Login(string userName, string passWord)
+    public User GetUserByUserName(string userName)
     {
-        var users = _userData.GetUsers();
-        if (users is not null)
-        {
-            var userLogin = users.FirstOrDefault(x => x.UserName == userName);
-            return userLogin is not null && userLogin.Password == passWord;
-        }
-
-        return false;
+        return _userData.GetUserByUserName(userName);
     }
 }
