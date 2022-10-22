@@ -1,10 +1,11 @@
-﻿using Book.Business;
-using Book.Business.Helper;
-using Book.Client.Dialog;
+﻿using BookManagement.Business;
+using BookManagement.Business.Helper;
+using BookManagement.Client.Dialog;
+using BookManagement.Client.Forms;
 using BookManagement.Models;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
-using static Book.Client.DataType;
+using static BookManagement.Client.DataType;
 
 namespace BookManagement
 {
@@ -16,12 +17,14 @@ namespace BookManagement
         public User CurrentUser { get; set; }
 
         private readonly IUserBiz _userBiz;
+        private readonly IBookBiz _bookBiz;
 
-        public Dashboard(IUserBiz userBiz)
+        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz)
         {
             InitializeComponent();
             InitDesignUI();
             _userBiz = userBiz;
+            _bookBiz = bookBiz; 
         }
 
         private void InitDesignUI()
@@ -53,59 +56,31 @@ namespace BookManagement
             public static Color clrSetting = Color.FromArgb(24, 161, 251);
 
         }
+
         private void ActivateButton(object senderBtn, Color color, eDashboard eDashboard = eDashboard.Home)
         {
             if (senderBtn != null)
             {
                 DisableButton();
+                //Button
                 currentBtn = (IconButton)senderBtn;
                 currentBtn.BackColor = Color.FromArgb(37, 36, 81);
                 currentBtn.ForeColor = color;
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.IconColor = color;
-                currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
 
+                //Left border button
                 leftBorderBtn.BackColor = color;
                 leftBorderBtn.Location = new System.Drawing.Point(0, currentBtn.Location.Y);
                 leftBorderBtn.Visible = true;
                 leftBorderBtn.BringToFront();
 
+                //Icon current child form
                 IconHome.IconChar = currentBtn.IconChar;
                 IconHome.IconColor = color;
-                GenerateTilte(eDashboard);
             }
-        }
-
-        private void GenerateTilte(eDashboard eDashboard)
-        {
-            var title = string.Empty;
-            switch (eDashboard)
-            {
-                case eDashboard.Home:
-                    title = "Home";
-                    break;
-                case eDashboard.Books:
-                    title = "Danh Mục Sách";
-                    break;
-                case eDashboard.Employee:
-                    title = "Nhân Viên";
-                    break;
-                case eDashboard.Customer:
-                    title = "Khách Hàng";
-                    break;
-                case eDashboard.Invoice:
-                    title = "Hóa Đơn";
-                    break;
-                case eDashboard.Report:
-                    title = "Báo Cáo";
-                    break;
-                case eDashboard.Setting:
-                    title = "Cài Đặt";
-                    break;
-            }
-
-            lblTitle.Text = title;
         }
 
         private void DisableButton()
@@ -123,22 +98,22 @@ namespace BookManagement
 
         private void OpenChildForm(Form chilForm)
         {
-            if (IconHome != null)
+            if (currentChildform is not null)
                 currentChildform.Close();
+
             currentChildform = chilForm;
             chilForm.TopLevel = false;
             chilForm.FormBorderStyle = FormBorderStyle.None;
             chilForm.Dock = DockStyle.Fill;
+            chilForm.Left = (this.ClientSize.Width - chilForm.Width) / 2;
+            chilForm.Top = (this.ClientSize.Height - chilForm.Height) / 2;
             pnlDesktop.Controls.Add(chilForm);
+            pnlDesktop.Tag = chilForm;
             chilForm.BringToFront();
             chilForm.Show();
             lblTitle.Text = chilForm.Text;
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            Reset();
-        }
         private void Reset()
         {
             DisableButton();
@@ -146,8 +121,10 @@ namespace BookManagement
             IconHome.IconChar = IconChar.Home;
             IconHome.IconColor = Color.CornflowerBlue;
             lblTitle.Text = "Home";
+            OpenChildForm(new FormHome());
         }
 
+        //Drap form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -157,28 +134,25 @@ namespace BookManagement
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
-        private void btnMiniminze_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
+        //End drap form
 
         private void btnMaximinze_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
+            //if (WindowState == FormWindowState.Normal)
                 WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
+            //else
+            //    WindowState = FormWindowState.Normal;
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnMiniminze_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
+        private void btnExit_Click(object sender, EventArgs e) => Application.Exit();
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            Reset();
         }
-
         private void btnDanhMucSach_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrBooks, eDashboard.Books);
+            OpenChildForm(new FormBookDasboard(_bookBiz));
         }
 
         private void btnNhanVien_Click(object sender, EventArgs e)
@@ -205,15 +179,16 @@ namespace BookManagement
         {
             ActivateButton(sender, RGBColors.clrSetting, eDashboard.Setting);
         }
-        
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            using(var dialog = new frmLogin(_userBiz))
+            using (var dialog = new frmLogin(_userBiz))
             {
                 dialog.OnUserDelegate += new UserDelegateHandler.UserDelegate(SetCurrentUser);
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     DataBind();
+                    OpenChildForm(new FormHome());
                 }
             }
         }

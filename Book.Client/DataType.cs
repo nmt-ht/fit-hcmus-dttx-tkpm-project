@@ -1,4 +1,4 @@
-﻿namespace Book.Client
+﻿namespace BookManagement.Client
 {
     public static class DataType
     {

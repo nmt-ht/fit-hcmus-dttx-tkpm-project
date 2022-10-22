@@ -30,13 +30,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Book.Business\Book.Business.csproj" />
-	  <ProjectReference Include="..\Book.Infrastructure\Book.Infrastructure.csproj" />
-	  <ProjectReference Include="..\Book.Models\Book.Models.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="UC\" />
+	  <ProjectReference Include="..\Book.Business\BookManagement.Business.csproj" />
+	  <ProjectReference Include="..\Book.Infrastructure\BookManagement.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Book.Models\BookManagement.Models.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

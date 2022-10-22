@@ -1,4 +1,5 @@
-using Book.Business;
+using BookManagement.Business;
+using BookManagement.Infrastructure.Data;
 using BookManagement.Infrastructure.DataAccess.Data;
 using BookManagement.Infrastructure.DataAccess.DbAccess;
 using Microsoft.Extensions.Configuration;
@@ -26,12 +27,25 @@ namespace BookManagement
             }).ConfigureServices((context, services) =>
                 {
                     services.AddSingleton(context.Configuration);
-                    services.AddTransient<Dashboard>();
-                    //Init DI for Bussiness class
-                    services.AddSingleton<IUserBiz, UserBiz>();
-                    //Init DI for DAL class
-                    services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
-                    services.AddSingleton<IUserData, UserData>();
+                    InitFormControl(services);
+                    InitServices(services);
                 });
+
+        static void InitFormControl(IServiceCollection services)
+        {
+            services.AddTransient<Dashboard>();
+        }
+
+        static void InitServices(IServiceCollection services)
+        {
+            //Init DI for DAL class
+            services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
+            services.AddSingleton<IUserData, UserData>();
+            services.AddSingleton<IBookData, BookData>();
+
+            //Init DI for Bussiness class
+            services.AddSingleton<IUserBiz, UserBiz>();
+            services.AddSingleton<IBookBiz, BookBiz>();
+        }
     }
 }

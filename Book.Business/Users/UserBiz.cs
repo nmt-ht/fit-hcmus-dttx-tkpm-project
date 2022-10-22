@@ -1,7 +1,7 @@
 ﻿using BookManagement.Infrastructure.DataAccess.Data;
 using BookManagement.Models;
 
-namespace Book.Business;
+namespace BookManagement.Business;
 public class UserBiz : IUserBiz
 {
     private readonly IUserData _userData;

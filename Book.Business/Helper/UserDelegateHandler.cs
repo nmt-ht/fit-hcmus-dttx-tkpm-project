@@ -1,19 +1,18 @@
 ﻿using BookManagement.Models;
 
-namespace Book.Business.Helper
+namespace BookManagement.Business.Helper;
+
+public static class UserDelegateHandler
 {
-    public static class UserDelegateHandler
+    public delegate void UserDelegate(CustomEventArgs loginHandler);
+}
+
+public class CustomEventArgs : EventArgs
+{
+    public CustomEventArgs(User user)
     {
-        public delegate void UserDelegate(CustomEventArgs loginHandler);
+        User = user;
     }
 
-    public class CustomEventArgs : EventArgs
-    {
-        public CustomEventArgs(User user)
-        {
-            User = user;
-        }
-
-        public User User { get; set; }
-    }
+    public User User { get; set; }
 }

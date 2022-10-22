@@ -31,6 +31,7 @@ namespace BookManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.pnlLeftMenu = new System.Windows.Forms.Panel();
             this.btnCaiDat = new FontAwesome.Sharp.IconButton();
             this.btnBaoCao = new FontAwesome.Sharp.IconButton();
@@ -39,6 +40,8 @@ namespace BookManagement
             this.btnNhanVien = new FontAwesome.Sharp.IconButton();
             this.btnDanhMucSach = new FontAwesome.Sharp.IconButton();
             this.pnlHomIcon = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
@@ -71,7 +74,7 @@ namespace BookManagement
             this.pnlLeftMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftMenu.Name = "pnlLeftMenu";
-            this.pnlLeftMenu.Size = new System.Drawing.Size(150, 711);
+            this.pnlLeftMenu.Size = new System.Drawing.Size(194, 711);
             this.pnlLeftMenu.TabIndex = 0;
             // 
             // btnCaiDat
@@ -90,9 +93,9 @@ namespace BookManagement
             this.btnCaiDat.Location = new System.Drawing.Point(0, 395);
             this.btnCaiDat.Name = "btnCaiDat";
             this.btnCaiDat.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCaiDat.Size = new System.Drawing.Size(148, 61);
+            this.btnCaiDat.Size = new System.Drawing.Size(192, 61);
             this.btnCaiDat.TabIndex = 9;
-            this.btnCaiDat.Text = "Cài Đặt";
+            this.btnCaiDat.Text = "Settings";
             this.btnCaiDat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCaiDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCaiDat.UseVisualStyleBackColor = true;
@@ -114,9 +117,9 @@ namespace BookManagement
             this.btnBaoCao.Location = new System.Drawing.Point(0, 334);
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnBaoCao.Size = new System.Drawing.Size(148, 61);
+            this.btnBaoCao.Size = new System.Drawing.Size(192, 61);
             this.btnBaoCao.TabIndex = 8;
-            this.btnBaoCao.Text = "Báo Cáo";
+            this.btnBaoCao.Text = "Reports";
             this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBaoCao.UseVisualStyleBackColor = true;
@@ -138,9 +141,9 @@ namespace BookManagement
             this.btnHoaDon.Location = new System.Drawing.Point(0, 273);
             this.btnHoaDon.Name = "btnHoaDon";
             this.btnHoaDon.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnHoaDon.Size = new System.Drawing.Size(148, 61);
+            this.btnHoaDon.Size = new System.Drawing.Size(192, 61);
             this.btnHoaDon.TabIndex = 7;
-            this.btnHoaDon.Text = "Hoá Đơn";
+            this.btnHoaDon.Text = "Invoices";
             this.btnHoaDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHoaDon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHoaDon.UseVisualStyleBackColor = true;
@@ -162,9 +165,9 @@ namespace BookManagement
             this.btnKhachHang.Location = new System.Drawing.Point(0, 212);
             this.btnKhachHang.Name = "btnKhachHang";
             this.btnKhachHang.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnKhachHang.Size = new System.Drawing.Size(148, 61);
+            this.btnKhachHang.Size = new System.Drawing.Size(192, 61);
             this.btnKhachHang.TabIndex = 5;
-            this.btnKhachHang.Text = "Khách Hàng";
+            this.btnKhachHang.Text = "Customers";
             this.btnKhachHang.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnKhachHang.UseVisualStyleBackColor = true;
@@ -186,9 +189,9 @@ namespace BookManagement
             this.btnNhanVien.Location = new System.Drawing.Point(0, 151);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNhanVien.Size = new System.Drawing.Size(148, 61);
+            this.btnNhanVien.Size = new System.Drawing.Size(192, 61);
             this.btnNhanVien.TabIndex = 4;
-            this.btnNhanVien.Text = "Nhân Viên";
+            this.btnNhanVien.Text = "Employees";
             this.btnNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNhanVien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNhanVien.UseVisualStyleBackColor = true;
@@ -210,9 +213,9 @@ namespace BookManagement
             this.btnDanhMucSach.Location = new System.Drawing.Point(0, 90);
             this.btnDanhMucSach.Name = "btnDanhMucSach";
             this.btnDanhMucSach.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnDanhMucSach.Size = new System.Drawing.Size(148, 61);
+            this.btnDanhMucSach.Size = new System.Drawing.Size(192, 61);
             this.btnDanhMucSach.TabIndex = 3;
-            this.btnDanhMucSach.Text = "Danh Mục Sách";
+            this.btnDanhMucSach.Text = "Dasboard";
             this.btnDanhMucSach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDanhMucSach.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDanhMucSach.UseVisualStyleBackColor = true;
@@ -221,20 +224,45 @@ namespace BookManagement
             // pnlHomIcon
             // 
             this.pnlHomIcon.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlHomIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHomIcon.Controls.Add(this.label2);
+            this.pnlHomIcon.Controls.Add(this.label1);
             this.pnlHomIcon.Controls.Add(this.btnHome);
             this.pnlHomIcon.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHomIcon.Location = new System.Drawing.Point(0, 0);
             this.pnlHomIcon.Name = "pnlHomIcon";
-            this.pnlHomIcon.Size = new System.Drawing.Size(148, 90);
+            this.pnlHomIcon.Size = new System.Drawing.Size(192, 90);
             this.pnlHomIcon.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.DarkSalmon;
+            this.label2.Location = new System.Drawing.Point(102, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Book";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.DarkSalmon;
+            this.label1.Location = new System.Drawing.Point(72, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 19);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Management";
             // 
             // btnHome
             // 
             this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHome.Image = global::Book.Client.Properties.Resources.books;
-            this.btnHome.Location = new System.Drawing.Point(39, 12);
+            this.btnHome.Image = global::BookManagement.Client.Properties.Resources.books_2;
+            this.btnHome.Location = new System.Drawing.Point(8, 9);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(66, 69);
+            this.btnHome.Size = new System.Drawing.Size(59, 67);
             this.btnHome.TabIndex = 2;
             this.btnHome.TabStop = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
@@ -250,9 +278,9 @@ namespace BookManagement
             this.pnlTitle.Controls.Add(this.lblTitle);
             this.pnlTitle.Controls.Add(this.IconHome);
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitle.Location = new System.Drawing.Point(150, 0);
+            this.pnlTitle.Location = new System.Drawing.Point(194, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(1021, 52);
+            this.pnlTitle.Size = new System.Drawing.Size(977, 52);
             this.pnlTitle.TabIndex = 1;
             this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitle_MouseDown);
             // 
@@ -262,7 +290,7 @@ namespace BookManagement
             this.lblWelcomeUser.AutoSize = true;
             this.lblWelcomeUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblWelcomeUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblWelcomeUser.Location = new System.Drawing.Point(651, 9);
+            this.lblWelcomeUser.Location = new System.Drawing.Point(607, 9);
             this.lblWelcomeUser.Margin = new System.Windows.Forms.Padding(10);
             this.lblWelcomeUser.Name = "lblWelcomeUser";
             this.lblWelcomeUser.Size = new System.Drawing.Size(260, 21);
@@ -277,7 +305,7 @@ namespace BookManagement
             this.btnMaximinze.IconColor = System.Drawing.Color.BlanchedAlmond;
             this.btnMaximinze.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMaximinze.IconSize = 22;
-            this.btnMaximinze.Location = new System.Drawing.Point(955, 10);
+            this.btnMaximinze.Location = new System.Drawing.Point(911, 10);
             this.btnMaximinze.Name = "btnMaximinze";
             this.btnMaximinze.Size = new System.Drawing.Size(24, 23);
             this.btnMaximinze.TabIndex = 9;
@@ -292,7 +320,7 @@ namespace BookManagement
             this.btnMiniminze.IconColor = System.Drawing.Color.BlanchedAlmond;
             this.btnMiniminze.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMiniminze.IconSize = 22;
-            this.btnMiniminze.Location = new System.Drawing.Point(924, 10);
+            this.btnMiniminze.Location = new System.Drawing.Point(880, 10);
             this.btnMiniminze.Name = "btnMiniminze";
             this.btnMiniminze.Size = new System.Drawing.Size(25, 23);
             this.btnMiniminze.TabIndex = 8;
@@ -309,7 +337,7 @@ namespace BookManagement
             this.btnExit.IconColor = System.Drawing.Color.Brown;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 22;
-            this.btnExit.Location = new System.Drawing.Point(983, 10);
+            this.btnExit.Location = new System.Drawing.Point(939, 10);
             this.btnExit.Margin = new System.Windows.Forms.Padding(1);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(29, 23);
@@ -333,9 +361,9 @@ namespace BookManagement
             // IconHome
             // 
             this.IconHome.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.IconHome.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.IconHome.ForeColor = System.Drawing.Color.SlateBlue;
             this.IconHome.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.IconHome.IconColor = System.Drawing.SystemColors.ControlLightLight;
+            this.IconHome.IconColor = System.Drawing.Color.SlateBlue;
             this.IconHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.IconHome.IconSize = 36;
             this.IconHome.Location = new System.Drawing.Point(6, 10);
@@ -348,9 +376,9 @@ namespace BookManagement
             // 
             this.pnlDesktop.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.pnlDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDesktop.Location = new System.Drawing.Point(150, 52);
+            this.pnlDesktop.Location = new System.Drawing.Point(194, 52);
             this.pnlDesktop.Name = "pnlDesktop";
-            this.pnlDesktop.Size = new System.Drawing.Size(1021, 659);
+            this.pnlDesktop.Size = new System.Drawing.Size(977, 659);
             this.pnlDesktop.TabIndex = 2;
             // 
             // errorProvider1
@@ -366,12 +394,15 @@ namespace BookManagement
             this.Controls.Add(this.pnlTitle);
             this.Controls.Add(this.pnlLeftMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý Nhà sách";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.pnlLeftMenu.ResumeLayout(false);
             this.pnlHomIcon.ResumeLayout(false);
+            this.pnlHomIcon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
@@ -401,5 +432,7 @@ namespace BookManagement
         private IconButton btnExit;
         private Label lblWelcomeUser;
         private PictureBox btnHome;
+        private Label label2;
+        private Label label1;
     }
 }

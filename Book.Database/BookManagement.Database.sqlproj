@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Book.Database</Name>
+    <Name>BookManagement.Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{682f3c39-ffb1-48cc-a7c4-9a6d6959ad48}</ProjectGuid>
@@ -68,6 +68,12 @@
     <Build Include="dbo\StoreProcedures\spr_User_UpdateData.sql" />
     <Build Include="dbo\Tables\User.sql" />
     <Build Include="dbo\StoreProcedures\spr_User_GetUserByUserName.sql" />
+    <Build Include="dbo\Tables\Book.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Book_GetAllBooks.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Book_GetBookById.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Book_InsertData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Book_UpdateData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Book_DeleteData.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
