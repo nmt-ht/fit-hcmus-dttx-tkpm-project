@@ -1,15 +1,14 @@
 ﻿using BookManagement.Business;
-using BookManagement.Business.Helper;
-using BookManagement.Client.Forms;
 using BookManagement.Models;
-using static BookManagement.Business.Helper.UserDelegateHandler;
+using static BookManagement.Business.Helper.DelegateHandler;
+using static BookManagement.Business.Helper.DelegateHandler.UserDelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.Dialog;
-public partial class frmRegister : Form
+public partial class RegisterDialog : Form
 {
     IUserBiz _userBiz;
-    public frmRegister(IUserBiz userBiz)
+    public RegisterDialog(IUserBiz userBiz)
     {
         InitializeComponent();
         _userBiz = userBiz;
@@ -57,7 +56,7 @@ public partial class frmRegister : Form
     {
         if (OnUserDelegate != null)
         {
-            CustomEventArgs loginHandler = new CustomEventArgs(user);
+            UserCustomEventArgs loginHandler = new UserCustomEventArgs(user);
             //Raise Event. All the listeners of this event will get a call.
             OnUserDelegate(loginHandler);
         }
@@ -65,7 +64,7 @@ public partial class frmRegister : Form
     
     private void DisplayNotification(eMessageType messageType, string title, string message)
     {
-        using (var messageBox = new FormMessageBox())
+        using (var messageBox = new MessageBoxDialog())
         {
             messageBox.SetParametters(title, message, messageType);
             messageBox.DataBind();

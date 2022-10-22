@@ -36,10 +36,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Forms\FormMessageBox.cs">
+	  <Compile Update="Dialog\MessageBoxDialog.cs">
 	    <SubType>Form</SubType>
 	  </Compile>
-	  <Compile Update="Forms\FormDelete.cs">
+	  <Compile Update="Dialog\DeleteDialog.cs">
 	    <SubType>Form</SubType>
 	  </Compile>
 	  <Compile Update="Properties\Resources.Designer.cs">

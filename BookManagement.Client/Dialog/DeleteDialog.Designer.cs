@@ -1,6 +1,6 @@
-﻿namespace BookManagement.Client.Forms
+﻿namespace BookManagement.Client.Dialog
 {
-    partial class FormDelete
+    partial class DeleteDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -30,9 +30,10 @@
         {
             this.picBox = new System.Windows.Forms.PictureBox();
             this.btnExit = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnYes = new FontAwesome.Sharp.IconButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnNo = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,24 +61,24 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // iconButton1
+            // btnYes
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.iconButton1.IconColor = System.Drawing.Color.Green;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(195, 273);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(97, 36);
-            this.iconButton1.TabIndex = 28;
-            this.iconButton1.Text = "OK";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnYes.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnYes.FlatAppearance.BorderSize = 0;
+            this.btnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnYes.ForeColor = System.Drawing.Color.White;
+            this.btnYes.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnYes.IconColor = System.Drawing.Color.Green;
+            this.btnYes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnYes.IconSize = 30;
+            this.btnYes.Location = new System.Drawing.Point(97, 262);
+            this.btnYes.Name = "btnYes";
+            this.btnYes.Size = new System.Drawing.Size(97, 36);
+            this.btnYes.TabIndex = 28;
+            this.btnYes.Text = "Yes";
+            this.btnYes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnYes.UseVisualStyleBackColor = false;
             // 
             // panel7
             // 
@@ -98,19 +99,40 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Are you sure to delete?";
             // 
-            // FormDelete
+            // btnNo
+            // 
+            this.btnNo.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnNo.FlatAppearance.BorderSize = 0;
+            this.btnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNo.ForeColor = System.Drawing.Color.White;
+            this.btnNo.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.btnNo.IconColor = System.Drawing.Color.Red;
+            this.btnNo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNo.IconSize = 30;
+            this.btnNo.Location = new System.Drawing.Point(283, 262);
+            this.btnNo.Name = "btnNo";
+            this.btnNo.Size = new System.Drawing.Size(97, 36);
+            this.btnNo.TabIndex = 28;
+            this.btnNo.Text = "No";
+            this.btnNo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNo.UseVisualStyleBackColor = false;
+            this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
+            // 
+            // DeleteDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(509, 321);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.btnNo);
+            this.Controls.Add(this.btnYes);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.picBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormDelete";
+            this.Name = "DeleteDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add new book";
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
@@ -123,8 +145,9 @@
 
         private PictureBox picBox;
         private FontAwesome.Sharp.IconButton btnExit;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnYes;
         private Panel panel7;
         private Label label1;
+        private FontAwesome.Sharp.IconButton btnNo;
     }
 }

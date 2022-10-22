@@ -2,12 +2,14 @@
 using System.Windows;
 using BookManagement.Client.UC;
 using BookManagement.Models;
+using static BookManagement.Business.Helper.DelegateHandler;
 
 namespace BookManagement.Client.Forms;
 
 public partial class FormBookDasboard : Form
 {
     private readonly IBookBiz _bookBiz;
+    private ucBooks _ucBooks;
     public FormBookDasboard(IBookBiz bookBiz)
     {
         InitializeComponent();
@@ -16,12 +18,25 @@ public partial class FormBookDasboard : Form
 
     private void FormBookDasboard_Load(object sender, EventArgs e)
     {
-        var ucBooks = new ucBooks();
-        ucBooks.Books = GetBooks();
+        DataBind();
+    }
+
+    private void DataBind()
+    {
+        _ucBooks = new ucBooks();
+        _ucBooks.Books = GetBooks();
         double height = SystemParameters.FullPrimaryScreenHeight;
         double width = SystemParameters.FullPrimaryScreenWidth;
-        ucBooks.Size = new System.Drawing.Size((int)width-200, (int)height);
-        pnlBookDasboard.Controls.Add(ucBooks);
+        _ucBooks.Size = new System.Drawing.Size((int)width - 200, (int)height);
+        _ucBooks.OnReloadBooksDelegate += ucBooks_OnReloadBooksDelegate;
+        _ucBooks.DataBind();
+        pnlBookDasboard.Controls.Add(_ucBooks);
+    }
+
+    private void ucBooks_OnReloadBooksDelegate(ReloadBooksEventArgs reloadBooks)
+    {
+        _ucBooks.Books = GetBooks();
+        _ucBooks.DataBind();
     }
 
     private IList<Book> GetBooks()

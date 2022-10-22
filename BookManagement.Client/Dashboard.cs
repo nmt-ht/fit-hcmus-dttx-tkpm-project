@@ -5,6 +5,7 @@ using BookManagement.Client.Forms;
 using BookManagement.Models;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
+using static BookManagement.Business.Helper.DelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement
@@ -181,7 +182,7 @@ namespace BookManagement
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            using (var dialog = new frmLogin(_userBiz))
+            using (var dialog = new LoginDialog(_userBiz))
             {
                 dialog.OnUserDelegate += new UserDelegateHandler.UserDelegate(SetCurrentUser);
                 if (dialog.ShowDialog() == DialogResult.OK)
@@ -193,7 +194,7 @@ namespace BookManagement
         }
 
         //Event Listener. This function will be called whenever child class raises event.
-        private void SetCurrentUser(CustomEventArgs customEventArgs)
+        private void SetCurrentUser(UserCustomEventArgs customEventArgs)
         {
             this.CurrentUser = customEventArgs.User;
         }

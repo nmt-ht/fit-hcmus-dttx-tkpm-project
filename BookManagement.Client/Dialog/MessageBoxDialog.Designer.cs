@@ -1,6 +1,6 @@
-﻿namespace BookManagement.Client.Forms
+﻿namespace BookManagement.Client.Dialog
 {
-    partial class FormMessageBox
+    partial class MessageBoxDialog
     {
         /// <summary>
         /// Required designer variable.

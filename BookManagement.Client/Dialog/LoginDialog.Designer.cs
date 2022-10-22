@@ -1,5 +1,5 @@
 ﻿namespace BookManagement.Client.Dialog;
-partial class frmLogin
+partial class LoginDialog
 {
     /// <summary>
     /// Required designer variable.
@@ -27,7 +27,7 @@ partial class frmLogin
     /// </summary>
     private void InitializeComponent()
     {
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginDialog));
         this.pictureBox1 = new System.Windows.Forms.PictureBox();
         this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
         this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();

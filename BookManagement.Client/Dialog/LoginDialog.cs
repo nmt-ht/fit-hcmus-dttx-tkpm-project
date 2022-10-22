@@ -1,17 +1,15 @@
 ﻿using BookManagement.Business;
-using BookManagement.Business.Helper;
-using BookManagement.Client.Forms;
 using BookManagement.Models;
-using static BookManagement.Business.Helper.UserDelegateHandler;
+using static BookManagement.Business.Helper.DelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.Dialog;
 
-public partial class frmLogin : Form
+public partial class LoginDialog : Form
 {
     IUserBiz _userBiz;
     public User NewUser { get; set; }
-    public frmLogin(IUserBiz userBiz)
+    public LoginDialog(IUserBiz userBiz)
     {
         InitializeComponent();
         _userBiz = userBiz; 
@@ -25,7 +23,7 @@ public partial class frmLogin : Form
         }
     }
 
-    public event UserDelegate OnUserDelegate;
+    public event UserDelegateHandler.UserDelegate OnUserDelegate;
     private void btnLogin_Click(object sender, EventArgs e)
     {
         var userName = txtUserName.Text;
@@ -74,9 +72,9 @@ public partial class frmLogin : Form
 
     private void btnRegister_Click(object sender, EventArgs e)
     {
-        using (var register = new frmRegister(_userBiz))
+        using (var register = new RegisterDialog(_userBiz))
         {
-            register.OnUserDelegate += new UserDelegate(SetNewUser);
+            register.OnUserDelegate += new UserDelegateHandler.UserDelegate(SetNewUser);
             if (register.ShowDialog() == DialogResult.OK)
             {
                 DataBind();
@@ -84,12 +82,12 @@ public partial class frmLogin : Form
         }
     }
 
-    private void SetNewUser(CustomEventArgs customEventArgs) => this.NewUser = customEventArgs.User;
+    private void SetNewUser(UserCustomEventArgs customEventArgs) => this.NewUser = customEventArgs.User;
     public void NotifyParent(User user)
     {
         if (OnUserDelegate != null)
         {
-            CustomEventArgs loginHandler = new CustomEventArgs(user);
+            UserCustomEventArgs loginHandler = new UserCustomEventArgs(user);
             //Raise Event. All the listeners of this event will get a call.
             OnUserDelegate(loginHandler);
         }
@@ -97,7 +95,7 @@ public partial class frmLogin : Form
 
     private void DisplayNotification(eMessageType messageType, string title, string message)
     {
-        using (var messageBox = new FormMessageBox())
+        using (var messageBox = new MessageBoxDialog())
         {
             messageBox.SetParametters(title, message, messageType);
             messageBox.DataBind();

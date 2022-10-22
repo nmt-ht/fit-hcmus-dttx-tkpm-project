@@ -35,6 +35,7 @@ partial class ucBooks
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -49,13 +50,14 @@ partial class ucBooks
             this.btnSearch.IconColor = System.Drawing.Color.SlateBlue;
             this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSearch.IconSize = 25;
-            this.btnSearch.Location = new System.Drawing.Point(573, 11);
+            this.btnSearch.Location = new System.Drawing.Point(796, 11);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 32);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnAdd
             // 
@@ -77,14 +79,15 @@ partial class ucBooks
             // 
             // btnEdit
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.Lavender;
+            this.btnEdit.BackColor = System.Drawing.Color.Linen;
+            this.btnEdit.Enabled = false;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.IconChar = FontAwesome.Sharp.IconChar.Pen;
-            this.btnEdit.IconColor = System.Drawing.Color.DodgerBlue;
+            this.btnEdit.IconColor = System.Drawing.Color.SaddleBrown;
             this.btnEdit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEdit.IconSize = 20;
-            this.btnEdit.Location = new System.Drawing.Point(121, 11);
+            this.btnEdit.Location = new System.Drawing.Point(118, 11);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(84, 32);
             this.btnEdit.TabIndex = 2;
@@ -95,14 +98,15 @@ partial class ucBooks
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.Lavender;
+            this.btnDelete.BackColor = System.Drawing.Color.Linen;
+            this.btnDelete.Enabled = false;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.IconChar = FontAwesome.Sharp.IconChar.Minus;
             this.btnDelete.IconColor = System.Drawing.Color.Crimson;
             this.btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDelete.IconSize = 20;
-            this.btnDelete.Location = new System.Drawing.Point(222, 11);
+            this.btnDelete.Location = new System.Drawing.Point(214, 11);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(84, 32);
             this.btnDelete.TabIndex = 3;
@@ -127,12 +131,13 @@ partial class ucBooks
             this.txtSearchText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchText.ForeColor = System.Drawing.Color.SlateGray;
-            this.txtSearchText.Location = new System.Drawing.Point(325, 11);
+            this.txtSearchText.Location = new System.Drawing.Point(496, 11);
             this.txtSearchText.Multiline = true;
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.PlaceholderText = "Input book name...";
-            this.txtSearchText.Size = new System.Drawing.Size(242, 32);
+            this.txtSearchText.PlaceholderText = "Enter book name, author, description,...";
+            this.txtSearchText.Size = new System.Drawing.Size(294, 32);
             this.txtSearchText.TabIndex = 4;
+            this.txtSearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchText_KeyDown);
             // 
             // panel1
             // 
@@ -146,6 +151,7 @@ partial class ucBooks
             // 
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.btnRefresh);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.txtSearchText);
             this.panel2.Controls.Add(this.btnEdit);
@@ -155,6 +161,24 @@ partial class ucBooks
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(910, 57);
             this.panel2.TabIndex = 7;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.Lavender;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.IconChar = FontAwesome.Sharp.IconChar.Repeat;
+            this.btnRefresh.IconColor = System.Drawing.Color.DodgerBlue;
+            this.btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRefresh.IconSize = 20;
+            this.btnRefresh.Location = new System.Drawing.Point(310, 11);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(84, 32);
+            this.btnRefresh.TabIndex = 1;
+            this.btnRefresh.Text = "Refesh";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // panel3
             // 
@@ -173,7 +197,6 @@ partial class ucBooks
             this.Controls.Add(this.panel2);
             this.Name = "ucBooks";
             this.Size = new System.Drawing.Size(910, 672);
-            this.Load += new System.EventHandler(this.ucBooks_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -192,4 +215,5 @@ partial class ucBooks
     private Panel panel1;
     private Panel panel2;
     private Panel panel3;
+    private FontAwesome.Sharp.IconButton btnRefresh;
 }

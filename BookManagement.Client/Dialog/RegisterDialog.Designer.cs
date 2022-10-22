@@ -1,5 +1,5 @@
 ﻿namespace BookManagement.Client.Dialog;
-partial class frmRegister
+partial class RegisterDialog
 {
     /// <summary>
     /// Required designer variable.
@@ -27,7 +27,7 @@ partial class frmRegister
     /// </summary>
     private void InitializeComponent()
     {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterDialog));
             this.btnRegister = new FontAwesome.Sharp.IconButton();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();

@@ -1,13 +1,13 @@
 ﻿using static BookManagement.Client.DataType;
 
-namespace BookManagement.Client.Forms
+namespace BookManagement.Client.Dialog
 {
-    public partial class FormMessageBox : Form
+    public partial class MessageBoxDialog : Form
     {
         private string Title { get;set; }
         private string Message { get; set; }
         private eMessageType MessageType { get; set; }
-        public FormMessageBox()
+        public MessageBoxDialog()
         {
             InitializeComponent();
         }

@@ -1,13 +1,13 @@
 ﻿using BookManagement.Models;
 using static BookManagement.Client.DataType;
 
-namespace BookManagement.Client.Forms
+namespace BookManagement.Client.Dialog
 {
-    public partial class FormAddEditBook : Form
+    public partial class AddEditBookDialog : Form
     {
         public Book Book { get; set; }
         public eAction Action { get; set; }
-        public FormAddEditBook()
+        public AddEditBookDialog()
         {
             InitializeComponent();
         }

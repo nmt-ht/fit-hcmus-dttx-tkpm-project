@@ -1,14 +1,14 @@
 ﻿using BookManagement.Models;
 using static BookManagement.Client.DataType;
 
-namespace BookManagement.Client.Forms
+namespace BookManagement.Client.Dialog
 {
-    public partial class FormDelete : Form
+    public partial class DeleteDialog : Form
     {
         public object Object { get; set; }
         public eAction Action { get; set; }
         public eObjectType ObjectType { get; set; }
-        public FormDelete()
+        public DeleteDialog()
         {
             InitializeComponent();
         }
@@ -23,6 +23,11 @@ namespace BookManagement.Client.Forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void btnNo_Click(object sender, EventArgs e)
+        {
+            btnExit_Click(sender, e);
         }
     }
 }
