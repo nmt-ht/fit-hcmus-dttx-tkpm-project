@@ -18,5 +18,16 @@
             Edit = 1,
             Delete = 2,
         }
+        public enum eObjectType
+        {
+            Book = 0,
+            User = 1
+        }
+
+        public enum eMessageType 
+        { 
+            Info = 0,
+            Warning = 1
+        } 
     }
 }

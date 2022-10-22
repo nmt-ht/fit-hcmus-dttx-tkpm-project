@@ -1,7 +1,9 @@
 ﻿using BookManagement.Business;
 using BookManagement.Business.Helper;
+using BookManagement.Client.Forms;
 using BookManagement.Models;
 using static BookManagement.Business.Helper.UserDelegateHandler;
+using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.Dialog;
 
@@ -30,7 +32,7 @@ public partial class frmLogin : Form
         var password = txtPassword.Text;
         if(string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
         {
-            MessageBox.Show("User name or password cannot be empty.\nPlease try again.", "Login", MessageBoxButtons.OK);
+            DisplayNotification(eMessageType.Warning, "Login", "User name or password cannot be empty.");
             return;
         }
         else
@@ -40,7 +42,7 @@ public partial class frmLogin : Form
             {
                 if(user.Password != password)
                 {
-                    MessageBox.Show("User name or password does not match.\nPlease try again.", "Login", MessageBoxButtons.OK);
+                    DisplayNotification(eMessageType.Warning, "Login", "User name or password does not match.");
                 }
                 else {
                     NotifyParent(user);
@@ -49,7 +51,7 @@ public partial class frmLogin : Form
             }
             else
             {
-                MessageBox.Show("Account does not exist.", "Login", MessageBoxButtons.OK);
+                DisplayNotification(eMessageType.Warning, "Login", "Account does not exist.");
             }
         }
     }
@@ -83,7 +85,6 @@ public partial class frmLogin : Form
     }
 
     private void SetNewUser(CustomEventArgs customEventArgs) => this.NewUser = customEventArgs.User;
-
     public void NotifyParent(User user)
     {
         if (OnUserDelegate != null)
@@ -91,6 +92,16 @@ public partial class frmLogin : Form
             CustomEventArgs loginHandler = new CustomEventArgs(user);
             //Raise Event. All the listeners of this event will get a call.
             OnUserDelegate(loginHandler);
+        }
+    }
+
+    private void DisplayNotification(eMessageType messageType, string title, string message)
+    {
+        using (var messageBox = new FormMessageBox())
+        {
+            messageBox.SetParametters(title, message, messageType);
+            messageBox.DataBind();
+            messageBox.ShowDialog();
         }
     }
 }

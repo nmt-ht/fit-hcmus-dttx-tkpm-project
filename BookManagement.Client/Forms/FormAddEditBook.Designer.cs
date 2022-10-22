@@ -254,6 +254,7 @@
             // cboBookTypes
             // 
             this.cboBookTypes.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.cboBookTypes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboBookTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboBookTypes.ForeColor = System.Drawing.Color.MidnightBlue;
             this.cboBookTypes.FormattingEnabled = true;
