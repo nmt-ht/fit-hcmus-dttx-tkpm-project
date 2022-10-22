@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Book]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-	[Name] VARCHAR(250),
-	[Author] VARCHAR(250),
-	[Description] VARCHAR(MAX),
+	[Name] NVARCHAR(250),
+	[Author] NVARCHAR(250),
+	[Description] NVARCHAR(MAX),
 	Quantity INT,
 	TypeOfBook TINYINT,
 	Price MONEY,

@@ -12,8 +12,8 @@ public class Book
     public eTypeOfBook TypeOfBook { get; set; }
     public decimal Price { get; set; }
     public DateTime? CreatedDate { get; set; }
-    public DateTime? CreatedBy { get; set; }
+    public Guid CreatedBy { get; set; }
     public DateTime? ModifiedDate { get; set; }
-    public DateTime? ModifiedBy { get; set; }
+    public Guid ModifiedBy { get; set; }
     public bool IsDeleted { get; set; }
 }

@@ -27,116 +27,171 @@ partial class ucBookInfo
     /// </summary>
     private void InitializeComponent()
     {
-        this.pictureBox1 = new System.Windows.Forms.PictureBox();
-        this.lblBookName = new System.Windows.Forms.Label();
-        this.lblAuthor = new System.Windows.Forms.Label();
-        this.lblPrice = new System.Windows.Forms.Label();
-        this.lblDescription = new System.Windows.Forms.Label();
-        this.btnViewDetail = new FontAwesome.Sharp.IconButton();
-        this.btnBuy = new FontAwesome.Sharp.IconButton();
-        ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-        this.SuspendLayout();
-        // 
-        // pictureBox1
-        // 
-        this.pictureBox1.Image = global::BookManagement.Client.Properties.Resources.book_default;
-        this.pictureBox1.Location = new System.Drawing.Point(80, 16);
-        this.pictureBox1.Name = "pictureBox1";
-        this.pictureBox1.Size = new System.Drawing.Size(96, 95);
-        this.pictureBox1.TabIndex = 0;
-        this.pictureBox1.TabStop = false;
-        // 
-        // lblBookName
-        // 
-        this.lblBookName.AutoSize = true;
-        this.lblBookName.Location = new System.Drawing.Point(92, 128);
-        this.lblBookName.Name = "lblBookName";
-        this.lblBookName.Size = new System.Drawing.Size(66, 15);
-        this.lblBookName.TabIndex = 1;
-        this.lblBookName.Text = "BookName";
-        // 
-        // lblAuthor
-        // 
-        this.lblAuthor.AutoSize = true;
-        this.lblAuthor.Location = new System.Drawing.Point(103, 153);
-        this.lblAuthor.Name = "lblAuthor";
-        this.lblAuthor.Size = new System.Drawing.Size(44, 15);
-        this.lblAuthor.TabIndex = 1;
-        this.lblAuthor.Text = "Author";
-        // 
-        // lblPrice
-        // 
-        this.lblPrice.AutoSize = true;
-        this.lblPrice.Location = new System.Drawing.Point(109, 178);
-        this.lblPrice.Name = "lblPrice";
-        this.lblPrice.Size = new System.Drawing.Size(33, 15);
-        this.lblPrice.TabIndex = 1;
-        this.lblPrice.Text = "Price";
-        // 
-        // lblDescription
-        // 
-        this.lblDescription.AutoSize = true;
-        this.lblDescription.Location = new System.Drawing.Point(92, 203);
-        this.lblDescription.Name = "lblDescription";
-        this.lblDescription.Size = new System.Drawing.Size(67, 15);
-        this.lblDescription.TabIndex = 1;
-        this.lblDescription.Text = "Description";
-        // 
-        // btnViewDetail
-        // 
-        this.btnViewDetail.BackColor = System.Drawing.Color.DeepSkyBlue;
-        this.btnViewDetail.FlatAppearance.BorderSize = 0;
-        this.btnViewDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnViewDetail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-        this.btnViewDetail.ForeColor = System.Drawing.Color.White;
-        this.btnViewDetail.IconChar = FontAwesome.Sharp.IconChar.Info;
-        this.btnViewDetail.IconColor = System.Drawing.Color.White;
-        this.btnViewDetail.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        this.btnViewDetail.IconSize = 15;
-        this.btnViewDetail.Location = new System.Drawing.Point(80, 247);
-        this.btnViewDetail.Name = "btnViewDetail";
-        this.btnViewDetail.Size = new System.Drawing.Size(96, 26);
-        this.btnViewDetail.TabIndex = 2;
-        this.btnViewDetail.Text = "View Detail";
-        this.btnViewDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-        this.btnViewDetail.UseVisualStyleBackColor = false;
-        // 
-        // btnBuy
-        // 
-        this.btnBuy.BackColor = System.Drawing.Color.DarkTurquoise;
-        this.btnBuy.FlatAppearance.BorderSize = 0;
-        this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnBuy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-        this.btnBuy.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
-        this.btnBuy.IconColor = System.Drawing.Color.Black;
-        this.btnBuy.IconFont = FontAwesome.Sharp.IconFont.Auto;
-        this.btnBuy.IconSize = 16;
-        this.btnBuy.Location = new System.Drawing.Point(80, 279);
-        this.btnBuy.Name = "btnBuy";
-        this.btnBuy.Size = new System.Drawing.Size(96, 26);
-        this.btnBuy.TabIndex = 2;
-        this.btnBuy.Text = "Buy";
-        this.btnBuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-        this.btnBuy.UseVisualStyleBackColor = false;
-        // 
-        // ucBookInfo
-        // 
-        this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.BackColor = System.Drawing.Color.Lavender;
-        this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        this.Controls.Add(this.btnBuy);
-        this.Controls.Add(this.btnViewDetail);
-        this.Controls.Add(this.lblDescription);
-        this.Controls.Add(this.lblPrice);
-        this.Controls.Add(this.lblAuthor);
-        this.Controls.Add(this.lblBookName);
-        this.Controls.Add(this.pictureBox1);
-        this.Name = "ucBookInfo";
-        this.Size = new System.Drawing.Size(256, 320);
-        ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-        this.ResumeLayout(false);
-        this.PerformLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblBookName = new System.Windows.Forms.Label();
+            this.lblAuthor = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.btnViewDetail = new FontAwesome.Sharp.IconButton();
+            this.btnBuy = new FontAwesome.Sharp.IconButton();
+            this.txtAuthor = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BookManagement.Client.Properties.Resources.book_default;
+            this.pictureBox1.Location = new System.Drawing.Point(108, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(96, 95);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblBookName
+            // 
+            this.lblBookName.AutoSize = true;
+            this.lblBookName.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblBookName.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblBookName.Location = new System.Drawing.Point(16, 122);
+            this.lblBookName.Name = "lblBookName";
+            this.lblBookName.Size = new System.Drawing.Size(87, 20);
+            this.lblBookName.TabIndex = 1;
+            this.lblBookName.Text = "BookName";
+            // 
+            // lblAuthor
+            // 
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.BackColor = System.Drawing.Color.Lavender;
+            this.lblAuthor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAuthor.ForeColor = System.Drawing.Color.Maroon;
+            this.lblAuthor.Location = new System.Drawing.Point(16, 153);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(61, 20);
+            this.lblAuthor.TabIndex = 1;
+            this.lblAuthor.Text = "Author :";
+            // 
+            // lblPrice
+            // 
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.BackColor = System.Drawing.Color.Lavender;
+            this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPrice.ForeColor = System.Drawing.Color.Maroon;
+            this.lblPrice.Location = new System.Drawing.Point(16, 178);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(48, 20);
+            this.lblPrice.TabIndex = 1;
+            this.lblPrice.Text = "Price :";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.BackColor = System.Drawing.Color.Lavender;
+            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDescription.ForeColor = System.Drawing.Color.Maroon;
+            this.lblDescription.Location = new System.Drawing.Point(16, 202);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(92, 20);
+            this.lblDescription.TabIndex = 1;
+            this.lblDescription.Text = "Description :";
+            // 
+            // btnViewDetail
+            // 
+            this.btnViewDetail.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnViewDetail.FlatAppearance.BorderSize = 0;
+            this.btnViewDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewDetail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnViewDetail.ForeColor = System.Drawing.Color.White;
+            this.btnViewDetail.IconChar = FontAwesome.Sharp.IconChar.Info;
+            this.btnViewDetail.IconColor = System.Drawing.Color.White;
+            this.btnViewDetail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnViewDetail.IconSize = 15;
+            this.btnViewDetail.Location = new System.Drawing.Point(16, 333);
+            this.btnViewDetail.Name = "btnViewDetail";
+            this.btnViewDetail.Size = new System.Drawing.Size(96, 26);
+            this.btnViewDetail.TabIndex = 2;
+            this.btnViewDetail.Text = "View Detail";
+            this.btnViewDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnViewDetail.UseVisualStyleBackColor = false;
+            // 
+            // btnBuy
+            // 
+            this.btnBuy.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnBuy.FlatAppearance.BorderSize = 0;
+            this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBuy.ForeColor = System.Drawing.Color.White;
+            this.btnBuy.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
+            this.btnBuy.IconColor = System.Drawing.Color.White;
+            this.btnBuy.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBuy.IconSize = 16;
+            this.btnBuy.Location = new System.Drawing.Point(195, 333);
+            this.btnBuy.Name = "btnBuy";
+            this.btnBuy.Size = new System.Drawing.Size(96, 26);
+            this.btnBuy.TabIndex = 2;
+            this.btnBuy.Text = "Buy";
+            this.btnBuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuy.UseVisualStyleBackColor = false;
+            // 
+            // txtAuthor
+            // 
+            this.txtAuthor.AutoSize = true;
+            this.txtAuthor.BackColor = System.Drawing.Color.Lavender;
+            this.txtAuthor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAuthor.ForeColor = System.Drawing.Color.Maroon;
+            this.txtAuthor.Location = new System.Drawing.Point(83, 153);
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(59, 20);
+            this.txtAuthor.TabIndex = 3;
+            this.txtAuthor.Text = "Author";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.AutoSize = true;
+            this.txtPrice.BackColor = System.Drawing.Color.Lavender;
+            this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtPrice.ForeColor = System.Drawing.Color.Maroon;
+            this.txtPrice.Location = new System.Drawing.Point(71, 178);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(43, 20);
+            this.txtPrice.TabIndex = 3;
+            this.txtPrice.Text = "Price";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.BackColor = System.Drawing.Color.Lavender;
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDescription.ForeColor = System.Drawing.Color.Maroon;
+            this.txtDescription.Location = new System.Drawing.Point(112, 204);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(179, 117);
+            this.txtDescription.TabIndex = 4;
+            this.txtDescription.Text = "";
+            // 
+            // ucBookInfo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Lavender;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtAuthor);
+            this.Controls.Add(this.btnBuy);
+            this.Controls.Add(this.btnViewDetail);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.lblPrice);
+            this.Controls.Add(this.lblAuthor);
+            this.Controls.Add(this.lblBookName);
+            this.Controls.Add(this.pictureBox1);
+            this.Name = "ucBookInfo";
+            this.Size = new System.Drawing.Size(314, 374);
+            this.Click += new System.EventHandler(this.ucBookInfo_Click);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
     }
 
@@ -149,4 +204,7 @@ partial class ucBookInfo
     private Label lblDescription;
     private FontAwesome.Sharp.IconButton btnViewDetail;
     private FontAwesome.Sharp.IconButton btnBuy;
+    private Label txtAuthor;
+    private Label txtPrice;
+    private RichTextBox txtDescription;
 }

@@ -12,5 +12,11 @@
             Report = 5,
             Setting = 6
         }
+        public enum eAction
+        {
+            Add = 0,
+            Edit = 1,
+            Delete = 2,
+        }
     }
 }

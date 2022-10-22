@@ -83,6 +83,16 @@ namespace BookManagement.Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap book_add {
+            get {
+                object obj = ResourceManager.GetObject("book_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap book_dasboard {
             get {
                 object obj = ResourceManager.GetObject("book_dasboard", resourceCulture);
@@ -96,6 +106,26 @@ namespace BookManagement.Client.Properties {
         public static System.Drawing.Bitmap book_default {
             get {
                 object obj = ResourceManager.GetObject("book_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap book_delete {
+            get {
+                object obj = ResourceManager.GetObject("book_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap book_edit {
+            get {
+                object obj = ResourceManager.GetObject("book_edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

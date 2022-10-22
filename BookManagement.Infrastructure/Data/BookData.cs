@@ -8,11 +8,11 @@ public class BookData : IBookData
     public BookData(ISqlDataAccess db) => _db = db;
     public IEnumerable<Book> GetBooks()
     {
-        return _db.LoadData<Book, dynamic>("spr_User_GetAllBooks", new { });
+        return _db.LoadData<Book, dynamic>("spr_Book_GetAllBooks", new { });
     }
     public IEnumerable<Book> GetBookById(Guid id)
     {
-        return _db.LoadData<Book, dynamic>("spr_User_GetBookById", new { Id = id });
+        return _db.LoadData<Book, dynamic>("spr_Book_GetBookById", new { Id = id });
     }
     public bool InsertBook(Book book)
     {
@@ -67,7 +67,7 @@ public class BookData : IBookData
         var result = false;
         try
         {
-            _db.SaveData("spr_Book_DelteData", new { Id = id });
+            _db.SaveData("spr_Book_DeleteData", new { Id = id });
             result = true;
         }
         catch (Exception ex)
