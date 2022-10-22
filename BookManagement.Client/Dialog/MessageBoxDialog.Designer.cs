@@ -69,7 +69,7 @@
             this.txtOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtOK.ForeColor = System.Drawing.Color.White;
             this.txtOK.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.txtOK.IconColor = System.Drawing.Color.Green;
+            this.txtOK.IconColor = System.Drawing.Color.Lime;
             this.txtOK.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.txtOK.IconSize = 30;
             this.txtOK.Location = new System.Drawing.Point(195, 322);
@@ -119,7 +119,7 @@
             this.panel1.Size = new System.Drawing.Size(459, 1);
             this.panel1.TabIndex = 22;
             // 
-            // FormMessageBox
+            // MessageBoxDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,7 +133,7 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.picBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormMessageBox";
+            this.Name = "MessageBoxDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add new book";
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();

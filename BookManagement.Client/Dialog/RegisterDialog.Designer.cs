@@ -55,15 +55,15 @@ partial class RegisterDialog
             this.btnRegister.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnRegister.FlatAppearance.BorderSize = 0;
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnRegister.ForeColor = System.Drawing.Color.White;
             this.btnRegister.IconChar = FontAwesome.Sharp.IconChar.Book;
-            this.btnRegister.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRegister.IconColor = System.Drawing.Color.Lavender;
             this.btnRegister.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRegister.IconSize = 30;
-            this.btnRegister.Location = new System.Drawing.Point(31, 412);
+            this.btnRegister.Location = new System.Drawing.Point(105, 412);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(280, 41);
+            this.btnRegister.Size = new System.Drawing.Size(127, 41);
             this.btnRegister.TabIndex = 5;
             this.btnRegister.Text = "Sign up";
             this.btnRegister.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -228,7 +228,7 @@ partial class RegisterDialog
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // frmRegister
+            // RegisterDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -251,7 +251,7 @@ partial class RegisterDialog
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmRegister";
+            this.Name = "RegisterDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

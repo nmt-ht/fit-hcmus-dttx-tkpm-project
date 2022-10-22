@@ -69,7 +69,7 @@
             this.btnYes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnYes.ForeColor = System.Drawing.Color.White;
             this.btnYes.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.btnYes.IconColor = System.Drawing.Color.Green;
+            this.btnYes.IconColor = System.Drawing.Color.Lime;
             this.btnYes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnYes.IconSize = 30;
             this.btnYes.Location = new System.Drawing.Point(97, 262);
