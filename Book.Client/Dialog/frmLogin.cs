@@ -1,21 +1,29 @@
 ﻿using Book.Business;
+using Book.Business.Helper;
 using BookManagement.Models;
+using static Book.Business.Helper.UserDelegateHandler;
 
 namespace Book.Client.Dialog
 {
-    public delegate void LoginCallbackHandler(User user);
     public partial class frmLogin : Form
     {
         IUserBiz _userBiz;
+        public User NewUser { get; set; }
         public frmLogin(IUserBiz userBiz)
         {
             InitializeComponent();
             _userBiz = userBiz; 
         }
+        public void DataBind()
+        {
+            if (this.NewUser is not null)
+            {
+                txtUserName.Text = this.NewUser.UserName;
+                txtPassword.Text = this.NewUser.Password;
+            }
+        }
 
-        
-        public event LoginCallbackHandler OnLoginCallback;
-
+        public event UserDelegate OnUserDelegate;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             var userName = txtUserName.Text;
@@ -35,8 +43,7 @@ namespace Book.Client.Dialog
                         MessageBox.Show("User name or password does not match.\nPlease try again.", "Login", MessageBoxButtons.OK);
                     }
                     else {
-                        //OnLoginCallback = new LoginCallbackHandler(user);
-                        OnLoginCallback?.Invoke(user);
+                        NotifyParent(user);
                         this.DialogResult = DialogResult.OK;
                     }
                 }
@@ -77,10 +84,23 @@ namespace Book.Client.Dialog
         {
             using (var register = new frmRegister(_userBiz))
             {
+                register.OnUserDelegate += new UserDelegate(SetNewUser);
                 if (register.ShowDialog() == DialogResult.OK)
                 {
-
+                    DataBind();
                 }
+            }
+        }
+
+        private void SetNewUser(CustomEventArgs customEventArgs) => this.NewUser = customEventArgs.User;
+
+        public void NotifyParent(User user)
+        {
+            if (OnUserDelegate != null)
+            {
+                CustomEventArgs loginHandler = new CustomEventArgs(user);
+                //Raise Event. All the listeners of this event will get a call.
+                OnUserDelegate(loginHandler);
             }
         }
     }

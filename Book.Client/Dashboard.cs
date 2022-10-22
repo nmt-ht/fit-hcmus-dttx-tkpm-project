@@ -1,4 +1,5 @@
 ﻿using Book.Business;
+using Book.Business.Helper;
 using Book.Client.Dialog;
 using BookManagement.Models;
 using FontAwesome.Sharp;
@@ -209,17 +210,18 @@ namespace BookManagement
         {
             using(var dialog = new frmLogin(_userBiz))
             {
+                dialog.OnUserDelegate += new UserDelegateHandler.UserDelegate(SetCurrentUser);
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    dialog.OnLoginCallback += SetCurrentUser;
                     DataBind();
                 }
             }
         }
 
-        private void SetCurrentUser(User user)
+        //Event Listener. This function will be called whenever child class raises event.
+        private void SetCurrentUser(CustomEventArgs customEventArgs)
         {
-            this.CurrentUser = user;
+            this.CurrentUser = customEventArgs.User;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Book.Business;
+using Book.Business.Helper;
 using BookManagement.Models;
+using static Book.Business.Helper.UserDelegateHandler;
 
 namespace Book.Client.Dialog
 {
@@ -11,7 +13,7 @@ namespace Book.Client.Dialog
             InitializeComponent();
             _userBiz = userBiz;
         }
-
+        public event UserDelegate OnUserDelegate;
         private void frmRegister_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
@@ -58,6 +60,7 @@ namespace Book.Client.Dialog
                 var isSuccessed = _userBiz.AddUser(newUser);
                 if (isSuccessed)
                 {
+                    NotifyParent(newUser);
                     MessageBox.Show("You have registered new account successfully.", "Information");
                     this.DialogResult = DialogResult.OK;
                 }
@@ -67,6 +70,16 @@ namespace Book.Client.Dialog
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void NotifyParent(User user)
+        {
+            if (OnUserDelegate != null)
+            {
+                CustomEventArgs loginHandler = new CustomEventArgs(user);
+                //Raise Event. All the listeners of this event will get a call.
+                OnUserDelegate(loginHandler);
+            }
         }
     }
 }
