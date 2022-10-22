@@ -24,7 +24,7 @@ namespace BookManagement
             InitializeComponent();
             InitDesignUI();
             _userBiz = userBiz;
-            _bookBiz = bookBiz; 
+            _bookBiz = bookBiz;
         }
 
         private void InitDesignUI()
@@ -139,7 +139,7 @@ namespace BookManagement
         private void btnMaximinze_Click(object sender, EventArgs e)
         {
             //if (WindowState == FormWindowState.Normal)
-                WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Maximized;
             //else
             //    WindowState = FormWindowState.Normal;
         }
@@ -154,7 +154,6 @@ namespace BookManagement
             ActivateButton(sender, RGBColors.clrBooks, eDashboard.Books);
             OpenChildForm(new FormBookDasboard(_bookBiz));
         }
-
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrEmployee, eDashboard.Employee);

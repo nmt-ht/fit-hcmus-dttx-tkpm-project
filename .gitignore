@@ -14,3 +14,11 @@
 /Book.Database/obj/Debug
 /Book.Database/Book.Database.jfm
 /Book.Database/Book.Database.dbmdl
+/BookManagement.Database/bin/Debug
+/BookManagement.Database/obj/Debug
+/BookManagement.Infrastructure/bin/Debug/net6.0
+/BookManagement.Infrastructure/obj
+/BookManagement.Models/bin/Debug/net6.0
+/BookManagement.Models/obj
+/BookManagement.Business/bin/Debug/net6.0
+/BookManagement.Business/obj
