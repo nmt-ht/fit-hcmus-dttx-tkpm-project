@@ -39,12 +39,12 @@ partial class LoginDialog
             this.btnRegister = new FontAwesome.Sharp.IconButton();
             this.btnExit = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -171,11 +171,12 @@ partial class LoginDialog
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.Lavender;
             this.btnExit.IconChar = FontAwesome.Sharp.IconChar.XmarkSquare;
             this.btnExit.IconColor = System.Drawing.Color.Crimson;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 30;
-            this.btnExit.Location = new System.Drawing.Point(634, 3);
+            this.btnExit.Location = new System.Drawing.Point(617, 3);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(30, 27);
             this.btnExit.TabIndex = 5;
@@ -196,6 +197,17 @@ partial class LoginDialog
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(312, 424);
             this.panel3.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(235, 399);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 16);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "@2022";
             // 
             // label5
             // 
@@ -235,7 +247,7 @@ partial class LoginDialog
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(68, 153);
+            this.label2.Location = new System.Drawing.Point(81, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(201, 27);
             this.label2.TabIndex = 1;
@@ -252,24 +264,13 @@ partial class LoginDialog
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to the";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(235, 399);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 16);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "@2022";
-            // 
             // LoginDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(676, 424);
+            this.ClientSize = new System.Drawing.Size(649, 424);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRegister);

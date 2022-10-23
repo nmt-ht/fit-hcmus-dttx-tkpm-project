@@ -116,6 +116,7 @@
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.LightSkyBlue;
             this.btnExit.IconChar = FontAwesome.Sharp.IconChar.XmarkSquare;
             this.btnExit.IconColor = System.Drawing.Color.Crimson;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;

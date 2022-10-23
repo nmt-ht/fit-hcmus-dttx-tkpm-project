@@ -40,7 +40,7 @@
             // picBox
             // 
             this.picBox.Image = global::BookManagement.Client.Properties.Resources.delete;
-            this.picBox.Location = new System.Drawing.Point(180, 31);
+            this.picBox.Location = new System.Drawing.Point(132, 25);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(127, 132);
             this.picBox.TabIndex = 0;
@@ -50,11 +50,12 @@
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.Lavender;
             this.btnExit.IconChar = FontAwesome.Sharp.IconChar.XmarkSquare;
             this.btnExit.IconColor = System.Drawing.Color.Crimson;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 30;
-            this.btnExit.Location = new System.Drawing.Point(476, 3);
+            this.btnExit.Location = new System.Drawing.Point(357, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(30, 27);
             this.btnExit.TabIndex = 24;
@@ -71,10 +72,10 @@
             this.btnYes.IconChar = FontAwesome.Sharp.IconChar.Check;
             this.btnYes.IconColor = System.Drawing.Color.Lime;
             this.btnYes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnYes.IconSize = 30;
-            this.btnYes.Location = new System.Drawing.Point(97, 262);
+            this.btnYes.IconSize = 20;
+            this.btnYes.Location = new System.Drawing.Point(49, 256);
             this.btnYes.Name = "btnYes";
-            this.btnYes.Size = new System.Drawing.Size(97, 36);
+            this.btnYes.Size = new System.Drawing.Size(64, 36);
             this.btnYes.TabIndex = 28;
             this.btnYes.Text = "Yes";
             this.btnYes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -84,7 +85,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel7.Location = new System.Drawing.Point(97, 169);
+            this.panel7.Location = new System.Drawing.Point(49, 163);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(283, 1);
             this.panel7.TabIndex = 22;
@@ -92,11 +93,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(60, 191);
+            this.label1.Location = new System.Drawing.Point(89, 187);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(367, 39);
+            this.label1.Size = new System.Drawing.Size(213, 25);
             this.label1.TabIndex = 29;
             this.label1.Text = "Are you sure to delete?";
             // 
@@ -110,10 +111,10 @@
             this.btnNo.IconChar = FontAwesome.Sharp.IconChar.X;
             this.btnNo.IconColor = System.Drawing.Color.Red;
             this.btnNo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnNo.IconSize = 30;
-            this.btnNo.Location = new System.Drawing.Point(283, 262);
+            this.btnNo.IconSize = 20;
+            this.btnNo.Location = new System.Drawing.Point(268, 256);
             this.btnNo.Name = "btnNo";
-            this.btnNo.Size = new System.Drawing.Size(97, 36);
+            this.btnNo.Size = new System.Drawing.Size(64, 36);
             this.btnNo.TabIndex = 28;
             this.btnNo.Text = "No";
             this.btnNo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -124,9 +125,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.BackColor = System.Drawing.Color.Lavender;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(509, 321);
+            this.ClientSize = new System.Drawing.Size(388, 321);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNo);
             this.Controls.Add(this.btnYes);

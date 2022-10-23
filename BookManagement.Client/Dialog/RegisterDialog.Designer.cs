@@ -43,11 +43,14 @@ partial class RegisterDialog
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.btnExit = new FontAwesome.Sharp.IconButton();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRegister
@@ -61,7 +64,7 @@ partial class RegisterDialog
             this.btnRegister.IconColor = System.Drawing.Color.Lavender;
             this.btnRegister.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRegister.IconSize = 30;
-            this.btnRegister.Location = new System.Drawing.Point(105, 412);
+            this.btnRegister.Location = new System.Drawing.Point(360, 400);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(127, 41);
             this.btnRegister.TabIndex = 5;
@@ -77,7 +80,7 @@ partial class RegisterDialog
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.ForeColor = System.Drawing.Color.SlateGray;
-            this.txtPassword.Location = new System.Drawing.Point(69, 352);
+            this.txtPassword.Location = new System.Drawing.Point(324, 352);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderText = "Password";
@@ -90,7 +93,7 @@ partial class RegisterDialog
             this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUserName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtUserName.ForeColor = System.Drawing.Color.SlateGray;
-            this.txtUserName.Location = new System.Drawing.Point(69, 291);
+            this.txtUserName.Location = new System.Drawing.Point(324, 291);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PlaceholderText = "User Name";
             this.txtUserName.Size = new System.Drawing.Size(245, 22);
@@ -99,7 +102,7 @@ partial class RegisterDialog
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel2.Location = new System.Drawing.Point(28, 380);
+            this.panel2.Location = new System.Drawing.Point(283, 380);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(283, 1);
             this.panel2.TabIndex = 10;
@@ -107,7 +110,7 @@ partial class RegisterDialog
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel1.Location = new System.Drawing.Point(28, 320);
+            this.panel1.Location = new System.Drawing.Point(283, 320);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(283, 1);
             this.panel1.TabIndex = 11;
@@ -119,7 +122,7 @@ partial class RegisterDialog
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Lock;
             this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ActiveCaption;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.Location = new System.Drawing.Point(31, 342);
+            this.iconPictureBox2.Location = new System.Drawing.Point(286, 342);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox2.TabIndex = 7;
@@ -132,7 +135,7 @@ partial class RegisterDialog
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.User;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaption;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.Location = new System.Drawing.Point(31, 284);
+            this.iconPictureBox1.Location = new System.Drawing.Point(286, 284);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox1.TabIndex = 8;
@@ -141,7 +144,7 @@ partial class RegisterDialog
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BookManagement.Client.Properties.Resources.add_user;
-            this.pictureBox1.Location = new System.Drawing.Point(105, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(360, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(127, 130);
             this.pictureBox1.TabIndex = 5;
@@ -154,7 +157,7 @@ partial class RegisterDialog
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Info;
             this.iconPictureBox3.IconColor = System.Drawing.SystemColors.ActiveCaption;
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox3.Location = new System.Drawing.Point(31, 176);
+            this.iconPictureBox3.Location = new System.Drawing.Point(286, 176);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox3.TabIndex = 8;
@@ -163,7 +166,7 @@ partial class RegisterDialog
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel3.Location = new System.Drawing.Point(31, 212);
+            this.panel3.Location = new System.Drawing.Point(286, 212);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(283, 1);
             this.panel3.TabIndex = 11;
@@ -174,7 +177,7 @@ partial class RegisterDialog
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFirstName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtFirstName.ForeColor = System.Drawing.Color.SlateGray;
-            this.txtFirstName.Location = new System.Drawing.Point(69, 183);
+            this.txtFirstName.Location = new System.Drawing.Point(324, 183);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.PlaceholderText = "First Name";
             this.txtFirstName.Size = new System.Drawing.Size(245, 22);
@@ -187,7 +190,7 @@ partial class RegisterDialog
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Info;
             this.iconPictureBox4.IconColor = System.Drawing.SystemColors.ActiveCaption;
             this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox4.Location = new System.Drawing.Point(31, 228);
+            this.iconPictureBox4.Location = new System.Drawing.Point(286, 228);
             this.iconPictureBox4.Name = "iconPictureBox4";
             this.iconPictureBox4.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox4.TabIndex = 8;
@@ -196,7 +199,7 @@ partial class RegisterDialog
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel4.Location = new System.Drawing.Point(31, 264);
+            this.panel4.Location = new System.Drawing.Point(286, 264);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(283, 1);
             this.panel4.TabIndex = 11;
@@ -207,7 +210,7 @@ partial class RegisterDialog
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLastName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtLastName.ForeColor = System.Drawing.Color.SlateGray;
-            this.txtLastName.Location = new System.Drawing.Point(69, 235);
+            this.txtLastName.Location = new System.Drawing.Point(324, 235);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.PlaceholderText = "Last Name";
             this.txtLastName.Size = new System.Drawing.Size(245, 22);
@@ -217,16 +220,38 @@ partial class RegisterDialog
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.Lavender;
             this.btnExit.IconChar = FontAwesome.Sharp.IconChar.XmarkSquare;
             this.btnExit.IconColor = System.Drawing.Color.Crimson;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 30;
-            this.btnExit.Location = new System.Drawing.Point(310, 2);
+            this.btnExit.Location = new System.Drawing.Point(565, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(30, 27);
             this.btnExit.TabIndex = 12;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(256, 464);
+            this.panel5.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(78, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 27);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Register";
             // 
             // RegisterDialog
             // 
@@ -234,7 +259,8 @@ partial class RegisterDialog
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(344, 480);
+            this.ClientSize = new System.Drawing.Size(597, 464);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtPassword);
@@ -263,6 +289,8 @@ partial class RegisterDialog
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,4 +312,6 @@ partial class RegisterDialog
     private Panel panel4;
     private TextBox txtLastName;
     private FontAwesome.Sharp.IconButton btnExit;
+    private Panel panel5;
+    private Label label1;
 }

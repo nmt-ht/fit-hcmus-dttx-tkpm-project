@@ -50,6 +50,7 @@
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.Lavender;
             this.btnExit.IconChar = FontAwesome.Sharp.IconChar.XmarkSquare;
             this.btnExit.IconColor = System.Drawing.Color.Crimson;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -72,7 +73,7 @@
             this.txtOK.IconColor = System.Drawing.Color.Lime;
             this.txtOK.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.txtOK.IconSize = 30;
-            this.txtOK.Location = new System.Drawing.Point(195, 288);
+            this.txtOK.Location = new System.Drawing.Point(193, 267);
             this.txtOK.Name = "txtOK";
             this.txtOK.Size = new System.Drawing.Size(97, 36);
             this.txtOK.TabIndex = 28;
@@ -116,7 +117,7 @@
             this.txtMessage.Location = new System.Drawing.Point(28, 206);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(431, 72);
+            this.txtMessage.Size = new System.Drawing.Size(431, 55);
             this.txtMessage.TabIndex = 31;
             this.txtMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
