@@ -79,6 +79,7 @@
             this.btnYes.Text = "Yes";
             this.btnYes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnYes.UseVisualStyleBackColor = false;
+            this.btnYes.Click += new System.EventHandler(this.btnYes_Click);
             // 
             // panel7
             // 

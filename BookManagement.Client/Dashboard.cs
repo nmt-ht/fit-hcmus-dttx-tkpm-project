@@ -5,7 +5,6 @@ using BookManagement.Client.Forms;
 using BookManagement.Models;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
-using static BookManagement.Business.Helper.DelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement
@@ -153,7 +152,9 @@ namespace BookManagement
         private void btnDanhMucSach_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrBooks, eDashboard.Books);
-            OpenChildForm(new FormBookDasboard(_bookBiz));
+            var bookDasboard = new FormBookDasboard(_bookBiz);
+            bookDasboard.CurrentUser = this.CurrentUser;
+            OpenChildForm(bookDasboard);
         }
         private void btnNhanVien_Click(object sender, EventArgs e)
         {

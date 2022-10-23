@@ -13,37 +13,14 @@ CREATE PROCEDURE [dbo].[spr_User_UpdateData]
 	@Type TINYINT = 0
 AS
 BEGIN
-	IF(@UserName <> '')
-	BEGIN
-		UPDATE u
-		SET u.UserName = @UserName
-		FROM [User] u
-		WHERE u.Id = @Id
-	END
-	IF(@Password <> '')
-	BEGIN
-		UPDATE u
-		SET u.Password = @Password
-		FROM [User] u
-		WHERE u.Id = @Id
-	END
-	IF(@FirstName <> '')
-	BEGIN
-		UPDATE u
-		SET u.FirstName = @FirstName
-		FROM [User] u
-		WHERE u.Id = @Id
-	END
-	IF(@LastName <> '')
-	BEGIN
-		UPDATE u
-		SET u.LastName = @LastName
-		FROM [User] u
-		WHERE u.Id = @Id
-	END
-	
 	UPDATE u
-	SET u.Type = @Type, u.ModifiedDate = GETDATE()
+	SET 
+		u.Type = @Type
+		, u.ModifiedDate = GETDATE()
+		, u.LastName = @LastName
+		, u.FirstName = @FirstName
+		, u.Password = @Password
+		, u.UserName = @UserName
 	FROM [User] u
 	WHERE u.Id = @Id
 END

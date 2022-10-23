@@ -15,31 +15,15 @@ CREATE PROCEDURE [dbo].[spr_Book_UpdateData]
 	@ModifiedBy UNIQUEIDENTIFIER
 AS
 BEGIN
-	IF(@Name <> '')
-	BEGIN
-		UPDATE b
-		SET b.[Name] = @Name
-		FROM Book b
-		WHERE b.Id = @Id
-	END
-	IF(@Author <> '')
-	BEGIN
-		UPDATE b
-		SET b.Author = @Author
-		FROM Book b
-		WHERE b.Id = @Id
-	END
-	IF(@Description <> '')
-	BEGIN
-		UPDATE b
-		SET b.Author = @Author
-		FROM Book b
-		WHERE b.Id = @Id
-	END
-		
 	UPDATE b
-	SET b.TypeOfBook = @TypeOfBook, b.ModifiedDate = GETDATE(), b.Price = @Price
-		, b.ModifiedBy = @ModifiedBy, b.Quantity = @Quantity
+	SET b.TypeOfBook = @TypeOfBook
+		, b.ModifiedDate = GETDATE()
+		, b.Price = @Price
+		, b.Author = @Author
+		, b.[Name] = @Name
+		, b.Description = @Description
+		, b.ModifiedBy = @ModifiedBy
+		, b.Quantity = @Quantity
 	FROM Book b
 	WHERE b.Id = @Id
 END

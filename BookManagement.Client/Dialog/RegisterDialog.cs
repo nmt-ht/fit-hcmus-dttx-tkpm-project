@@ -1,7 +1,7 @@
 ﻿using BookManagement.Business;
+using BookManagement.Business.Helper;
 using BookManagement.Models;
-using static BookManagement.Business.Helper.DelegateHandler;
-using static BookManagement.Business.Helper.DelegateHandler.UserDelegateHandler;
+using static BookManagement.Business.Helper.UserDelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.Dialog;

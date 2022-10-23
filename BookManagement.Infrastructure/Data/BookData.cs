@@ -27,7 +27,8 @@ public class BookData : IBookData
                book.Description,
                book.Quantity,
                book.Price,
-               book.TypeOfBook
+               book.TypeOfBook,
+               book.CreatedBy
            });
             result = true;
         }
@@ -46,12 +47,14 @@ public class BookData : IBookData
             _db.SaveData("spr_Book_UpdateData",
            new
            {
-               book.Name,
-               book.Author,
-               book.Description,
-               book.Quantity,
-               book.Price,
-               book.TypeOfBook
+               Name = book.Name,
+               Author = book.Author,
+               Description = book.Description,
+               Quantity = book.Quantity,
+               Price = book.Price,
+               TypeOfBook = book.TypeOfBook,
+               ModifiedBy = book.ModifiedBy,
+               Id = book.Id
            });
             result = true;
         }

@@ -1,7 +1,9 @@
-﻿using BookManagement.Client.Dialog;
+﻿using BookManagement.Business.Helper;
+using BookManagement.Client.Dialog;
 using BookManagement.Models;
-using static BookManagement.Business.Helper.DelegateHandler;
-using static BookManagement.Business.Helper.DelegateHandler.ReloadBooksDelegateHandler;
+using static BookManagement.Business.Helper.BookDelegateHandler;
+using static BookManagement.Business.Helper.DeleteItemDelegateHandler;
+using static BookManagement.Business.Helper.ReloadBooksDelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.UC;
@@ -10,13 +12,16 @@ public partial class ucBooks : UserControl
     public IList<Book> Books { get; set; }
     public Book SelectedBook { get; set; }
     public event ReloadBooksDelegate OnReloadBooksDelegate;
+    public event DeleteItemDelegate OnDeleteItemDelegate;
+    public event SelectedBookDelegate OnAddBookDelegate;
+    public event SelectedBookDelegate OnEditBookDelegate;
     public ucBooks()
     {
         InitializeComponent();
         flowLayoutBooks.AutoScroll = true;
         flowLayoutBooks.AutoSize = true;
         flowLayoutBooks.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-        flowLayoutBooks.Location = new System.Drawing.Point(0, 10);
+        flowLayoutBooks.Location = new Point(0, 10);
         flowLayoutBooks.WrapContents = true;
     }
 
@@ -31,7 +36,7 @@ public partial class ucBooks : UserControl
                 ucBookInfo ucBookInfo = new ucBookInfo();
                 ucBookInfo.Book = book;
                 ucBookInfo.DataBind();
-                ucBookInfo.Margin = new Padding(15);
+                ucBookInfo.Margin = new Padding(10);
                 ucBookInfo.OnSelectedBookDelegate += UcBookInfo_OnSelectedBookDelegate;
                 flowLayoutBooks.Controls.Add(ucBookInfo);
             }
@@ -53,7 +58,6 @@ public partial class ucBooks : UserControl
                     previouseSelectedBook.IsSelected = false;
             }
 
-            //IsSelectedBook = bookCustomEvent.IsSelected;
             SelectedBook = bookCustomEvent.Book;
         }
 
@@ -65,9 +69,10 @@ public partial class ucBooks : UserControl
         using(var addBook = new AddEditBookDialog())
         {
             addBook.SetParametters(new Book(), eAction.Add);
-            if(addBook.ShowDialog() == DialogResult.OK)
+            addBook.DataBind();
+            if (addBook.ShowDialog() == DialogResult.OK)
             {
-                OnReloadData();
+                BookActionCallback(addBook.BookHandler, eAction.Add);
             }
         }
     }
@@ -83,7 +88,7 @@ public partial class ucBooks : UserControl
                 editBook.DataBind();
                 if (editBook.ShowDialog() == DialogResult.OK)
                 {
-                    OnReloadData();
+                    BookActionCallback(editBook.BookHandler, eAction.Edit);
                 }
             }
         }
@@ -91,15 +96,13 @@ public partial class ucBooks : UserControl
 
     private void btnDelete_Click(object sender, EventArgs e)
     {
-        //SelectedUCBookInfo = 
         if (SelectedBook is not null)
         {
-            using (var editBook = new DeleteDialog())
+            using (var deleteDialog = new DeleteDialog())
             {
-                editBook.SetParametters(SelectedBook, eAction.Edit, eObjectType.Book);
-                if (editBook.ShowDialog() == DialogResult.OK)
+                if (deleteDialog.ShowDialog() == DialogResult.OK)
                 {
-                    OnReloadData();
+                    BookActionCallback(SelectedBook, eAction.Delete);
                 }
             }
         }
@@ -166,8 +169,37 @@ public partial class ucBooks : UserControl
         if (OnReloadBooksDelegate != null)
         {
             ReloadBooksEventArgs reloadBooksEventArgs = new ReloadBooksEventArgs(true);
-            //Raise Event. All the listeners of this event will get a call.
             OnReloadBooksDelegate(reloadBooksEventArgs);
+        }
+    }
+
+    private void BookActionCallback(Book book, eAction action)
+    {
+        switch (action)
+        {
+            case eAction.Add:
+                if (OnAddBookDelegate != null)
+                {
+                    BookCustomEventArgs bookCustomEvent = new BookCustomEventArgs(book);
+                    OnAddBookDelegate(bookCustomEvent);
+                }
+                break;
+            case eAction.Edit:
+                if (OnEditBookDelegate != null)
+                {
+                    BookCustomEventArgs bookCustomEvent = new BookCustomEventArgs(book);
+                    OnEditBookDelegate(bookCustomEvent);
+                }
+                break;
+            case eAction.Delete:
+                if (OnDeleteItemDelegate != null)
+                {
+                    DeleteItemEventArgs deleteItemEventArgs = new DeleteItemEventArgs(book.Id);
+                    OnDeleteItemDelegate(deleteItemEventArgs);
+                }
+                break;
+            default:
+                break;
         }
     }
 }

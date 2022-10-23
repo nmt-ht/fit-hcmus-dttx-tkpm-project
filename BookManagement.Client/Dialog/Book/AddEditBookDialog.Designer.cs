@@ -39,7 +39,7 @@
             this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cboBookTypes = new System.Windows.Forms.ComboBox();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnSave = new FontAwesome.Sharp.IconButton();
             this.pnlDescription = new System.Windows.Forms.Panel();
             this.pnlHome = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -171,24 +171,25 @@
             this.cboBookTypes.Size = new System.Drawing.Size(263, 28);
             this.cboBookTypes.TabIndex = 5;
             // 
-            // iconButton1
+            // btnSave
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.iconButton1.IconColor = System.Drawing.Color.Lime;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(670, 533);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(97, 36);
-            this.iconButton1.TabIndex = 7;
-            this.iconButton1.Text = "Save";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnSave.IconColor = System.Drawing.Color.Lime;
+            this.btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSave.IconSize = 30;
+            this.btnSave.Location = new System.Drawing.Point(670, 533);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(97, 36);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pnlDescription
             // 
@@ -295,7 +296,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(799, 597);
-            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cboBookTypes);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
@@ -340,7 +341,7 @@
         private RichTextBox txtDescription;
         private Label label1;
         private ComboBox cboBookTypes;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnSave;
         private Panel pnlDescription;
         private Panel pnlHome;
         private Label label2;
