@@ -74,6 +74,12 @@
     <Build Include="dbo\StoreProcedures\spr_Book_InsertData.sql" />
     <Build Include="dbo\StoreProcedures\spr_Book_UpdateData.sql" />
     <Build Include="dbo\StoreProcedures\spr_Book_DeleteData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Parameter_DeleteData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Parameter_GetAllParameter.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Parameter_GetParameterById.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Parameter_InsertData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Parameter_UpdateData.sql" />
+    <Build Include="dbo\Tables\Parameter.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

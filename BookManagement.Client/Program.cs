@@ -42,10 +42,12 @@ namespace BookManagement
             services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
             services.AddSingleton<IUserData, UserData>();
             services.AddSingleton<IBookData, BookData>();
+            services.AddSingleton<IParameterData, ParameterData>();
 
             //Init DI for Bussiness class
             services.AddSingleton<IUserBiz, UserBiz>();
             services.AddSingleton<IBookBiz, BookBiz>();
+            services.AddSingleton<IParameterBiz, ParameterBiz>();
         }
     }
 }

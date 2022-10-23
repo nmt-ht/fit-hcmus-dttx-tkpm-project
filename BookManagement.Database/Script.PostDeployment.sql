@@ -38,3 +38,12 @@ BEGIN
 	(NEWID(), N'Trăm năm cô đơn', 'Gabriel Garcia Marquez', N'Năm 1967, tác phẩm “Trăm năm cô đơn” của Gabriel Garcia Marquez ra đời đã gây dư luận sôi nổi và được cả thế giới hâm mộ. Là câu chuyện về dòng họ Buênđya tồn tại bảy thế hệ - một dòng họ tự lưu đày vào cõi cô đơn để trốn tội loạn luân, người đầu tiên bị trói vào gốc cây và người cuối cùng bị kiến ăn.',
 		10, 1, 100, 0, GETDATE(), @UserID)
 END
+IF NOT EXISTS(SELECT 1 FROM dbo.Parameter)
+BEGIN
+	INSERT INTO [Parameter] (Id, [Name], [IsActive], ParameterType, [Value])
+	VALUES
+	(NEWID(), N'Số Lượng Sách Nhập Ít Nhất', 1, 1, 150),
+	(NEWID(), N'Đầu Sách Có Lượng Tồn Ít Hơn', 1, 1, 300),
+	(NEWID(), N'Khách Hàng Nợ Không Quá ', 1, 1, 20000),
+	(NEWID(), N'Đầu Sách Có Số Lượng Tồn Sau Khi Bán Ít Nhất ', 1, 1, 20)
+END
