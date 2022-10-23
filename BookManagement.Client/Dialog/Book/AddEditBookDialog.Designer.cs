@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.picBox = new System.Windows.Forms.PictureBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtBookName = new System.Windows.Forms.TextBox();
@@ -54,7 +55,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cboListOfBooks = new System.Windows.Forms.ComboBox();
+            this.errorProviderBook = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderBook)).BeginInit();
             this.SuspendLayout();
             // 
             // picBox
@@ -77,6 +80,8 @@
             this.txtPrice.PlaceholderText = "Price";
             this.txtPrice.Size = new System.Drawing.Size(142, 19);
             this.txtPrice.TabIndex = 6;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // txtBookName
             // 
@@ -89,6 +94,7 @@
             this.txtBookName.PlaceholderText = "Book name";
             this.txtBookName.Size = new System.Drawing.Size(245, 19);
             this.txtBookName.TabIndex = 3;
+            this.txtBookName.TextChanged += new System.EventHandler(this.txtBookName_TextChanged);
             // 
             // pnlName
             // 
@@ -132,6 +138,8 @@
             this.txtQuantity.PlaceholderText = "Quantity";
             this.txtQuantity.Size = new System.Drawing.Size(67, 19);
             this.txtQuantity.TabIndex = 5;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // pnlPrice
             // 
@@ -241,6 +249,7 @@
             this.txtAuthor.PlaceholderText = "Author";
             this.txtAuthor.Size = new System.Drawing.Size(245, 19);
             this.txtAuthor.TabIndex = 4;
+            this.txtAuthor.TextChanged += new System.EventHandler(this.txtAuthor_TextChanged);
             // 
             // label3
             // 
@@ -342,6 +351,10 @@
             this.cboListOfBooks.TabIndex = 2;
             this.cboListOfBooks.SelectedValueChanged += new System.EventHandler(this.cboListOfBooks_SelectedValueChanged);
             // 
+            // errorProviderBook
+            // 
+            this.errorProviderBook.ContainerControl = this;
+            // 
             // AddEditBookDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -380,6 +393,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add new book";
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderBook)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,5 +427,6 @@
         private Label label7;
         private Label label8;
         private ComboBox cboListOfBooks;
+        private ErrorProvider errorProviderBook;
     }
 }

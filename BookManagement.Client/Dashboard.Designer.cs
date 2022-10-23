@@ -30,7 +30,6 @@ namespace BookManagement
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.pnlLeftMenu = new System.Windows.Forms.Panel();
             this.btnCaiDat = new FontAwesome.Sharp.IconButton();
@@ -44,6 +43,9 @@ namespace BookManagement
             this.label1 = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.pnlTitle = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.lblCartTotal = new System.Windows.Forms.Label();
+            this.btnCart = new FontAwesome.Sharp.IconButton();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnMaximinze = new FontAwesome.Sharp.IconButton();
             this.btnMiniminze = new FontAwesome.Sharp.IconButton();
@@ -51,13 +53,11 @@ namespace BookManagement
             this.lblTitle = new System.Windows.Forms.Label();
             this.IconHome = new FontAwesome.Sharp.IconPictureBox();
             this.pnlDesktop = new System.Windows.Forms.Panel();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlLeftMenu.SuspendLayout();
             this.pnlHomIcon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconHome)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlLeftMenu
@@ -271,6 +271,9 @@ namespace BookManagement
             // 
             this.pnlTitle.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.pnlTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTitle.Controls.Add(this.iconButton1);
+            this.pnlTitle.Controls.Add(this.lblCartTotal);
+            this.pnlTitle.Controls.Add(this.btnCart);
             this.pnlTitle.Controls.Add(this.lblWelcomeUser);
             this.pnlTitle.Controls.Add(this.btnMaximinze);
             this.pnlTitle.Controls.Add(this.btnMiniminze);
@@ -284,18 +287,60 @@ namespace BookManagement
             this.pnlTitle.TabIndex = 1;
             this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitle_MouseDown);
             // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 30;
+            this.iconButton1.Location = new System.Drawing.Point(637, 7);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(49, 31);
+            this.iconButton1.TabIndex = 13;
+            this.iconButton1.UseVisualStyleBackColor = true;
+            // 
+            // lblCartTotal
+            // 
+            this.lblCartTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCartTotal.AutoSize = true;
+            this.lblCartTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCartTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblCartTotal.Location = new System.Drawing.Point(822, 12);
+            this.lblCartTotal.Name = "lblCartTotal";
+            this.lblCartTotal.Size = new System.Drawing.Size(28, 21);
+            this.lblCartTotal.TabIndex = 12;
+            this.lblCartTotal.Text = "10";
+            // 
+            // btnCart
+            // 
+            this.btnCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCart.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnCart.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            this.btnCart.IconColor = System.Drawing.Color.White;
+            this.btnCart.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCart.IconSize = 30;
+            this.btnCart.Location = new System.Drawing.Point(782, 7);
+            this.btnCart.Name = "btnCart";
+            this.btnCart.Size = new System.Drawing.Size(49, 31);
+            this.btnCart.TabIndex = 11;
+            this.btnCart.UseVisualStyleBackColor = true;
+            // 
             // lblWelcomeUser
             // 
             this.lblWelcomeUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblWelcomeUser.AutoSize = true;
             this.lblWelcomeUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblWelcomeUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblWelcomeUser.Location = new System.Drawing.Point(607, 9);
+            this.lblWelcomeUser.Location = new System.Drawing.Point(683, 12);
             this.lblWelcomeUser.Margin = new System.Windows.Forms.Padding(10);
             this.lblWelcomeUser.Name = "lblWelcomeUser";
-            this.lblWelcomeUser.Size = new System.Drawing.Size(260, 21);
+            this.lblWelcomeUser.Size = new System.Drawing.Size(86, 21);
             this.lblWelcomeUser.TabIndex = 10;
-            this.lblWelcomeUser.Text = "Hello {userName}, have a nice day!!!";
+            this.lblWelcomeUser.Text = "Tu Nguyen";
             // 
             // btnMaximinze
             // 
@@ -381,10 +426,6 @@ namespace BookManagement
             this.pnlDesktop.Size = new System.Drawing.Size(977, 659);
             this.pnlDesktop.TabIndex = 2;
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -407,7 +448,6 @@ namespace BookManagement
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconHome)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -426,7 +466,6 @@ namespace BookManagement
         private IconPictureBox IconHome;
         private Label lblTitle;
         private Panel pnlDesktop;
-        private ErrorProvider errorProvider1;
         private IconButton btnMaximinze;
         private IconButton btnMiniminze;
         private IconButton btnExit;
@@ -434,5 +473,8 @@ namespace BookManagement
         private PictureBox btnHome;
         private Label label2;
         private Label label1;
+        private IconButton btnCart;
+        private Label lblCartTotal;
+        private IconButton iconButton1;
     }
 }

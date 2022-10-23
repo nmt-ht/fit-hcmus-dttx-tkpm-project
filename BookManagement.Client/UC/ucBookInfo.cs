@@ -23,6 +23,7 @@ public partial class ucBookInfo : UserControl
             txtDescription.Text = Book.Description?.Length > 100 ? Book.Description?.Substring(0, 100) + "..." : Book.Description;
             string price = Book.Price.ToString("c").Replace("$", string.Empty) + " VND";
             txtPrice.Text = price;
+            txtAvailableQty.Text = Book.Quantity < 0 ? "Out of Stock" : Book.Quantity.ToString();
         }
     }
 

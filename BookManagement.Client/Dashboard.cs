@@ -42,7 +42,7 @@ namespace BookManagement
         {
             if (CurrentUser is not null)
             {
-                lblWelcomeUser.Text = lblWelcomeUser.Text.Replace("{userName}", this.CurrentUser.FullName);
+                lblWelcomeUser.Text = this.CurrentUser.FullName;
             }
         }
 
@@ -183,11 +183,13 @@ namespace BookManagement
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            this.Hide();
             using (var dialog = new LoginDialog(_userBiz))
             {
                 dialog.OnUserDelegate += new UserDelegateHandler.UserDelegate(SetCurrentUser);
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+                    this.Show();
                     DataBind();
                     OpenChildForm(new FormHome());
                 }

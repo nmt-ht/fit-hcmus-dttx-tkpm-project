@@ -133,7 +133,7 @@ partial class ucBookInfo
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(96, 26);
             this.btnBuy.TabIndex = 2;
-            this.btnBuy.Text = "Buy";
+            this.btnBuy.Text = "Add to Cart";
             this.btnBuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuy.UseVisualStyleBackColor = false;
             // 

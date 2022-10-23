@@ -36,7 +36,7 @@ namespace BookManagement.Client.Dialog
                     break;
             }
             lblTitle.Text = this.Title;
-            lblMessage.Text = this.Message;
+            txtMessage.Text = this.Message;
         }
 
         private void txtOK_Click(object sender, EventArgs e)

@@ -32,9 +32,9 @@
             this.btnExit = new FontAwesome.Sharp.IconButton();
             this.txtOK = new FontAwesome.Sharp.IconButton();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.lblMessage = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtMessage = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +72,7 @@
             this.txtOK.IconColor = System.Drawing.Color.Lime;
             this.txtOK.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.txtOK.IconSize = 30;
-            this.txtOK.Location = new System.Drawing.Point(195, 322);
+            this.txtOK.Location = new System.Drawing.Point(195, 288);
             this.txtOK.Name = "txtOK";
             this.txtOK.Size = new System.Drawing.Size(97, 36);
             this.txtOK.TabIndex = 28;
@@ -88,17 +88,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(283, 1);
             this.panel7.TabIndex = 22;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMessage.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblMessage.Location = new System.Drawing.Point(60, 221);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(93, 25);
-            this.lblMessage.TabIndex = 29;
-            this.lblMessage.Text = "Message";
             // 
             // lblTitle
             // 
@@ -119,15 +108,27 @@
             this.panel1.Size = new System.Drawing.Size(459, 1);
             this.panel1.TabIndex = 22;
             // 
+            // txtMessage
+            // 
+            this.txtMessage.BackColor = System.Drawing.Color.Lavender;
+            this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMessage.Location = new System.Drawing.Point(28, 206);
+            this.txtMessage.Multiline = true;
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(431, 72);
+            this.txtMessage.TabIndex = 31;
+            this.txtMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // MessageBoxDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.BackColor = System.Drawing.Color.Lavender;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(509, 381);
+            this.ClientSize = new System.Drawing.Size(509, 349);
+            this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.txtOK);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panel1);
@@ -149,8 +150,8 @@
         private FontAwesome.Sharp.IconButton btnExit;
         private FontAwesome.Sharp.IconButton txtOK;
         private Panel panel7;
-        private Label lblMessage;
         private Label lblTitle;
         private Panel panel1;
+        private TextBox txtMessage;
     }
 }
