@@ -28,6 +28,12 @@
         { 
             Info = 0,
             Warning = 1
-        } 
+        }
+        
+        public enum eTypeOfAddBook
+        {
+            New = 0,
+            Existed = 1
+        }
     }
 }

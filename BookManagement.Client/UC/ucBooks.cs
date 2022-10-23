@@ -68,7 +68,7 @@ public partial class ucBooks : UserControl
     {
         using(var addBook = new AddEditBookDialog())
         {
-            addBook.SetParametters(new Book(), eAction.Add);
+            addBook.SetParametters(new Book(), eAction.Add, this.Books);
             addBook.DataBind();
             if (addBook.ShowDialog() == DialogResult.OK)
             {
@@ -84,7 +84,7 @@ public partial class ucBooks : UserControl
         {
             using (var editBook = new AddEditBookDialog())
             {
-                editBook.SetParametters(SelectedBook, eAction.Edit);
+                editBook.SetParametters(SelectedBook, eAction.Edit, new List<Book>());
                 editBook.DataBind();
                 if (editBook.ShowDialog() == DialogResult.OK)
                 {
