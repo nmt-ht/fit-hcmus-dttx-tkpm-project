@@ -179,6 +179,7 @@ partial class LoginDialog
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(346, 424);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRegister);

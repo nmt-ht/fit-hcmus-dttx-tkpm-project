@@ -233,6 +233,7 @@ partial class RegisterDialog
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(344, 480);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRegister);

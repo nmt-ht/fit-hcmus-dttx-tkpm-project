@@ -37,6 +37,8 @@ partial class ucBookInfo
             this.txtAuthor = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtAvailableQty = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,13 +109,14 @@ partial class ucBookInfo
             this.btnViewDetail.IconColor = System.Drawing.Color.White;
             this.btnViewDetail.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnViewDetail.IconSize = 15;
-            this.btnViewDetail.Location = new System.Drawing.Point(16, 333);
+            this.btnViewDetail.Location = new System.Drawing.Point(16, 376);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(96, 26);
             this.btnViewDetail.TabIndex = 2;
             this.btnViewDetail.Text = "View Detail";
             this.btnViewDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnViewDetail.UseVisualStyleBackColor = false;
+            this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // btnBuy
             // 
@@ -126,7 +129,7 @@ partial class ucBookInfo
             this.btnBuy.IconColor = System.Drawing.Color.White;
             this.btnBuy.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuy.IconSize = 16;
-            this.btnBuy.Location = new System.Drawing.Point(195, 333);
+            this.btnBuy.Location = new System.Drawing.Point(195, 376);
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(96, 26);
             this.btnBuy.TabIndex = 2;
@@ -170,6 +173,30 @@ partial class ucBookInfo
             this.txtDescription.TabIndex = 4;
             this.txtDescription.Text = "";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Lavender;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(16, 332);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Available Qty:";
+            // 
+            // txtAvailableQty
+            // 
+            this.txtAvailableQty.AutoSize = true;
+            this.txtAvailableQty.BackColor = System.Drawing.Color.Lavender;
+            this.txtAvailableQty.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAvailableQty.ForeColor = System.Drawing.Color.Maroon;
+            this.txtAvailableQty.Location = new System.Drawing.Point(123, 332);
+            this.txtAvailableQty.Name = "txtAvailableQty";
+            this.txtAvailableQty.Size = new System.Drawing.Size(102, 20);
+            this.txtAvailableQty.TabIndex = 3;
+            this.txtAvailableQty.Text = "Available Qty";
+            // 
             // ucBookInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -178,16 +205,18 @@ partial class ucBookInfo
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtAvailableQty);
             this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.btnBuy);
             this.Controls.Add(this.btnViewDetail);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.lblBookName);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ucBookInfo";
-            this.Size = new System.Drawing.Size(314, 374);
+            this.Size = new System.Drawing.Size(314, 420);
             this.Click += new System.EventHandler(this.ucBookInfo_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -207,4 +236,6 @@ partial class ucBookInfo
     private Label txtAuthor;
     private Label txtPrice;
     private RichTextBox txtDescription;
+    private Label label1;
+    private Label txtAvailableQty;
 }

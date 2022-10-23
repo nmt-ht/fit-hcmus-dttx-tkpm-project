@@ -1,4 +1,5 @@
 ﻿using BookManagement.Business.Helper;
+using BookManagement.Client.Dialog;
 using BookManagement.Models;
 using static BookManagement.Business.Helper.BookDelegateHandler;
 
@@ -19,7 +20,7 @@ public partial class ucBookInfo : UserControl
         {
             lblBookName.Text = Book.Name;
             txtAuthor.Text = Book.Author;
-            txtDescription.Text = Book.Description?.Length > 75 ? Book.Description?.Substring(0, 75) + "..." : Book.Description;
+            txtDescription.Text = Book.Description?.Length > 100 ? Book.Description?.Substring(0, 100) + "..." : Book.Description;
             string price = Book.Price.ToString("c").Replace("$", string.Empty) + " VND";
             txtPrice.Text = price;
         }
@@ -44,6 +45,16 @@ public partial class ucBookInfo : UserControl
         {
             BookCustomEventArgs bookHandler = new BookCustomEventArgs(book, isSelected);
             OnSelectedBookDelegate(bookHandler);
+        }
+    }
+
+    private void btnViewDetail_Click(object sender, EventArgs e)
+    {
+        using(var bookDetailDialog = new BookDetailDialog())
+        {
+            bookDetailDialog.Book = this.Book;
+            bookDetailDialog.DataBind();
+            bookDetailDialog.ShowDialog();
         }
     }
 }
