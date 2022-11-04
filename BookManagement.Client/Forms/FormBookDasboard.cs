@@ -3,6 +3,7 @@ using BookManagement.Business.Helper;
 using BookManagement.Client.Dialog;
 using BookManagement.Client.UC;
 using BookManagement.Models;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using static BookManagement.Client.DataType;
 
@@ -21,7 +22,9 @@ public partial class FormBookDasboard : Form
 
     private void FormBookDasboard_Load(object sender, EventArgs e)
     {
+        DisplayLoadIndicator(true);
         DataBind();
+        DisplayLoadIndicator(false);
     }
 
     private void DataBind()
@@ -102,5 +105,10 @@ public partial class FormBookDasboard : Form
             messageBox.DataBind();
             messageBox.ShowDialog();
         }
+    }
+
+    private void DisplayLoadIndicator(bool load)
+    {
+        ucLoadingSpiner.Visible = load;
     }
 }

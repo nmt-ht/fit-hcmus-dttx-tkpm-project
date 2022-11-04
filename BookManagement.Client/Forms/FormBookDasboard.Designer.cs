@@ -28,16 +28,31 @@ partial class FormBookDasboard
     private void InitializeComponent()
     {
             this.pnlBookDasboard = new System.Windows.Forms.Panel();
+            this.ucLoadingSpiner = new BookManagement.Client.UC.ucLoadingSpiner();
+            this.pnlBookDasboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBookDasboard
             // 
             this.pnlBookDasboard.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlBookDasboard.Controls.Add(this.ucLoadingSpiner);
             this.pnlBookDasboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBookDasboard.Location = new System.Drawing.Point(0, 0);
             this.pnlBookDasboard.Name = "pnlBookDasboard";
             this.pnlBookDasboard.Size = new System.Drawing.Size(800, 450);
             this.pnlBookDasboard.TabIndex = 0;
+            // 
+            // ucLoadingSpiner
+            // 
+            this.ucLoadingSpiner.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucLoadingSpiner.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.ucLoadingSpiner.Location = new System.Drawing.Point(314, 123);
+            this.ucLoadingSpiner.Name = "ucLoadingSpiner";
+            this.ucLoadingSpiner.Size = new System.Drawing.Size(152, 152);
+            this.ucLoadingSpiner.TabIndex = 0;
+            this.ucLoadingSpiner.UseWaitCursor = true;
             // 
             // FormBookDasboard
             // 
@@ -49,6 +64,7 @@ partial class FormBookDasboard
             this.Name = "FormBookDasboard";
             this.Text = "Book\'s Dasboard";
             this.Load += new System.EventHandler(this.FormBookDasboard_Load);
+            this.pnlBookDasboard.ResumeLayout(false);
             this.ResumeLayout(false);
 
     }
@@ -56,4 +72,5 @@ partial class FormBookDasboard
     #endregion
 
     private Panel pnlBookDasboard;
+    private UC.ucLoadingSpiner ucLoadingSpiner;
 }

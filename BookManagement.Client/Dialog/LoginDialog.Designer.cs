@@ -39,7 +39,7 @@ partial class LoginDialog
             this.btnRegister = new FontAwesome.Sharp.IconButton();
             this.btnExit = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblYear = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@ partial class LoginDialog
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::BookManagement.Client.Properties.Resources.login;
+            this.pictureBox1.Image = global::BookManagement.Client.Properties.Resources.login_new;
             this.pictureBox1.Location = new System.Drawing.Point(418, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(127, 130);
@@ -186,7 +186,7 @@ partial class LoginDialog
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.lblYear);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
@@ -198,16 +198,16 @@ partial class LoginDialog
             this.panel3.Size = new System.Drawing.Size(312, 424);
             this.panel3.TabIndex = 6;
             // 
-            // label6
+            // lblYear
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(235, 399);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 16);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "@2022";
+            this.lblYear.AutoSize = true;
+            this.lblYear.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblYear.ForeColor = System.Drawing.Color.White;
+            this.lblYear.Location = new System.Drawing.Point(235, 399);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(47, 16);
+            this.lblYear.TabIndex = 2;
+            this.lblYear.Text = "@2022";
             // 
             // label5
             // 
@@ -317,5 +317,5 @@ partial class LoginDialog
     private Label label1;
     private Label label5;
     private Label label4;
-    private Label label6;
+    private Label lblYear;
 }

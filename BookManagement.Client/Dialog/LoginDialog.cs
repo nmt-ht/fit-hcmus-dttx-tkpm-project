@@ -12,6 +12,7 @@ public partial class LoginDialog : Form
     public LoginDialog(IUserBiz userBiz)
     {
         InitializeComponent();
+        lblYear.Text = $"@{DateTime.Now.Year}";
         _userBiz = userBiz; 
     }
     public void DataBind()
