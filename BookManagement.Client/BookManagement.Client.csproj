@@ -33,6 +33,7 @@
 	  <ProjectReference Include="..\BookManagement.Business\BookManagement.Business.csproj" />
 	  <ProjectReference Include="..\BookManagement.Infrastructure\BookManagement.Infrastructure.csproj" />
 	  <ProjectReference Include="..\BookManagement.Models\BookManagement.Models.csproj" />
+	  <ProjectReference Include="..\BookManagement.Utility\BookManagement.Utility.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -54,7 +54,6 @@ namespace BookManagement
             public static Color clrInvocie = Color.FromArgb(95, 77, 221);
             public static Color clrReport = Color.FromArgb(249, 88, 155);
             public static Color clrSetting = Color.FromArgb(24, 161, 251);
-
         }
 
         private void ActivateButton(object senderBtn, Color color, eDashboard eDashboard = eDashboard.Home)
@@ -179,6 +178,8 @@ namespace BookManagement
         private void btnCaiDat_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrSetting, eDashboard.Setting);
+            var formSetting = new FormSetting();
+            OpenChildForm(formSetting);
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

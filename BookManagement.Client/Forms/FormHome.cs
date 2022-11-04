@@ -16,6 +16,7 @@ public partial class FormHome : Form
         int width = (int)SystemParameters.FullPrimaryScreenWidth;
         ucDasboard.Left = (width - this.ClientSize.Width) / 2;
         ucDasboard.Top = (height - this.ClientSize.Height) / 2;
+        ucDasboard.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Top;
         pnlDasboard.Controls.Add(ucDasboard);
     }
 }

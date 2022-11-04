@@ -7,9 +7,9 @@ public partial class ucHome : UserControl
     public ucHome()
     {
         InitializeComponent();
-        Timer.Tick += TimerEventProcessor;
-        Timer.Interval = 1000;
-        Timer.Start();
+        //Timer.Tick += TimerEventProcessor;
+        //Timer.Interval = 1000;
+        //Timer.Start();
     }
 
     private void ucDasboard_Load(object sender, EventArgs e)
@@ -20,6 +20,6 @@ public partial class ucHome : UserControl
 
     private void TimerEventProcessor(object myObject, EventArgs myEventArgs)
     {
-        lblTime.Text = DateTime.Now.ToShortTimeString();
+        //lblTime.Text = DateTime.Now.ToShortTimeString();
     }
 }
