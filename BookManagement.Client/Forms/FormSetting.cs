@@ -14,7 +14,7 @@ public partial class FormSetting : Form
     {
         for(int i = 0; i < 10; i++)
         {
-            ucSetting ucSetting = new ucSetting();
+            ucRow ucSetting = new ucRow();
             double width = SystemParameters.FullPrimaryScreenWidth;
             ucSetting.Width = (int)(width * 0.885);
             flpRow.Controls.Add(ucSetting);
@@ -23,7 +23,7 @@ public partial class FormSetting : Form
 
     internal void ResetBackColor()
     {
-        foreach(var item in flpRow.Controls.OfType<ucSetting>())
+        foreach(var item in flpRow.Controls.OfType<ucRow>())
         {
             item.BackColorTop = Color.FromArgb(142, 195, 176);
             item.BackColorBottom = Color.FromArgb(141, 114, 225);

@@ -4,16 +4,6 @@
 
 /.vs
 /BookManagement/.vs/BookManagement
-/Book.Business/bin/Debug/net6.0
-/Book.Business/obj
-/Book.Infrastructure/bin/Debug/net6.0
-/Book.Infrastructure/obj
-/Book.Models/obj
-/Book.Models/bin/Debug/net6.0
-/Book.Database/bin/Debug
-/Book.Database/obj/Debug
-/Book.Database/Book.Database.jfm
-/Book.Database/Book.Database.dbmdl
 /BookManagement.Database/bin/Debug
 /BookManagement.Database/obj/Debug
 /BookManagement.Infrastructure/bin/Debug/net6.0
@@ -22,3 +12,9 @@
 /BookManagement.Models/obj
 /BookManagement.Business/bin/Debug/net6.0
 /BookManagement.Business/obj
+/BookManagement.Database/BookManagement.Database.dbmdl
+/BookManagement.Database/BookManagement.Database.jfm
+/BookManagement.Client/bin/Debug/net6.0-windows
+/BookManagement.Client/obj
+/BookManagement.Utility/obj
+/BookManagement.Utility/bin/Debug/net6.0-windows

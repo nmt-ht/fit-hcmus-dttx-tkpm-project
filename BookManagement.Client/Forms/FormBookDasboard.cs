@@ -3,7 +3,6 @@ using BookManagement.Business.Helper;
 using BookManagement.Client.Dialog;
 using BookManagement.Client.UC;
 using BookManagement.Models;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using static BookManagement.Client.DataType;
 

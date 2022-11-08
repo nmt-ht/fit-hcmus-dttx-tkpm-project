@@ -1,30 +1,20 @@
-﻿using BookManagement.Client.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace BookManagement.Client.UC;
-public partial class ucSetting : UserControl
+namespace BookManagement.Client.UC
 {
-    FormSetting FormSettingMaster = (FormSetting)Application.OpenForms["FormSetting"];
-    public Color BackColorTop
+    public partial class ucSetting : UserControl
     {
-        get { return pnlTitleCustom.GradientTopColor; }
-        set { pnlTitleCustom.GradientTopColor = value; }
-    }
-
-    public Color BackColorBottom
-    {
-        get { return pnlTitleCustom.GradientBottomColor; }
-        set { pnlTitleCustom.GradientBottomColor = value; }
-    }
-
-    public ucSetting()
-    {
-        InitializeComponent();
-    }
-
-    private void pnlTitleCustom_MouseClick(object sender, MouseEventArgs e)
-    {
-        FormSettingMaster.ResetBackColor();
-        this.pnlTitleCustom.GradientTopColor = Color.FromArgb(107, 131, 239);
-        this.pnlTitleCustom.GradientBottomColor = Color.FromArgb(195, 121, 225);
+        public ucSetting()
+        {
+            InitializeComponent();
+        }
     }
 }

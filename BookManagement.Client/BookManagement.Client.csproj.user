@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dialog\Book\BookDetailDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dialog\LoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dialog\RegisterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dialog\Book\AddEditBookDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormBookDasboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UC\ucBookInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UC\ucBooks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UC\ucHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UC\ucLoadingSpiner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UC\ucRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UC\ucSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
