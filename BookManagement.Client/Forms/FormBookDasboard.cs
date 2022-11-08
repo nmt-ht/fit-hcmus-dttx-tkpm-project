@@ -11,7 +11,7 @@ namespace BookManagement.Client.Forms;
 public partial class FormBookDasboard : Form
 {
     private readonly IBookBiz _bookBiz;
-    private ucBooks _ucBooks;
+    private ucLayout ucLayout;
     public User CurrentUser { get; set; }
     public FormBookDasboard(IBookBiz bookBiz)
     {
@@ -28,17 +28,18 @@ public partial class FormBookDasboard : Form
 
     private void DataBind()
     {
-        _ucBooks = new ucBooks();
-        _ucBooks.Books = GetBooks();
+        ucLayout = new ucLayout();
+        ucLayout.LayoutType = eLayoutType.Book;
+        ucLayout.Books = GetBooks();
         double height = SystemParameters.FullPrimaryScreenHeight;
         double width = SystemParameters.FullPrimaryScreenWidth;
-        _ucBooks.Size = new System.Drawing.Size((int)width - 200, (int)height);
-        _ucBooks.OnReloadBooksDelegate += ucBooks_OnReloadBooksDelegate;
-        _ucBooks.OnDeleteItemDelegate += ucBooks_OnDeleteItemDelegate;
-        _ucBooks.OnAddBookDelegate += ucBooks_OnAddBookDelegate;
-        _ucBooks.OnEditBookDelegate += ucBooks_OnEditBookDelegate;
-        _ucBooks.DataBind();
-        pnlBookDasboard.Controls.Add(_ucBooks);
+        ucLayout.Size = new System.Drawing.Size((int)width - 200, (int)height);
+        ucLayout.OnReloadBooksDelegate += ucBooks_OnReloadBooksDelegate;
+        ucLayout.OnDeleteItemDelegate += ucBooks_OnDeleteItemDelegate;
+        ucLayout.OnAddBookDelegate += ucBooks_OnAddBookDelegate;
+        ucLayout.OnEditBookDelegate += ucBooks_OnEditBookDelegate;
+        ucLayout.DataBind();
+        pnlBookDasboard.Controls.Add(ucLayout);
     }
 
     private void ucBooks_OnEditBookDelegate(BookCustomEventArgs bookCustomEvent)
@@ -86,8 +87,8 @@ public partial class FormBookDasboard : Form
 
     private void ReloadData()
     {
-        _ucBooks.Books = GetBooks();
-        _ucBooks.DataBind();
+        ucLayout.Books = GetBooks();
+        ucLayout.DataBind();
     }
 
     private IList<Book> GetBooks()

@@ -3,7 +3,7 @@
 namespace BookManagement.Client.UC;
 public partial class ucRow : UserControl
 {
-    FormSetting FormSettingMaster = (FormSetting)Application.OpenForms["FormSetting"];
+    FormSetting_1 FormSettingMaster = (FormSetting_1)Application.OpenForms["FormSetting"];
     public Color BackColorTop
     {
         get { return pnlTitleCustom.GradientTopColor; }

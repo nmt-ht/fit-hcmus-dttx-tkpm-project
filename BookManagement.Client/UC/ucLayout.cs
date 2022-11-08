@@ -7,15 +7,16 @@ using static BookManagement.Business.Helper.ReloadBooksDelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.UC;
-public partial class ucBooks : UserControl
+public partial class ucLayout : UserControl
 {
     public IList<Book> Books { get; set; }
+    public eLayoutType LayoutType { get; set; }
     public Book SelectedBook { get; set; }
     public event ReloadBooksDelegate OnReloadBooksDelegate;
     public event DeleteItemDelegate OnDeleteItemDelegate;
     public event SelectedBookDelegate OnAddBookDelegate;
     public event SelectedBookDelegate OnEditBookDelegate;
-    public ucBooks()
+    public ucLayout()
     {
         InitializeComponent();
         flowLayoutBooks.AutoScroll = true;
@@ -26,6 +27,21 @@ public partial class ucBooks : UserControl
     }
 
     public void DataBind()
+    {
+        switch (LayoutType)
+        {
+            case eLayoutType.Book:
+                BindDataForBook();
+                break;
+            case eLayoutType.Customer:
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void BindDataForBook()
     {
         if (Books.Any())
         {
@@ -51,7 +67,7 @@ public partial class ucBooks : UserControl
 
         if (bookCustomEvent is not null)
         {
-            if(bookCustomEvent.IsSelected && SelectedBook is not null && bookCustomEvent.Book != SelectedBook)
+            if (bookCustomEvent.IsSelected && SelectedBook is not null && bookCustomEvent.Book != SelectedBook)
             {
                 var previouseSelectedBook = selectedBooks.Where(x => x.Book.Name == SelectedBook.Name).FirstOrDefault();
                 if (previouseSelectedBook is not null)
@@ -66,7 +82,7 @@ public partial class ucBooks : UserControl
 
     private void btnAdd_Click(object sender, EventArgs e)
     {
-        using(var addBook = new AddEditBookDialog())
+        using (var addBook = new AddEditBookDialog())
         {
             addBook.SetParametters(new Book(), eAction.Add, this.Books);
             addBook.DataBind();
@@ -124,7 +140,7 @@ public partial class ucBooks : UserControl
         {
             btnEdit.Enabled = btnDelete.Enabled = true;
             btnEdit.BackColor = btnDelete.BackColor = Color.Lavender;
-            btnAdd.Enabled =  false;
+            btnAdd.Enabled = false;
             btnAdd.BackColor = Color.Linen;
         }
         else
@@ -197,8 +213,6 @@ public partial class ucBooks : UserControl
                     DeleteItemEventArgs deleteItemEventArgs = new DeleteItemEventArgs(book.Id);
                     OnDeleteItemDelegate(deleteItemEventArgs);
                 }
-                break;
-            default:
                 break;
         }
     }

@@ -2,7 +2,6 @@
 using BookManagement.Business.Helper;
 using BookManagement.Client.Dialog;
 using BookManagement.Client.Forms;
-using BookManagement.Client.UC;
 using BookManagement.Models;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
@@ -19,13 +18,15 @@ namespace BookManagement
 
         private readonly IUserBiz _userBiz;
         private readonly IBookBiz _bookBiz;
+        private readonly ICustomerBiz _customerBiz;
 
-        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz)
+        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz, ICustomerBiz customerBiz)
         {
             InitializeComponent();
             InitDesignUI();
             _userBiz = userBiz;
             _bookBiz = bookBiz;
+            _customerBiz = customerBiz;
         }
 
         private void InitDesignUI()
@@ -57,7 +58,7 @@ namespace BookManagement
             public static Color clrSetting = Color.FromArgb(24, 161, 251);
         }
 
-        private void ActivateButton(object senderBtn, Color color, eDashboard eDashboard = eDashboard.Home)
+        private void ActivateButton(object senderBtn, Color color)
         {
             if (senderBtn != null)
             {
@@ -138,10 +139,10 @@ namespace BookManagement
 
         private void btnMaximinze_Click(object sender, EventArgs e)
         {
-            //if (WindowState == FormWindowState.Normal)
-            WindowState = FormWindowState.Maximized;
-            //else
-            //    WindowState = FormWindowState.Normal;
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
         }
         private void btnMiniminze_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
         private void btnExit_Click(object sender, EventArgs e) => Application.Exit();
@@ -151,35 +152,43 @@ namespace BookManagement
         }
         private void btnDanhMucSach_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.clrBooks, eDashboard.Books);
+            ActivateButton(sender, RGBColors.clrBooks);
             var bookDasboard = new FormBookDasboard(_bookBiz);
             bookDasboard.CurrentUser = this.CurrentUser;
             OpenChildForm(bookDasboard);
         }
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.clrEmployee, eDashboard.Employee);
+            ActivateButton(sender, RGBColors.clrEmployee);
+            var formEmployee = new FormEmployee(_customerBiz);
+            OpenChildForm(formEmployee);
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.clrCustomer, eDashboard.Customer);
+            ActivateButton(sender, RGBColors.clrCustomer);
+            var formCustomer = new FormCustomer(_customerBiz);
+            OpenChildForm(formCustomer);
         }
 
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.clrInvocie, eDashboard.Invoice);
+            ActivateButton(sender, RGBColors.clrInvocie);
+            var formInvoice = new FormInvoice(_customerBiz);
+            OpenChildForm(formInvoice);
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.clrReport, eDashboard.Report);
+            ActivateButton(sender, RGBColors.clrReport);
+            var formReport = new FormReport(_customerBiz);
+            OpenChildForm(formReport);
         }
 
         private void btnCaiDat_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.clrSetting, eDashboard.Setting);
-            var formSetting = new FormSetting();
+            ActivateButton(sender, RGBColors.clrSetting);
+            var formSetting = new FormSetting(_customerBiz);
             OpenChildForm(formSetting);
         }
 

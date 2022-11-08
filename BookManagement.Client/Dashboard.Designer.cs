@@ -285,7 +285,6 @@ namespace BookManagement
             this.pnlTitle.Name = "pnlTitle";
             this.pnlTitle.Size = new System.Drawing.Size(977, 52);
             this.pnlTitle.TabIndex = 1;
-            this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitle_MouseDown);
             // 
             // iconButton1
             // 

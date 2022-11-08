@@ -23,13 +23,13 @@
     <Compile Update="Forms\FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormSetting.cs">
+    <Compile Update="Forms\FormSetting_1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UC\ucBookInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UC\ucBooks.cs">
+    <Compile Update="UC\ucLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UC\ucHome.cs">

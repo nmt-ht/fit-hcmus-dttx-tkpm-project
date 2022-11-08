@@ -1,5 +1,5 @@
 ﻿namespace BookManagement.Client.UC;
-partial class ucBooks
+partial class ucLayout
 {
     /// <summary> 
     /// Required designer variable.
@@ -35,9 +35,11 @@ partial class ucBooks
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlSearch = new System.Windows.Forms.Panel();
             this.btnRefresh = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@ partial class ucBooks
             this.btnSearch.IconColor = System.Drawing.Color.SlateBlue;
             this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSearch.IconSize = 25;
-            this.btnSearch.Location = new System.Drawing.Point(796, 11);
+            this.btnSearch.Location = new System.Drawing.Point(7, 11);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 32);
             this.btnSearch.TabIndex = 5;
@@ -127,6 +129,8 @@ partial class ucBooks
             // 
             // txtSearchText
             // 
+            this.txtSearchText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchText.BackColor = System.Drawing.Color.Lavender;
             this.txtSearchText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -134,13 +138,15 @@ partial class ucBooks
             this.txtSearchText.Location = new System.Drawing.Point(496, 11);
             this.txtSearchText.Multiline = true;
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.PlaceholderText = "Enter book name, author, description,...";
+            this.txtSearchText.PlaceholderText = "Search";
             this.txtSearchText.Size = new System.Drawing.Size(294, 32);
             this.txtSearchText.TabIndex = 4;
             this.txtSearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchText_KeyDown);
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.DarkBlue;
             this.panel1.Location = new System.Drawing.Point(17, 50);
             this.panel1.Name = "panel1";
@@ -149,18 +155,27 @@ partial class ucBooks
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pnlSearch);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.btnRefresh);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.txtSearchText);
             this.panel2.Controls.Add(this.btnEdit);
-            this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(910, 57);
             this.panel2.TabIndex = 7;
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.Controls.Add(this.btnSearch);
+            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlSearch.Location = new System.Drawing.Point(811, 0);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(99, 57);
+            this.pnlSearch.TabIndex = 7;
             // 
             // btnRefresh
             // 
@@ -189,16 +204,17 @@ partial class ucBooks
             this.panel3.Size = new System.Drawing.Size(910, 615);
             this.panel3.TabIndex = 8;
             // 
-            // ucBooks
+            // ucLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Name = "ucBooks";
+            this.Name = "ucLayout";
             this.Size = new System.Drawing.Size(910, 672);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.pnlSearch.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -216,4 +232,5 @@ partial class ucBooks
     private Panel panel2;
     private Panel panel3;
     private FontAwesome.Sharp.IconButton btnRefresh;
+    private Panel pnlSearch;
 }

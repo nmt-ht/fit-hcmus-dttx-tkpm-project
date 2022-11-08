@@ -43,11 +43,13 @@ namespace BookManagement
             services.AddSingleton<IUserData, UserData>();
             services.AddSingleton<IBookData, BookData>();
             services.AddSingleton<IParameterData, ParameterData>();
+            services.AddSingleton<ICustomerData, CustomerData>();
 
             //Init DI for Bussiness class
             services.AddSingleton<IUserBiz, UserBiz>();
             services.AddSingleton<IBookBiz, BookBiz>();
             services.AddSingleton<IParameterBiz, ParameterBiz>();
+            services.AddSingleton<ICustomerBiz, CustomerBiz>();
         }
     }
 }

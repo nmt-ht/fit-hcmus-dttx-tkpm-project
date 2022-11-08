@@ -6,11 +6,12 @@ using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.Forms;
 
-public partial class FormSetting : Form
+public partial class FormCustomer : Form
 {
     private readonly ICustomerBiz _customerBiz;
     public User CurrentUser { get; set; }
-    public FormSetting(ICustomerBiz customerBiz)
+    private ucLayout ucLayout;
+    public FormCustomer(ICustomerBiz customerBiz)
     {
         InitializeComponent();
         _customerBiz = customerBiz;
@@ -18,20 +19,17 @@ public partial class FormSetting : Form
 
     private void DataBind()
     {
-       
+        ucLayout = new ucLayout();
+        ucLayout.LayoutType = eLayoutType.Customer;
+        double height = SystemParameters.FullPrimaryScreenHeight;
+        double width = SystemParameters.FullPrimaryScreenWidth;
+        ucLayout.Size = new System.Drawing.Size((int)width - 200, (int)height);
+        ucLayout.DataBind();
+        pnlCustomer.Controls.Add(ucLayout);
     }
 
     private void FormCustomer_Load(object sender, EventArgs e)
     {
         DataBind();
-    }
-
-    internal void ResetBackColor()
-    {
-        //foreach (var item in flpRow.Controls.OfType<ucRow>())
-        //{
-        //    item.BackColorTop = Color.FromArgb(142, 195, 176);
-        //    item.BackColorBottom = Color.FromArgb(141, 114, 225);
-        //}
     }
 }
