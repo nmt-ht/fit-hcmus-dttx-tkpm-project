@@ -18,14 +18,10 @@ public partial class FormBookDasboard : Form
         InitializeComponent();
         _bookBiz = bookBiz;
     }
-
     private void FormBookDasboard_Load(object sender, EventArgs e)
     {
-        DisplayLoadIndicator(true);
         DataBind();
-        DisplayLoadIndicator(false);
     }
-
     private void DataBind()
     {
         ucLayout = new ucLayout();
@@ -34,14 +30,13 @@ public partial class FormBookDasboard : Form
         double height = SystemParameters.FullPrimaryScreenHeight;
         double width = SystemParameters.FullPrimaryScreenWidth;
         ucLayout.Size = new System.Drawing.Size((int)width - 200, (int)height);
-        ucLayout.OnReloadBooksDelegate += ucBooks_OnReloadBooksDelegate;
+        ucLayout.OnReloadDataDelegate += ucBooks_OnReloadBooksDelegate;
         ucLayout.OnDeleteItemDelegate += ucBooks_OnDeleteItemDelegate;
         ucLayout.OnAddBookDelegate += ucBooks_OnAddBookDelegate;
         ucLayout.OnEditBookDelegate += ucBooks_OnEditBookDelegate;
         ucLayout.DataBind();
         pnlBookDasboard.Controls.Add(ucLayout);
     }
-
     private void ucBooks_OnEditBookDelegate(BookCustomEventArgs bookCustomEvent)
     {
         if(bookCustomEvent is not null && bookCustomEvent.Book is not null)
@@ -55,7 +50,6 @@ public partial class FormBookDasboard : Form
             }
         }
     }
-
     private void ucBooks_OnAddBookDelegate(BookCustomEventArgs bookCustomEvent)
     {
         if(bookCustomEvent is not null && bookCustomEvent.Book is not null)
@@ -69,7 +63,6 @@ public partial class FormBookDasboard : Form
             }
         }
     }
-
     private void ucBooks_OnDeleteItemDelegate(DeleteItemEventArgs deleteItemEvent)
     {
         var deleted = _bookBiz.DeleteBook(deleteItemEvent.Id);
@@ -79,24 +72,20 @@ public partial class FormBookDasboard : Form
             ReloadData();
         }
     }
-
-    private void ucBooks_OnReloadBooksDelegate(ReloadBooksEventArgs reloadBooks)
+    private void ucBooks_OnReloadBooksDelegate(ReloadDataEventArgs reloadData)
     {
         ReloadData();
     }
-
     private void ReloadData()
     {
         ucLayout.Books = GetBooks();
         ucLayout.DataBind();
     }
-
     private IList<Book> GetBooks()
     {
         var books = _bookBiz.GetBooks();
         return books.ToList();
     }
-
     private void DisplayNotification(eMessageType messageType, string title, string message)
     {
         using (var messageBox = new MessageBoxDialog())
@@ -105,10 +94,5 @@ public partial class FormBookDasboard : Form
             messageBox.DataBind();
             messageBox.ShowDialog();
         }
-    }
-
-    private void DisplayLoadIndicator(bool load)
-    {
-        ucLoadingSpiner.Visible = load;
     }
 }

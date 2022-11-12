@@ -2,20 +2,27 @@
 using BookManagement.Client.Dialog;
 using BookManagement.Models;
 using static BookManagement.Business.Helper.BookDelegateHandler;
+using static BookManagement.Business.Helper.CustomerDelegateHandler;
 using static BookManagement.Business.Helper.DeleteItemDelegateHandler;
-using static BookManagement.Business.Helper.ReloadBooksDelegateHandler;
+using static BookManagement.Business.Helper.ReloadDataDelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.UC;
 public partial class ucLayout : UserControl
 {
-    public IList<Book> Books { get; set; }
+    public IList<Book> Books { get; set; } = new List<Book>();
+    public IList<Customer> Customers { get; set; } = new List<Customer>();
     public eLayoutType LayoutType { get; set; }
     public Book SelectedBook { get; set; }
-    public event ReloadBooksDelegate OnReloadBooksDelegate;
+    public Customer SelectedCustomer { get; set; }
+    private bool IsEdited { get; set; } = false;
+
+    public event ReloadDataDelegate OnReloadDataDelegate;
     public event DeleteItemDelegate OnDeleteItemDelegate;
     public event SelectedBookDelegate OnAddBookDelegate;
     public event SelectedBookDelegate OnEditBookDelegate;
+    public event SelectedCustomerDelegate OnAddCustomerDelegate;
+    public event SelectedCustomerDelegate OnEditCustomerDelegate;
     public ucLayout()
     {
         InitializeComponent();
@@ -34,13 +41,28 @@ public partial class ucLayout : UserControl
                 BindDataForBook();
                 break;
             case eLayoutType.Customer:
-                break;
-            default:
+                BindDataForCustomer();
                 break;
         }
-
     }
 
+    private void BindDataForCustomer()
+    {
+        if (Customers.Any())
+        {
+            flowLayoutBooks.Controls.Clear();
+
+            foreach (var customer in Customers)
+            {
+                ucCustomerInfo ucCustomerInfo = new ucCustomerInfo();
+                ucCustomerInfo.Customer = customer;
+                ucCustomerInfo.DataBind();
+                ucCustomerInfo.Margin = new Padding(20);
+                ucCustomerInfo.OnSelectedCustomerDelegate += UcCustomerInfo_OnSelectedCustomerDelegate;
+                flowLayoutBooks.Controls.Add(ucCustomerInfo);
+            }
+        }
+    }
     private void BindDataForBook()
     {
         if (Books.Any())
@@ -58,12 +80,30 @@ public partial class ucLayout : UserControl
             }
         }
     }
+    private void UcCustomerInfo_OnSelectedCustomerDelegate(CustomerCustomEventArgs customerCustomEventArgs)
+    {
+        var selectedCustomers = flowLayoutBooks.Controls.Cast<ucCustomerInfo>().Where(uc => uc.IsSelected).ToList();
+        IsEdited = selectedCustomers.Any() ? true : false;
 
-    private bool IsSelectedBook { get; set; } = false;
+        if (customerCustomEventArgs is not null)
+        {
+            if (customerCustomEventArgs.IsSelected && SelectedCustomer is not null && customerCustomEventArgs.Customer != SelectedCustomer)
+            {
+                var previouseSelectedBook = selectedCustomers.Where(x => x.Customer.Id == SelectedCustomer.Id).FirstOrDefault();
+                if (previouseSelectedBook is not null)
+                    previouseSelectedBook.IsSelected = false;
+            }
+
+            SelectedCustomer = customerCustomEventArgs.Customer;
+        }
+
+        UpdateButtonFunction();
+    }
+
     private void UcBookInfo_OnSelectedBookDelegate(BookCustomEventArgs bookCustomEvent)
     {
         var selectedBooks = flowLayoutBooks.Controls.Cast<ucBookInfo>().Where(uc => uc.IsSelected).ToList();
-        IsSelectedBook = selectedBooks.Any() ? true : false;
+        IsEdited = selectedBooks.Any() ? true : false;
 
         if (bookCustomEvent is not null)
         {
@@ -82,45 +122,99 @@ public partial class ucLayout : UserControl
 
     private void btnAdd_Click(object sender, EventArgs e)
     {
-        using (var addBook = new AddEditBookDialog())
+        switch (LayoutType)
         {
-            addBook.SetParametters(new Book(), eAction.Add, this.Books);
-            addBook.DataBind();
-            if (addBook.ShowDialog() == DialogResult.OK)
-            {
-                BookActionCallback(addBook.BookHandler, eAction.Add);
-            }
+            case eLayoutType.Book:
+                using (var addBook = new AddEditBookDialog())
+                {
+                    addBook.SetParametters(new Book(), eAction.Add, this.Books);
+                    addBook.DataBind();
+                    if (addBook.ShowDialog() == DialogResult.OK)
+                    {
+                        BookActionCallback(addBook.BookHandler, eAction.Add);
+                    }
+                }
+                break;
+            case eLayoutType.Customer:
+                using (var newCustomer = new AddEditCustomerDialog())
+                {
+                    newCustomer.DataBind();
+                    if (newCustomer.ShowDialog() == DialogResult.OK)
+                    {
+                        CustomerActionCallback(newCustomer.Customer, eAction.Add);
+                    }
+                }
+                break;
         }
     }
 
     private void btnEdit_Click(object sender, EventArgs e)
     {
-        //SelectedUCBookInfo = flowLayoutBooks.Controls.Cast<ucBookInfo>().FirstOrDefault(uc => uc.IsSelected);
-        if (SelectedBook is not null)
+        switch (LayoutType)
         {
-            using (var editBook = new AddEditBookDialog())
-            {
-                editBook.SetParametters(SelectedBook, eAction.Edit, new List<Book>());
-                editBook.DataBind();
-                if (editBook.ShowDialog() == DialogResult.OK)
+            case eLayoutType.Book:
+                if (SelectedBook is not null)
                 {
-                    BookActionCallback(editBook.BookHandler, eAction.Edit);
+                    using (var editBook = new AddEditBookDialog())
+                    {
+                        editBook.SetParametters(SelectedBook, eAction.Edit, new List<Book>());
+                        editBook.DataBind();
+                        if (editBook.ShowDialog() == DialogResult.OK)
+                        {
+                            BookActionCallback(editBook.BookHandler, eAction.Edit);
+                        }
+                    }
                 }
-            }
+                break;
+            case eLayoutType.Customer:
+                if (SelectedCustomer is not null)
+                {
+                    using (var editCustomer = new AddEditCustomerDialog())
+                    {
+                        editCustomer.SetParametters(SelectedCustomer, eAction.Edit);
+                        editCustomer.DataBind();
+                        if (editCustomer.ShowDialog() == DialogResult.OK)
+                        {
+                            CustomerActionCallback(editCustomer.Customer, eAction.Edit);
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void btnDelete_Click(object sender, EventArgs e)
     {
-        if (SelectedBook is not null)
+        switch (LayoutType)
         {
-            using (var deleteDialog = new DeleteDialog())
-            {
-                if (deleteDialog.ShowDialog() == DialogResult.OK)
+            case eLayoutType.Book:
+                if (SelectedBook is not null)
                 {
-                    BookActionCallback(SelectedBook, eAction.Delete);
+                    using (var deleteDialog = new DeleteDialog())
+                    {
+                        if (deleteDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            BookActionCallback(SelectedBook, eAction.Delete);
+                        }
+                    }
                 }
-            }
+                break;
+            case eLayoutType.Customer:
+                if (SelectedCustomer is not null)
+                {
+                    using (var deleteDialog = new DeleteDialog())
+                    {
+                        if (deleteDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            CustomerActionCallback(SelectedCustomer, eAction.Delete);
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -136,7 +230,7 @@ public partial class ucLayout : UserControl
 
     private void UpdateButtonFunction()
     {
-        if (this.IsSelectedBook)
+        if (this.IsEdited)
         {
             btnEdit.Enabled = btnDelete.Enabled = true;
             btnEdit.BackColor = btnDelete.BackColor = Color.Lavender;
@@ -182,10 +276,10 @@ public partial class ucLayout : UserControl
 
     private void OnReloadData()
     {
-        if (OnReloadBooksDelegate != null)
+        if (OnReloadDataDelegate != null)
         {
-            ReloadBooksEventArgs reloadBooksEventArgs = new ReloadBooksEventArgs(true);
-            OnReloadBooksDelegate(reloadBooksEventArgs);
+            ReloadDataEventArgs reloadData = new ReloadDataEventArgs(true);
+            OnReloadDataDelegate(reloadData);
         }
     }
 
@@ -211,6 +305,34 @@ public partial class ucLayout : UserControl
                 if (OnDeleteItemDelegate != null)
                 {
                     DeleteItemEventArgs deleteItemEventArgs = new DeleteItemEventArgs(book.Id);
+                    OnDeleteItemDelegate(deleteItemEventArgs);
+                }
+                break;
+        }
+    }
+
+    private void CustomerActionCallback(Customer customer, eAction action)
+    {
+        switch (action)
+        {
+            case eAction.Add:
+                if (OnAddCustomerDelegate != null)
+                {
+                    CustomerCustomEventArgs customerCustomEventArgs = new CustomerCustomEventArgs(customer);
+                    OnAddCustomerDelegate(customerCustomEventArgs);
+                }
+                break;
+            case eAction.Edit:
+                if (OnEditCustomerDelegate != null)
+                {
+                    CustomerCustomEventArgs customerCustomEventArgs = new CustomerCustomEventArgs(customer);
+                    OnEditCustomerDelegate(customerCustomEventArgs);
+                }
+                break;
+            case eAction.Delete:
+                if (OnDeleteItemDelegate != null)
+                {
+                    DeleteItemEventArgs deleteItemEventArgs = new DeleteItemEventArgs(customer.Id);
                     OnDeleteItemDelegate(deleteItemEventArgs);
                 }
                 break;

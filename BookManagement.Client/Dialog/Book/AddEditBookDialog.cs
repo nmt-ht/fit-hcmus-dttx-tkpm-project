@@ -15,7 +15,7 @@ namespace BookManagement.Client.Dialog
         {
             InitializeComponent();
         }
-        public void SetParametters(Book book, eAction action, IList<Book>? books)
+        public void SetParametters(Book book, eAction action, IList<Book> books)
         {
             SelectedBook = book;
             Action = action;

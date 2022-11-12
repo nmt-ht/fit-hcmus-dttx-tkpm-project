@@ -12,9 +12,14 @@ public static class BookDelegateHandler
     public delegate void SelectedBookDelegate(BookCustomEventArgs loginHandler);
 }
 
-public static class ReloadBooksDelegateHandler
+public static class CustomerDelegateHandler
 {
-    public delegate void ReloadBooksDelegate(ReloadBooksEventArgs reloadBooks);
+    public delegate void SelectedCustomerDelegate(CustomerCustomEventArgs loginHandler);
+}
+
+public static class ReloadDataDelegateHandler
+{
+    public delegate void ReloadDataDelegate(ReloadDataEventArgs reload);
 }
 
 public static class DeleteItemDelegateHandler
@@ -39,9 +44,20 @@ public class BookCustomEventArgs : EventArgs
     public bool IsSelected { get; set; }
 }
 
-public class ReloadBooksEventArgs : EventArgs
+public class CustomerCustomEventArgs : EventArgs
 {
-    public ReloadBooksEventArgs(bool reload)
+    public CustomerCustomEventArgs(Customer customer, bool isSelected = false)
+    {
+        this.Customer = customer;
+        this.IsSelected = isSelected;
+    }
+    public Customer Customer { get; set; }
+    public bool IsSelected { get; set; }
+}
+
+public class ReloadDataEventArgs : EventArgs
+{
+    public ReloadDataEventArgs(bool reload)
     {
         Reload = reload;
     }

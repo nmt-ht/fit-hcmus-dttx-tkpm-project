@@ -71,5 +71,11 @@ namespace BookManagement.Models
         {
 
         }
+
+        public enum eAddressType 
+        {
+            Primary = 0,
+            Other = 1
+        } 
     }
 }

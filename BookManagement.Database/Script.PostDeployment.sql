@@ -47,3 +47,28 @@ BEGIN
 	(NEWID(), N'Khách Hàng Nợ Không Quá ', 1, 1, 20000),
 	(NEWID(), N'Đầu Sách Có Số Lượng Tồn Sau Khi Bán Ít Nhất ', 1, 1, 20)
 END
+IF NOT EXISTS(SELECT 1 FROM dbo.Customer)
+BEGIN
+	DECLARE @CustomerID UNIQUEIDENTIFIER = NEWID()
+	DECLARE @UserID UNIQUEIDENTIFIER = NULL
+	SELECT @UserID = u.Id
+	FROM [User] u
+	WHERE u.UserName = 'tu.nguyen'
+
+	INSERT INTO Customer (Id, FirstName, LastName, Gender, Birthday, IsActive, CreatedBy, CreatedDate)
+	VALUES(@CustomerID, 'Tu', 'Nguyen', 1, '10/12/1999', 1, @UserID, GETDATE())
+
+	INSERT INTO CustomerAddress (Id, Phone, Email, Address, City, Country, Type, Customer_ID_FK)
+	VALUES(NEWID(), '0974566324', 'test@gmail.com', 'Quan 9',  'TP Thu Duc', 'Viet Nam', 0, @CustomerID)
+
+	INSERT INTO CustomerAddress (Id, Phone, Email, Address, City, Country, Type, Customer_ID_FK)
+	VALUES(NEWID(), '0974566324', 'test@gmail.com', 'Quan 1',  'TP Ho Chi Minh', 'Viet Nam', 1, @CustomerID)
+
+	SET @CustomerID = NEWID()
+	
+	INSERT INTO Customer (Id, FirstName, LastName, Gender, Birthday, IsActive)
+	VALUES(@CustomerID, 'Than', 'Tran', 2, '1/1/1999', 1, @UserID, GETDATE())
+
+	INSERT INTO CustomerAddress (Id, Phone, Email, Address, City, Country, Customer_ID_FK)
+	VALUES(NEWID(), '0974566111', 'test2@gmail.com', 'Quan 9',  'TP Thu Duc', 'Viet Nam', @CustomerID)
+END

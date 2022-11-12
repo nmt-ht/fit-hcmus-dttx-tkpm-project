@@ -80,6 +80,16 @@
     <Build Include="dbo\StoreProcedures\spr_Parameter_InsertData.sql" />
     <Build Include="dbo\StoreProcedures\spr_Parameter_UpdateData.sql" />
     <Build Include="dbo\Tables\Parameter.sql" />
+    <Build Include="dbo\Tables\Customer.sql" />
+    <Build Include="dbo\Tables\CustomerAddress.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_GetCustomers.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_GetCustomerById.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_InsertData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_UpdateData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_DeleteData.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_InsertCustomerAddress.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_GetCustomerAddresses.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Customer_UpdateCustomerAddress.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

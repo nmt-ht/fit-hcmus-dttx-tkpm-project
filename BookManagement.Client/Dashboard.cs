@@ -5,7 +5,6 @@ using BookManagement.Client.Forms;
 using BookManagement.Models;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
-using static BookManagement.Client.DataType;
 
 namespace BookManagement
 {
@@ -168,6 +167,7 @@ namespace BookManagement
         {
             ActivateButton(sender, RGBColors.clrCustomer);
             var formCustomer = new FormCustomer(_customerBiz);
+            formCustomer.CurrentUser = this.CurrentUser;
             OpenChildForm(formCustomer);
         }
 
