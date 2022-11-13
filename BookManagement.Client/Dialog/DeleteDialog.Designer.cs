@@ -73,7 +73,7 @@
             this.btnYes.IconColor = System.Drawing.Color.Lime;
             this.btnYes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnYes.IconSize = 20;
-            this.btnYes.Location = new System.Drawing.Point(49, 256);
+            this.btnYes.Location = new System.Drawing.Point(268, 256);
             this.btnYes.Name = "btnYes";
             this.btnYes.Size = new System.Drawing.Size(64, 36);
             this.btnYes.TabIndex = 28;
@@ -112,7 +112,7 @@
             this.btnNo.IconColor = System.Drawing.Color.Red;
             this.btnNo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnNo.IconSize = 20;
-            this.btnNo.Location = new System.Drawing.Point(268, 256);
+            this.btnNo.Location = new System.Drawing.Point(49, 256);
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(64, 36);
             this.btnNo.TabIndex = 28;

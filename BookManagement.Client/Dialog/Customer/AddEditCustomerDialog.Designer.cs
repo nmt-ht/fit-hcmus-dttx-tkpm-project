@@ -71,7 +71,7 @@
             this.btnSave.IconColor = System.Drawing.Color.Lime;
             this.btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSave.IconSize = 30;
-            this.btnSave.Location = new System.Drawing.Point(384, 464);
+            this.btnSave.Location = new System.Drawing.Point(744, 467);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(97, 36);
             this.btnSave.TabIndex = 12;
@@ -114,6 +114,6 @@
         private UC.ucCustomerInfo ucCustomerInfo;
         private FontAwesome.Sharp.IconButton btnExit;
         private FontAwesome.Sharp.IconButton btnSave;
-        private Label lblTitle;
+        public Label lblTitle;
     }
 }

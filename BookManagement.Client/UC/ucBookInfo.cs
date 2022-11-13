@@ -8,6 +8,7 @@ public partial class ucBookInfo : UserControl
 {
     public Book Book { get; set; }
     public bool IsSelected { get; set; } = false;
+    ShoppingCart ShoppingCart = new ShoppingCart();
     public event SelectedBookDelegate OnSelectedBookDelegate;
     public ucBookInfo()
     {
@@ -30,6 +31,7 @@ public partial class ucBookInfo : UserControl
     private void ucBookInfo_Click(object sender, EventArgs e)
     {
         IsSelected = !IsSelected;
+        btnAddToCart.Visible = IsSelected;
         NotifyParent(this.Book, IsSelected);
         BorderedSelectItem();
     }
@@ -60,6 +62,10 @@ public partial class ucBookInfo : UserControl
 
     private void btnAddToCart_Click(object sender, EventArgs e)
     {
-
+        if (IsSelected && this.Book is not null)
+        {
+            if (!ShoppingCart.Books.ToList().Contains(this.Book))
+                ShoppingCart.Books.Add(this.Book);
+        }
     }
 }

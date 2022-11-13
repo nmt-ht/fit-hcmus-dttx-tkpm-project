@@ -145,6 +145,7 @@ public partial class ucLayout : UserControl
             case eLayoutType.Customer:
                 using (var newCustomer = new AddEditCustomerDialog())
                 {
+                    newCustomer.lblTitle.Text = "Create Customer";
                     newCustomer.DataBind();
                     if (newCustomer.ShowDialog() == DialogResult.OK)
                     {
@@ -178,6 +179,7 @@ public partial class ucLayout : UserControl
                 {
                     using (var editCustomer = new AddEditCustomerDialog())
                     {
+                        editCustomer.lblTitle.Text = "Edit Customer";
                         editCustomer.SetParametters(SelectedCustomer, eAction.Edit);
                         editCustomer.DataBind();
                         if (editCustomer.ShowDialog() == DialogResult.OK)

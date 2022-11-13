@@ -364,7 +364,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(227)))));
             this.label9.Font = new System.Drawing.Font("Microsoft JhengHei Light", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(146)))), ((int)(((byte)(55)))));
-            this.label9.Location = new System.Drawing.Point(309, 324);
+            this.label9.Location = new System.Drawing.Point(31, 324);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(172, 20);
             this.label9.TabIndex = 26;
@@ -376,7 +376,7 @@
             this.txtAvailableQty.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAvailableQty.Font = new System.Drawing.Font("Microsoft JhengHei", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtAvailableQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(146)))), ((int)(((byte)(55)))));
-            this.txtAvailableQty.Location = new System.Drawing.Point(496, 320);
+            this.txtAvailableQty.Location = new System.Drawing.Point(214, 320);
             this.txtAvailableQty.Name = "txtAvailableQty";
             this.txtAvailableQty.PlaceholderText = "0";
             this.txtAvailableQty.ReadOnly = true;

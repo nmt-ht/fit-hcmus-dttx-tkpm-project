@@ -136,6 +136,7 @@ partial class ucBookInfo
             this.btnAddToCart.Text = "Add to Cart";
             this.btnAddToCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddToCart.UseVisualStyleBackColor = false;
+            this.btnAddToCart.Visible = false;
             this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
             // 
             // txtAuthor
