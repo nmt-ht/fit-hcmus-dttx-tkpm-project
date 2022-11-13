@@ -4,10 +4,8 @@ namespace BookManagement.Business
 {
     public interface IInventoryBiz
     {
-        bool DeleteInventory(Guid id);
         IEnumerable<Inventory> GetInventories();
         Inventory GetInventoryByBookId(Guid bookId);
-        bool InsertInventory(Inventory inventory);
-        bool UpdateInventory(Inventory inventory);
+        bool UpdateInventory(Guid inventoryId, Guid bookId, int orderedQty);
     }
 }

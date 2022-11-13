@@ -23,7 +23,7 @@ public partial class ucBookInfo : UserControl
             txtDescription.Text = Book.Description?.Length > 100 ? Book.Description?.Substring(0, 100) + "..." : Book.Description;
             string price = Book.Price.ToString("c").Replace("$", string.Empty) + " VND";
             txtPrice.Text = price;
-            txtAvailableQty.Text = Book.Quantity < 0 ? "Out of Stock" : Book.Quantity.ToString();
+            txtAvailableQty.Text = Book.AvailableQty <= 0 ? "Out of Stock" : Book.AvailableQty.ToString();
         }
     }
 
@@ -37,7 +37,6 @@ public partial class ucBookInfo : UserControl
     private void BorderedSelectItem()
     {
        this.BorderStyle = IsSelected ? BorderStyle.Fixed3D : BorderStyle.None;
-       //this.BackColor = IsSelected ? System.Drawing.Color.MediumSlateBlue : System.Drawing.Color.Lavender;
     }
 
     public void NotifyParent(Book book, bool isSelected)
@@ -57,5 +56,10 @@ public partial class ucBookInfo : UserControl
             bookDetailDialog.DataBind();
             bookDetailDialog.ShowDialog();
         }
+    }
+
+    private void btnAddToCart_Click(object sender, EventArgs e)
+    {
+
     }
 }

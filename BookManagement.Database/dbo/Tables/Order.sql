@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[Order]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	OrderId VARCHAR(250),
+	TotalQuantity INT,
+	TotalPrice MONEY,
+	OrderDate DATETIME,
+	Customer_ID_FK UNIQUEIDENTIFIER,
+	CreatedBy UNIQUEIDENTIFIER, 
+    CONSTRAINT [FK_Order_Customer] FOREIGN KEY (Customer_ID_FK) REFERENCES [Customer]([Id]), 
+    CONSTRAINT [FK_Order_User] FOREIGN KEY (CreatedBy) REFERENCES [User](Id)
+)

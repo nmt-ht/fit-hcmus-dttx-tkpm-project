@@ -8,11 +8,21 @@ public class BookData : IBookData
     public BookData(ISqlDataAccess db) => _db = db;
     public IEnumerable<Book> GetBooks()
     {
-        return _db.LoadData<Book, dynamic>("spr_Book_GetAllBooks", new { });
+        var books =  _db.LoadData<Book, dynamic>("spr_Book_GetAllBooks", new { });
+        if(books is not null && books.Any())
+        {
+            books.ToList().ForEach(b =>
+            {
+                var inventory = _db.LoadData<Inventory, dynamic>("spr_Inventory_GetInventoryByBookId", new { BookId = b.Id }).FirstOrDefault();
+                b.AvailableQty = inventory is not null ? inventory.AvailableQty : 0;
+            });
+        }
+
+        return books;
     }
-    public IEnumerable<Book> GetBookById(Guid id)
+    public Book GetBookById(Guid id)
     {
-        return _db.LoadData<Book, dynamic>("spr_Book_GetBookById", new { Id = id });
+        return _db.LoadData<Book, dynamic>("spr_Book_GetBookById", new { Id = id }).FirstOrDefault();
     }
     public bool InsertBook(Book book)
     {
@@ -22,6 +32,7 @@ public class BookData : IBookData
             _db.SaveData("spr_Book_InsertData",
            new
            {
+               book.Id,
                book.Name,
                book.Author,
                book.Description,

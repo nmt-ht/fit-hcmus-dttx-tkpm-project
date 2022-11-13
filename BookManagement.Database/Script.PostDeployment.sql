@@ -66,9 +66,17 @@ BEGIN
 
 	SET @CustomerID = NEWID()
 	
-	INSERT INTO Customer (Id, FirstName, LastName, Gender, Birthday, IsActive)
+	INSERT INTO Customer (Id, FirstName, LastName, Gender, Birthday, IsActive, CreatedBy, CreatedDate)
 	VALUES(@CustomerID, 'Than', 'Tran', 2, '1/1/1999', 1, @UserID, GETDATE())
 
 	INSERT INTO CustomerAddress (Id, Phone, Email, Address, City, Country, Customer_ID_FK)
 	VALUES(NEWID(), '0974566111', 'test2@gmail.com', 'Quan 9',  'TP Thu Duc', 'Viet Nam', @CustomerID)
+END
+IF(NOT EXISTS(SELECT 1 FROM Inventory))
+BEGIN
+	DECLARE @UserID UNIQUEIDENTIFIER = (SELECT ID FROM [User] WHERE UserName = 'tu.Nguyen')
+
+	INSERT INTO Inventory(Id, AvailableQty, Book_ID_FK, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted)
+	SELECT NEWID(),  b.Quantity, b.Id, @UserID, GETDATE(), NULL, NULL, 0
+	FROM Book b
 END

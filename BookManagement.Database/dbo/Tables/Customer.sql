@@ -9,6 +9,7 @@
 	CreatedDate DATETIME,
 	ModifiedBy UNIQUEIDENTIFIER,
 	ModifiedDate DATETIME,
+	Debt MONEY,
 	IsActive BIT, 
     CONSTRAINT [FK_Customer_UserCreatedBy] FOREIGN KEY (CreatedBy) REFERENCES [User]([Id]), 
     CONSTRAINT [FK_Customer_UserModifiedBy] FOREIGN KEY (ModifiedBy) REFERENCES [User]([Id])

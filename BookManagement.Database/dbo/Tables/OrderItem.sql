@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[OrderItem]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	Book_ID_FK UNIQUEIDENTIFIER,
+	Quantity INT,
+	Price MONEY,
+	Order_ID_FK UNIQUEIDENTIFIER, 
+    CONSTRAINT [FK_OrderDetail_Book] FOREIGN KEY (Book_ID_FK) REFERENCES [Book]([Id]), 
+    CONSTRAINT [FK_OrderDetail_Order] FOREIGN KEY ([Order_ID_FK]) REFERENCES [Order]([Id])
+)

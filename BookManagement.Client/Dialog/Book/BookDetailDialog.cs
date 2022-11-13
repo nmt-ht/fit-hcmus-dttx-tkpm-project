@@ -22,7 +22,7 @@ namespace BookManagement.Client.Dialog
             txtAuthor.Text = Book.Author;
             txtBookName.Text = Book.Name;
             txtPrice.Text = Book.Price.ToString("c").Replace("$", string.Empty) + " VND";
-            txtAvailableQty.Text = Book.Quantity.ToString();
+            txtAvailableQty.Text = Book.AvailableQty < 0 ? "Out of stock" : Book.AvailableQty.ToString();
             txtDescription.Text = Book.Description;
             txtTypeOfBook.Text = Helper.GetEnumDescription(Book.TypeOfBook);
         }

@@ -15,30 +15,11 @@ public class InventoryData : IInventoryData
     }
     public Inventory GetInventoryByBookId(Guid id)
     {
-        var results = _db.LoadData<Inventory, dynamic>("spr_Inventory_GetByBookId", new { BookId = id });
+        var results = _db.LoadData<Inventory, dynamic>("spr_Inventory_GetInventoryByBookId", new { BookId = id });
         return results.FirstOrDefault();
     }
-    public bool InsertInventory(Inventory inventory)
-    {
-        var result = false;
-        try
-        {
-            _db.SaveData("spr_Inventory_InsertData",
-           new
-           {
-               inventory.BookId,
-               inventory.AvailableQty
-           });
-            result = true;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
-
-        return result;
-    }
-    public bool UpdateInventory(Inventory inventory)
+   
+    public bool UpdateInventory(Guid inventoryId, Guid bookId, int orderedQty)
     {
         var result = false;
         try
@@ -46,23 +27,10 @@ public class InventoryData : IInventoryData
             _db.SaveData("spr_Inventory_UpdateData",
             new
             {
-                inventory.Id,
-                inventory.BookId,
-                inventory.AvailableQty
+                inventoryId,
+                bookId,
+                orderedQty
             });
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
-        return result;
-    }
-    public bool DeleteInventory(Guid id)
-    {
-        var result = false;
-        try
-        {
-            _db.SaveData("spr_Inventory_DeleteData", new { Id = id });
         }
         catch (Exception ex)
         {

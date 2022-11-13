@@ -15,5 +15,6 @@ public class Book
     public Guid CreatedBy { get; set; }
     public DateTime? ModifiedDate { get; set; }
     public Guid ModifiedBy { get; set; }
+    public int AvailableQty { get; set; }
     public bool IsDeleted { get; set; }
 }

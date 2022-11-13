@@ -1,4 +1,5 @@
-﻿using BookManagement.Business.Helper;
+﻿using BookManagement.Business;
+using BookManagement.Business.Helper;
 using BookManagement.Client.Dialog;
 using BookManagement.Models;
 using static BookManagement.Business.Helper.BookDelegateHandler;
@@ -10,12 +11,14 @@ using static BookManagement.Client.DataType;
 namespace BookManagement.Client.UC;
 public partial class ucLayout : UserControl
 {
+    public IParameterBiz ParameterBiz { get; set; }
     public IList<Book> Books { get; set; } = new List<Book>();
     public IList<Customer> Customers { get; set; } = new List<Customer>();
     public eLayoutType LayoutType { get; set; }
     public Book SelectedBook { get; set; }
     public Customer SelectedCustomer { get; set; }
     private bool IsEdited { get; set; } = false;
+    private int LimitInputValue { get; set; } = 150;
 
     public event ReloadDataDelegate OnReloadDataDelegate;
     public event DeleteItemDelegate OnDeleteItemDelegate;
@@ -39,6 +42,10 @@ public partial class ucLayout : UserControl
         {
             case eLayoutType.Book:
                 BindDataForBook();
+                if(ParameterBiz is not null)
+                {
+                    //this.LimitInputValue = ParameterBiz.Get
+                }
                 break;
             case eLayoutType.Customer:
                 BindDataForCustomer();
@@ -127,7 +134,7 @@ public partial class ucLayout : UserControl
             case eLayoutType.Book:
                 using (var addBook = new AddEditBookDialog())
                 {
-                    addBook.SetParametters(new Book(), eAction.Add, this.Books);
+                    addBook.SetParametters(new Book(), eAction.Add, this.Books, LimitInputValue, 300);
                     addBook.DataBind();
                     if (addBook.ShowDialog() == DialogResult.OK)
                     {
@@ -180,8 +187,6 @@ public partial class ucLayout : UserControl
                     }
                 }
                 break;
-            default:
-                break;
         }
     }
 
@@ -212,8 +217,6 @@ public partial class ucLayout : UserControl
                         }
                     }
                 }
-                break;
-            default:
                 break;
         }
     }
@@ -251,15 +254,28 @@ public partial class ucLayout : UserControl
         var textSearch = txtSearchText.Text.ToLower();
         if (!string.IsNullOrEmpty(textSearch))
         {
-            var searchResults = this.Books.Where(x => x.Name.ToLower().Contains(textSearch)
-                                            || x.Author.ToLower().Contains(textSearch)
-                                            || x.Description.ToLower().Contains(textSearch)).ToList();
-            this.Books = searchResults;
+            switch (LayoutType)
+            {
+                case eLayoutType.Book:
+                    var searchResults = this.Books.Where(x => x.Name.ToLower().Contains(textSearch)
+                                         || x.Author.ToLower().Contains(textSearch)
+                                         || x.Description.ToLower().Contains(textSearch)).ToList();
+                    this.Books = searchResults;
+                    break;
+                case eLayoutType.Customer:
+                    var customerSearchRes = this.Customers.Where(x => x.FullName.ToLower().Contains(textSearch)
+                                         || x.FirstName.ToLower().Contains(textSearch)
+                                         || x.LastName.ToLower().Contains(textSearch)).ToList();
+                    this.Customers = customerSearchRes;
+                    break;
+                
+            }
+         
             DataBind();
         }
         else
         {
-            DisplayNotification(eMessageType.Warning, "Search", "Please enter book name/author/description to search.");
+            DisplayNotification(eMessageType.Warning, "Search", "Please enter your text search.");
         }
     }
 

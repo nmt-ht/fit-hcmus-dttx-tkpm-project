@@ -9,17 +9,9 @@ public class InventoryBiz : IInventoryBiz
     {
         _inventoryData = inventoryData;
     }
-    public bool InsertInventory(Inventory inventory)
+    public bool UpdateInventory(Guid inventoryId, Guid bookId, int orderedQty)
     {
-        return _inventoryData.InsertInventory(inventory);
-    }
-    public bool UpdateInventory(Inventory inventory)
-    {
-        return _inventoryData.InsertInventory(inventory);
-    }
-    public bool DeleteInventory(Guid id)
-    {
-        return _inventoryData.DeleteInventory(id);
+        return _inventoryData.UpdateInventory(inventoryId, bookId, orderedQty);
     }
     public IEnumerable<Inventory> GetInventories()
     {

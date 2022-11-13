@@ -33,7 +33,7 @@ partial class ucBookInfo
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnViewDetail = new FontAwesome.Sharp.IconButton();
-            this.btnBuy = new FontAwesome.Sharp.IconButton();
+            this.btnAddToCart = new FontAwesome.Sharp.IconButton();
             this.txtAuthor = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
@@ -118,24 +118,25 @@ partial class ucBookInfo
             this.btnViewDetail.UseVisualStyleBackColor = false;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
-            // btnBuy
+            // btnAddToCart
             // 
-            this.btnBuy.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnBuy.FlatAppearance.BorderSize = 0;
-            this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBuy.ForeColor = System.Drawing.Color.White;
-            this.btnBuy.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
-            this.btnBuy.IconColor = System.Drawing.Color.White;
-            this.btnBuy.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnBuy.IconSize = 16;
-            this.btnBuy.Location = new System.Drawing.Point(195, 376);
-            this.btnBuy.Name = "btnBuy";
-            this.btnBuy.Size = new System.Drawing.Size(96, 26);
-            this.btnBuy.TabIndex = 2;
-            this.btnBuy.Text = "Add to Cart";
-            this.btnBuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBuy.UseVisualStyleBackColor = false;
+            this.btnAddToCart.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnAddToCart.FlatAppearance.BorderSize = 0;
+            this.btnAddToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddToCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddToCart.ForeColor = System.Drawing.Color.White;
+            this.btnAddToCart.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
+            this.btnAddToCart.IconColor = System.Drawing.Color.White;
+            this.btnAddToCart.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddToCart.IconSize = 16;
+            this.btnAddToCart.Location = new System.Drawing.Point(195, 376);
+            this.btnAddToCart.Name = "btnAddToCart";
+            this.btnAddToCart.Size = new System.Drawing.Size(96, 26);
+            this.btnAddToCart.TabIndex = 2;
+            this.btnAddToCart.Text = "Add to Cart";
+            this.btnAddToCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddToCart.UseVisualStyleBackColor = false;
+            this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
             // 
             // txtAuthor
             // 
@@ -207,7 +208,7 @@ partial class ucBookInfo
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtAvailableQty);
             this.Controls.Add(this.txtAuthor);
-            this.Controls.Add(this.btnBuy);
+            this.Controls.Add(this.btnAddToCart);
             this.Controls.Add(this.btnViewDetail);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDescription);
@@ -232,7 +233,7 @@ partial class ucBookInfo
     private Label lblPrice;
     private Label lblDescription;
     private FontAwesome.Sharp.IconButton btnViewDetail;
-    private FontAwesome.Sharp.IconButton btnBuy;
+    private FontAwesome.Sharp.IconButton btnAddToCart;
     private Label txtAuthor;
     private Label txtPrice;
     private RichTextBox txtDescription;

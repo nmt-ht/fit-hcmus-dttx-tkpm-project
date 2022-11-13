@@ -18,14 +18,16 @@ namespace BookManagement
         private readonly IUserBiz _userBiz;
         private readonly IBookBiz _bookBiz;
         private readonly ICustomerBiz _customerBiz;
+        private readonly IParameterBiz _parameterBiz;
 
-        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz, ICustomerBiz customerBiz)
+        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz, ICustomerBiz customerBiz, IParameterBiz parameterBiz)
         {
             InitializeComponent();
             InitDesignUI();
             _userBiz = userBiz;
             _bookBiz = bookBiz;
             _customerBiz = customerBiz;
+            _parameterBiz = parameterBiz;
         }
 
         private void InitDesignUI()
@@ -152,7 +154,7 @@ namespace BookManagement
         private void btnDanhMucSach_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrBooks);
-            var bookDasboard = new FormBookDasboard(_bookBiz);
+            var bookDasboard = new FormBookDasboard(_bookBiz, _parameterBiz);
             bookDasboard.CurrentUser = this.CurrentUser;
             OpenChildForm(bookDasboard);
         }

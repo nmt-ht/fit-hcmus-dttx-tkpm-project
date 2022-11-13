@@ -11,12 +11,14 @@ namespace BookManagement.Client.Forms;
 public partial class FormBookDasboard : Form
 {
     private readonly IBookBiz _bookBiz;
+    private readonly IParameterBiz _parameterBiz;
     private ucLayout ucLayout;
     public User CurrentUser { get; set; }
-    public FormBookDasboard(IBookBiz bookBiz)
+    public FormBookDasboard(IBookBiz bookBiz, IParameterBiz parameterBiz)
     {
         InitializeComponent();
         _bookBiz = bookBiz;
+        _parameterBiz = parameterBiz;
     }
     private void FormBookDasboard_Load(object sender, EventArgs e)
     {
@@ -25,6 +27,7 @@ public partial class FormBookDasboard : Form
     private void DataBind()
     {
         ucLayout = new ucLayout();
+        ucLayout.ParameterBiz = _parameterBiz;
         ucLayout.LayoutType = eLayoutType.Book;
         ucLayout.Books = GetBooks();
         double height = SystemParameters.FullPrimaryScreenHeight;
@@ -48,6 +51,7 @@ public partial class FormBookDasboard : Form
                 DisplayNotification(eMessageType.Info, "Edit", "Updated data successfully.");
                 ReloadData();
             }
+            else { DisplayNotification(eMessageType.Info, "Edit", "Has an error. Please check!"); }
         }
     }
     private void ucBooks_OnAddBookDelegate(BookCustomEventArgs bookCustomEvent)
@@ -61,6 +65,7 @@ public partial class FormBookDasboard : Form
                 DisplayNotification(eMessageType.Info, "Add", "Added data successfully.");
                 ReloadData();
             }
+            else { DisplayNotification(eMessageType.Info, "Add", "Has an error. Please check!"); }
         }
     }
     private void ucBooks_OnDeleteItemDelegate(DeleteItemEventArgs deleteItemEvent)
@@ -71,6 +76,7 @@ public partial class FormBookDasboard : Form
             DisplayNotification(eMessageType.Info, "Delete", "Deleted data successfully.");
             ReloadData();
         }
+        else { DisplayNotification(eMessageType.Info, "Delete", "Has an error. Please check!"); }
     }
     private void ucBooks_OnReloadBooksDelegate(ReloadDataEventArgs reloadData)
     {

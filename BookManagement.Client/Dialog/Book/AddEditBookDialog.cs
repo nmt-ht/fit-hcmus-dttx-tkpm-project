@@ -11,18 +11,25 @@ namespace BookManagement.Client.Dialog
         private eAction Action { get; set; }
         private IList<Book> Books { get; set; }
         public Book BookHandler { get; set; }
+        private IList<eTypeOfBook> TypeOfBooks { get; set; }
+        private IList<eTypeOfAddBook> TypeOfAddBooks { get; set; }
+        private int LimitInputValue { get; set; } = 150;
+        private int MinimunAvaialbleQty { get; set; } = 300;
         public AddEditBookDialog()
         {
             InitializeComponent();
         }
-        public void SetParametters(Book book, eAction action, IList<Book> books)
+        public void SetParametters(Book book, eAction action, IList<Book> books, int limitInputValue = 0, int minimumAvailableQty = 0)
         {
             SelectedBook = book;
             Action = action;
-            this.Books = books;
+            Books = books;
+            LimitInputValue = limitInputValue;
+            MinimunAvaialbleQty = minimumAvailableQty;
         }
         public void DataBind()
         {
+            ClearData();
             LoadTypeOfBooks();
             LoadTypeOfAddBooks();
             BindDataToControl();
@@ -40,6 +47,8 @@ namespace BookManagement.Client.Dialog
             txtPrice.Text = book.Price.ToString();
             txtQuantity.Text = book.Quantity.ToString();
             txtDescription.Text = book.Description;
+            txtAvailableQty.Text = book.AvailableQty.ToString();
+            cboBookTypes.SelectedItem = book.TypeOfBook;
         }
 
         private void BindDataToControl()
@@ -85,13 +94,11 @@ namespace BookManagement.Client.Dialog
             }
         }
 
-        private IList<eTypeOfBook> TypeOfBooks { get; set; }
         private void LoadTypeOfBooks()
         {
             TypeOfBooks = Enum.GetValues(typeof(eTypeOfBook)).Cast<eTypeOfBook>().ToList();
         }
 
-        private IList<eTypeOfAddBook> TypeOfAddBooks { get; set; }
         private void LoadTypeOfAddBooks()
         {
             TypeOfAddBooks = Enum.GetValues(typeof(eTypeOfAddBook)).Cast<eTypeOfAddBook>().ToList();
@@ -115,18 +122,22 @@ namespace BookManagement.Client.Dialog
 
         private void cboTypeOfAddBook_SelectedValueChanged(object sender, EventArgs e)
         {
-            var typeofAddBook = (eTypeOfAddBook)this.cboTypeOfAddBook.SelectedValue;
-            switch (typeofAddBook)
+            if(this.cboTypeOfAddBook.SelectedValue != null)
             {
-                case eTypeOfAddBook.New:
-                    cboListOfBooks.Enabled = false;
-                    break;
-                case eTypeOfAddBook.Existed:
-                    cboListOfBooks.Enabled = true;
-                    cboListOfBooks.DataSource = this.Books;
-                    cboListOfBooks.DisplayMember = "Name";
-                    cboListOfBooks.ValueMember = "Id";
-                    break;
+                var typeofAddBook = (eTypeOfAddBook)this.cboTypeOfAddBook.SelectedValue;
+                switch (typeofAddBook)
+                {
+                    case eTypeOfAddBook.New:
+                        cboListOfBooks.Enabled = false;
+                        ClearData();
+                        break;
+                    case eTypeOfAddBook.Existed:
+                        cboListOfBooks.Enabled = true;
+                        cboListOfBooks.DataSource = this.Books;
+                        cboListOfBooks.DisplayMember = "Name";
+                        cboListOfBooks.ValueMember = "Id";
+                        break;
+                }
             }
         }
 
@@ -135,6 +146,7 @@ namespace BookManagement.Client.Dialog
             var book = (Book)cboListOfBooks.SelectedItem;
             if (book is not null)
                 BindBookData(book);
+            else ClearData();
         }
         
         #region Validation value for controls
@@ -177,13 +189,37 @@ namespace BookManagement.Client.Dialog
 
         private bool ValidateQuantity()
         {
-            return true;
+            var result = true;
+            var orderedQty = 0;
+            int.TryParse(txtQuantity.Text, out orderedQty);
+            if (orderedQty >= 0 && orderedQty < LimitInputValue)
+            {
+                errorProviderBook.SetError(txtPrice, "Quantity is greater than or equal 150.");
+                result = false;
+            }
+
+            return result;
         }
 
         private bool ValidateBeforeSave()
         {
+            var allowToEnterValue = ValidateQuantity() && ValidateAvailableQty();
             return !ValidateBookName() || !ValidateAuthor()
-                            || !ValidatePrice() || !ValidateQuantity();
+                            || !ValidatePrice() || !allowToEnterValue;
+        }
+
+        private bool ValidateAvailableQty()
+        {
+            var result = true;
+            var currentAvalaibleTy = 0;
+            int.TryParse(txtAvailableQty.Text, out currentAvalaibleTy);
+            if (currentAvalaibleTy > MinimunAvaialbleQty)
+            {
+                errorProviderBook.SetError(txtPrice, $"Only update new books if the current available quantity is less than {MinimunAvaialbleQty}");
+                result = false;
+            }
+
+            return result;
         }
 
         //Do not allow input character, only accept number for price and quantity
@@ -236,5 +272,18 @@ namespace BookManagement.Client.Dialog
             ValidatePrice();
         }
         #endregion
+
+        private void ClearData()
+        {
+            txtBookName.Text = string.Empty;
+            txtAuthor.Text = string.Empty;
+            txtQuantity.Text = string.Empty;
+            txtPrice.Text = string.Empty;
+            txtAvailableQty.Text = string.Empty;
+            txtDescription.Text = string.Empty;
+            cboBookTypes.SelectedIndex = -1;
+            cboListOfBooks.SelectedIndex = -1;
+            cboTypeOfAddBook.SelectedIndex = -1;
+        }
     }
 }
