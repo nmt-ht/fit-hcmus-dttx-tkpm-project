@@ -44,8 +44,8 @@ namespace BookManagement
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.lblCartTotal = new System.Windows.Forms.Label();
-            this.btnCart = new FontAwesome.Sharp.IconButton();
+            this.lblOrderTotal = new System.Windows.Forms.Label();
+            this.btnOrder = new FontAwesome.Sharp.IconButton();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnMaximinze = new FontAwesome.Sharp.IconButton();
             this.btnMiniminze = new FontAwesome.Sharp.IconButton();
@@ -272,8 +272,8 @@ namespace BookManagement
             this.pnlTitle.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.pnlTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTitle.Controls.Add(this.iconButton1);
-            this.pnlTitle.Controls.Add(this.lblCartTotal);
-            this.pnlTitle.Controls.Add(this.btnCart);
+            this.pnlTitle.Controls.Add(this.lblOrderTotal);
+            this.pnlTitle.Controls.Add(this.btnOrder);
             this.pnlTitle.Controls.Add(this.lblWelcomeUser);
             this.pnlTitle.Controls.Add(this.btnMaximinze);
             this.pnlTitle.Controls.Add(this.btnMiniminze);
@@ -301,32 +301,33 @@ namespace BookManagement
             this.iconButton1.TabIndex = 13;
             this.iconButton1.UseVisualStyleBackColor = true;
             // 
-            // lblCartTotal
+            // lblOrderTotal
             // 
-            this.lblCartTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCartTotal.AutoSize = true;
-            this.lblCartTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCartTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCartTotal.Location = new System.Drawing.Point(822, 12);
-            this.lblCartTotal.Name = "lblCartTotal";
-            this.lblCartTotal.Size = new System.Drawing.Size(28, 21);
-            this.lblCartTotal.TabIndex = 12;
-            this.lblCartTotal.Text = "10";
+            this.lblOrderTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOrderTotal.AutoSize = true;
+            this.lblOrderTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOrderTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblOrderTotal.Location = new System.Drawing.Point(822, 12);
+            this.lblOrderTotal.Name = "lblOrderTotal";
+            this.lblOrderTotal.Size = new System.Drawing.Size(28, 21);
+            this.lblOrderTotal.TabIndex = 12;
+            this.lblOrderTotal.Text = "10";
             // 
-            // btnCart
+            // btnOrder
             // 
-            this.btnCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCart.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnCart.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
-            this.btnCart.IconColor = System.Drawing.Color.White;
-            this.btnCart.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCart.IconSize = 30;
-            this.btnCart.Location = new System.Drawing.Point(782, 7);
-            this.btnCart.Name = "btnCart";
-            this.btnCart.Size = new System.Drawing.Size(49, 31);
-            this.btnCart.TabIndex = 11;
-            this.btnCart.UseVisualStyleBackColor = true;
+            this.btnOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrder.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOrder.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            this.btnOrder.IconColor = System.Drawing.Color.White;
+            this.btnOrder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnOrder.IconSize = 30;
+            this.btnOrder.Location = new System.Drawing.Point(782, 7);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(49, 31);
+            this.btnOrder.TabIndex = 11;
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // lblWelcomeUser
             // 
@@ -473,8 +474,8 @@ namespace BookManagement
         private PictureBox btnHome;
         private Label label2;
         private Label label1;
-        private IconButton btnCart;
-        private Label lblCartTotal;
+        private IconButton btnOrder;
+        private Label lblOrderTotal;
         private IconButton iconButton1;
     }
 }

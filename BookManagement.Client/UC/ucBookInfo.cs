@@ -2,14 +2,15 @@
 using BookManagement.Client.Dialog;
 using BookManagement.Models;
 using static BookManagement.Business.Helper.BookDelegateHandler;
+using static BookManagement.Business.Helper.OrderDelegateHandler;
 
 namespace BookManagement.Client.UC;
 public partial class ucBookInfo : UserControl
 {
     public Book Book { get; set; }
     public bool IsSelected { get; set; } = false;
-    ShoppingCart ShoppingCart = new ShoppingCart();
     public event SelectedBookDelegate OnSelectedBookDelegate;
+    public event OrderBookDelegate OnOrderBookDelegate;
     public ucBookInfo()
     {
         InitializeComponent();
@@ -31,7 +32,7 @@ public partial class ucBookInfo : UserControl
     private void ucBookInfo_Click(object sender, EventArgs e)
     {
         IsSelected = !IsSelected;
-        btnAddToCart.Visible = IsSelected;
+        btnAddToOrder.Visible = IsSelected;
         NotifyParent(this.Book, IsSelected);
         BorderedSelectItem();
     }
@@ -66,6 +67,17 @@ public partial class ucBookInfo : UserControl
         {
             if (!ShoppingCart.Books.ToList().Contains(this.Book))
                 ShoppingCart.Books.Add(this.Book);
+            
+            UpdateOrderItemNumberCallback();
+        }
+    }
+
+    private void UpdateOrderItemNumberCallback()
+    {
+        if(this.OnOrderBookDelegate is not null)
+        {
+            OrderCustomEventArgs orderCustomEventArgs = new OrderCustomEventArgs(true);
+            this.OnOrderBookDelegate(orderCustomEventArgs); 
         }
     }
 }

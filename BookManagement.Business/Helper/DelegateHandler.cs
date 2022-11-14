@@ -38,6 +38,11 @@ public class UserCustomEventArgs : EventArgs
     public User User { get; set; }
 }
 
+public static class OrderDelegateHandler
+{
+    public delegate void OrderBookDelegate(OrderCustomEventArgs orderCustomEventArgs);
+}
+
 public class BookCustomEventArgs : EventArgs
 {
     public BookCustomEventArgs(Book book, bool isSelected = false)
@@ -82,4 +87,10 @@ public class ParameterEventArgs : EventArgs
         this.Parameter = parameter;
     }
     public Parameter Parameter { get; set; }
+}
+
+public class OrderCustomEventArgs : EventArgs
+{
+    public OrderCustomEventArgs(bool reloadItem) => ReloadItem = reloadItem;
+    public bool ReloadItem { get; set; }
 }

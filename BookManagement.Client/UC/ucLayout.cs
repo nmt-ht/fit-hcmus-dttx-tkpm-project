@@ -5,6 +5,7 @@ using BookManagement.Models;
 using static BookManagement.Business.Helper.BookDelegateHandler;
 using static BookManagement.Business.Helper.CustomerDelegateHandler;
 using static BookManagement.Business.Helper.DeleteItemDelegateHandler;
+using static BookManagement.Business.Helper.OrderDelegateHandler;
 using static BookManagement.Business.Helper.ReloadDataDelegateHandler;
 using static BookManagement.Client.DataType;
 
@@ -26,6 +27,7 @@ public partial class ucLayout : UserControl
     public event SelectedBookDelegate OnEditBookDelegate;
     public event SelectedCustomerDelegate OnAddCustomerDelegate;
     public event SelectedCustomerDelegate OnEditCustomerDelegate;
+    public event OrderBookDelegate OnOrderBookDelegate;
     public ucLayout()
     {
         InitializeComponent();
@@ -83,10 +85,17 @@ public partial class ucLayout : UserControl
                 ucBookInfo.DataBind();
                 ucBookInfo.Margin = new Padding(10);
                 ucBookInfo.OnSelectedBookDelegate += UcBookInfo_OnSelectedBookDelegate;
+                ucBookInfo.OnOrderBookDelegate += UcBookInfo_OnOrderBookDelegate; ;
                 flowLayoutBooks.Controls.Add(ucBookInfo);
             }
         }
     }
+
+    private void UcBookInfo_OnOrderBookDelegate(OrderCustomEventArgs orderCustomEventArgs)
+    {
+        OnOrderBookDelegate.Invoke(orderCustomEventArgs);
+    }
+
     private void UcCustomerInfo_OnSelectedCustomerDelegate(CustomerCustomEventArgs customerCustomEventArgs)
     {
         var selectedCustomers = flowLayoutBooks.Controls.Cast<ucCustomerInfo>().Where(uc => uc.IsSelected).ToList();

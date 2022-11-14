@@ -33,7 +33,7 @@ partial class ucBookInfo
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnViewDetail = new FontAwesome.Sharp.IconButton();
-            this.btnAddToCart = new FontAwesome.Sharp.IconButton();
+            this.btnAddToOrder = new FontAwesome.Sharp.IconButton();
             this.txtAuthor = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
@@ -103,41 +103,41 @@ partial class ucBookInfo
             this.btnViewDetail.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnViewDetail.FlatAppearance.BorderSize = 0;
             this.btnViewDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewDetail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnViewDetail.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnViewDetail.ForeColor = System.Drawing.Color.White;
             this.btnViewDetail.IconChar = FontAwesome.Sharp.IconChar.Info;
             this.btnViewDetail.IconColor = System.Drawing.Color.White;
             this.btnViewDetail.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnViewDetail.IconSize = 15;
-            this.btnViewDetail.Location = new System.Drawing.Point(16, 376);
+            this.btnViewDetail.Location = new System.Drawing.Point(16, 379);
             this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(96, 26);
+            this.btnViewDetail.Size = new System.Drawing.Size(113, 31);
             this.btnViewDetail.TabIndex = 2;
             this.btnViewDetail.Text = "View Detail";
             this.btnViewDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnViewDetail.UseVisualStyleBackColor = false;
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
-            // btnAddToCart
+            // btnAddToOrder
             // 
-            this.btnAddToCart.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnAddToCart.FlatAppearance.BorderSize = 0;
-            this.btnAddToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddToCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddToCart.ForeColor = System.Drawing.Color.White;
-            this.btnAddToCart.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
-            this.btnAddToCart.IconColor = System.Drawing.Color.White;
-            this.btnAddToCart.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddToCart.IconSize = 16;
-            this.btnAddToCart.Location = new System.Drawing.Point(195, 376);
-            this.btnAddToCart.Name = "btnAddToCart";
-            this.btnAddToCart.Size = new System.Drawing.Size(96, 26);
-            this.btnAddToCart.TabIndex = 2;
-            this.btnAddToCart.Text = "Add to Cart";
-            this.btnAddToCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddToCart.UseVisualStyleBackColor = false;
-            this.btnAddToCart.Visible = false;
-            this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
+            this.btnAddToOrder.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnAddToOrder.FlatAppearance.BorderSize = 0;
+            this.btnAddToOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddToOrder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddToOrder.ForeColor = System.Drawing.Color.White;
+            this.btnAddToOrder.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
+            this.btnAddToOrder.IconColor = System.Drawing.Color.White;
+            this.btnAddToOrder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddToOrder.IconSize = 16;
+            this.btnAddToOrder.Location = new System.Drawing.Point(173, 379);
+            this.btnAddToOrder.Name = "btnAddToOrder";
+            this.btnAddToOrder.Size = new System.Drawing.Size(128, 31);
+            this.btnAddToOrder.TabIndex = 2;
+            this.btnAddToOrder.Text = "Add to Order";
+            this.btnAddToOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddToOrder.UseVisualStyleBackColor = false;
+            this.btnAddToOrder.Visible = false;
+            this.btnAddToOrder.Click += new System.EventHandler(this.btnAddToCart_Click);
             // 
             // txtAuthor
             // 
@@ -209,7 +209,7 @@ partial class ucBookInfo
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtAvailableQty);
             this.Controls.Add(this.txtAuthor);
-            this.Controls.Add(this.btnAddToCart);
+            this.Controls.Add(this.btnAddToOrder);
             this.Controls.Add(this.btnViewDetail);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDescription);
@@ -234,7 +234,7 @@ partial class ucBookInfo
     private Label lblPrice;
     private Label lblDescription;
     private FontAwesome.Sharp.IconButton btnViewDetail;
-    private FontAwesome.Sharp.IconButton btnAddToCart;
+    private FontAwesome.Sharp.IconButton btnAddToOrder;
     private Label txtAuthor;
     private Label txtPrice;
     private RichTextBox txtDescription;
