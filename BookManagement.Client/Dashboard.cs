@@ -190,7 +190,7 @@ namespace BookManagement
         private void btnCaiDat_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrSetting);
-            var formSetting = new FormSetting(_customerBiz);
+            var formSetting = new FormSetting(_parameterBiz);
             OpenChildForm(formSetting);
         }
 

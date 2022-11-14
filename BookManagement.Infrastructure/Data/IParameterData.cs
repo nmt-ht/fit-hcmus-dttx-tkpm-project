@@ -6,7 +6,7 @@ namespace BookManagement.Infrastructure.Data
     {
        bool DeleteParameter(Guid id);
        IEnumerable<Parameter> GetParameterById(Guid id);
-       IEnumerable<Parameter> GetParameter();
+       IEnumerable<Parameter> GetParameters();
        bool InsertParameter(Parameter parameter);
        bool UpdateParameter(Parameter parameter);
         

@@ -17,6 +17,11 @@ public static class CustomerDelegateHandler
     public delegate void SelectedCustomerDelegate(CustomerCustomEventArgs loginHandler);
 }
 
+public static class ParameterDelegateHandler
+{
+    public delegate void SelectedParameterDelegate(ParameterEventArgs loginHandler);
+}
+
 public static class ReloadDataDelegateHandler
 {
     public delegate void ReloadDataDelegate(ReloadDataEventArgs reload);
@@ -68,4 +73,13 @@ public class DeleteItemEventArgs : EventArgs
 {
     public DeleteItemEventArgs(Guid id) => this.Id = id;
     public Guid Id { get; set; }
+}
+
+public class ParameterEventArgs : EventArgs
+{
+    public ParameterEventArgs(Parameter parameter)
+    {
+        this.Parameter = parameter;
+    }
+    public Parameter Parameter { get; set; }
 }

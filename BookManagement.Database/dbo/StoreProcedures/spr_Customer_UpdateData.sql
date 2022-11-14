@@ -6,16 +6,16 @@
 
 CREATE PROCEDURE [dbo].[spr_Customer_UpdateData]
 	@Id UNIQUEIDENTIFIER, 
-	@FirstName VARCHAR(250) = NULL,
-	@LastName VARCHAR(250) = NULL,
+	@FirstName NVARCHAR(250) = NULL,
+	@LastName NVARCHAR(250) = NULL,
 	@Gender TINYINT = 0,
 	@Birthday DATETIME = NULL,
 	@ModifiedBy UNIQUEIDENTIFIER = NULL
 AS
 BEGIN
 	UPDATE C
-	SET C.FirstName = @FirstName,
-		c.LastName = @LastName,
+	SET C.FirstName = N'' + @FirstName + '',
+		c.LastName = N'' + @LastName + '',
 		c.Gender = @Gender,
 		c.Birthday = @Birthday,
 		c.ModifiedBy = @ModifiedBy,

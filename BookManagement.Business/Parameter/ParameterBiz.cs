@@ -21,19 +21,14 @@ public class ParameterBiz : IParameterBiz
         return _parameterData.DeleteParameter(id);
     }
 
-    public IEnumerable<Parameter> GetParameter()
+    public IEnumerable<Parameter> GetParameters()
     {
-        return _parameterData.GetParameter();
+        return _parameterData.GetParameters();
     }
 
     public bool UpdateParameter(Parameter parameter)
     {
         return _parameterData.UpdateParameter(parameter);
-    }
-
-    IEnumerable<Parameter> IParameterBiz.GetParameter()
-    {
-        throw new NotImplementedException();
     }
 }
 

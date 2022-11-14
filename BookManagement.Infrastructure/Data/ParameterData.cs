@@ -7,7 +7,7 @@ public class ParameterData: IParameterData
 {
     public readonly ISqlDataAccess _db;
     public ParameterData(ISqlDataAccess db) => _db = db;
-    public IEnumerable<Parameter> GetParameter()
+    public IEnumerable<Parameter> GetParameters()
     {
         return _db.LoadData<Parameter, dynamic>("spr_Parameter_GetAllParameter", new { });
     }
@@ -24,9 +24,7 @@ public class ParameterData: IParameterData
            new
            {
                parameter.Name,
-               parameter.ParameterType,
                parameter.Value,
-               parameter.IsActive
            });
             result = true;
         }
@@ -46,9 +44,7 @@ public class ParameterData: IParameterData
            new
            {
                Name = parameter.Name,
-               parameterType = parameter.ParameterType,
-               value = parameter.Value,
-               IsActive = parameter.IsActive,
+               Value = parameter.Value,
                Id = parameter.Id
            });
             result = true;

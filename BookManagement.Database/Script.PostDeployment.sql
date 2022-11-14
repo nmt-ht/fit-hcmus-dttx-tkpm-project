@@ -6,15 +6,15 @@ BEGIN
 		(NEWID(), 'than.tran', '123', 'Than', 'Tran', 0, 0, GETDATE())
 END
 GO
+DECLARE @UserID UNIQUEIDENTIFIER = NULL
+SELECT @UserID = u.Id
+FROM [User] u
+WHERE u.UserName = 'tu.nguyen'
+GO
 IF NOT EXISTS(SELECT 1 FROM dbo.Book)
 BEGIN
 
 	-- Reference: https://sachhay24h.com/list-10-tac-pham-van-hoc-kinh-dien-noi-tieng-the-gioi-a638.html
-	DECLARE @UserID UNIQUEIDENTIFIER = NULL
-	SELECT @UserID = u.Id
-	FROM [User] u
-	WHERE u.UserName = 'tu.nguyen'
-
 	INSERT INTO [Book] (Id, [Name], [Author], [Description], Quantity, TypeOfBook, Price, IsDeleted, CreatedDate, CreatedBy)
 	VALUES
 	(NEWID(), N'Những người khốn khổ', 'Victor Hugo', N'“Những người khốn khổ” được xuất bản năm 1962 là tác phẩm văn học nổi tiếng của đại văn hào Victor Hugo. “Những người khốn khổ” là câu chuyện về xã hội nước Pháp trong khoảng hơn 20 năm đầu thế kỉ 19 kể từ thời điểm Napoléon I lên ngôi và vài thập niên sau đó. Một tác phẩm rất ý nghĩa và mang lại nhiều giá trị thực tiễn. Xét về hiện thực, tác phẩm của Victor Hugo đã miêu tả một cách chân thực thế giới của những con người nghèo khổ. Tác phẩm khiến cho người đọc có cái nhìn về cuộc sống, biết yêu thương, chia sẻ và trân trọng những gì mình đáng có',
@@ -50,10 +50,6 @@ END
 IF NOT EXISTS(SELECT 1 FROM dbo.Customer)
 BEGIN
 	DECLARE @CustomerID UNIQUEIDENTIFIER = NEWID()
-	DECLARE @UserID UNIQUEIDENTIFIER = NULL
-	SELECT @UserID = u.Id
-	FROM [User] u
-	WHERE u.UserName = 'tu.nguyen'
 
 	INSERT INTO Customer (Id, FirstName, LastName, Gender, Birthday, IsActive, CreatedBy, CreatedDate)
 	VALUES(@CustomerID, 'Tu', 'Nguyen', 1, '10/12/1999', 1, @UserID, GETDATE())
@@ -74,8 +70,6 @@ BEGIN
 END
 IF(NOT EXISTS(SELECT 1 FROM Inventory))
 BEGIN
-	DECLARE @UserID UNIQUEIDENTIFIER = (SELECT ID FROM [User] WHERE UserName = 'tu.Nguyen')
-
 	INSERT INTO Inventory(Id, AvailableQty, Book_ID_FK, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted)
 	SELECT NEWID(),  b.Quantity, b.Id, @UserID, GETDATE(), NULL, NULL, 0
 	FROM Book b
