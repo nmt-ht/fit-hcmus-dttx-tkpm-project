@@ -47,6 +47,9 @@
     <Compile Update="UC\ucLoadingSpiner.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UC\ucOrderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UC\ucRow.cs">
       <SubType>UserControl</SubType>
     </Compile>

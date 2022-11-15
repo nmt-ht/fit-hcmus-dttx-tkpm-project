@@ -1,7 +1,6 @@
 ﻿using BookManagement.Business;
 using BookManagement.Business.Helper;
 using BookManagement.Client.Dialog;
-using BookManagement.Client.Dialog.Order;
 using BookManagement.Client.Forms;
 using BookManagement.Models;
 using FontAwesome.Sharp;
@@ -227,8 +226,10 @@ namespace BookManagement
             }
             else
             {
-                using (var orderDialog = new OrderDialog())
+                using (var orderDialog = new OrderDialog(_customerBiz))
                 {
+                    orderDialog.SetParameters();
+                    orderDialog.DataBind();
                     if (orderDialog.ShowDialog() == DialogResult.OK)
                     {
 

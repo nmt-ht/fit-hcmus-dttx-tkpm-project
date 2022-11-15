@@ -1,4 +1,4 @@
-﻿namespace BookManagement.Client.Dialog.Order
+﻿namespace BookManagement.Client.Dialog
 {
     partial class OrderDialog
     {
@@ -81,6 +81,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.flpOrderItems = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlItems.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -144,6 +145,7 @@
             // 
             // pnlItems
             // 
+            this.pnlItems.Controls.Add(this.flpOrderItems);
             this.pnlItems.Controls.Add(this.panel1);
             this.pnlItems.Location = new System.Drawing.Point(12, 194);
             this.pnlItems.Name = "pnlItems";
@@ -579,6 +581,7 @@
             this.cboCustomers.Name = "cboCustomers";
             this.cboCustomers.Size = new System.Drawing.Size(290, 23);
             this.cboCustomers.TabIndex = 1;
+            this.cboCustomers.SelectedValueChanged += new System.EventHandler(this.cboCustomers_SelectedValueChanged);
             // 
             // label8
             // 
@@ -736,6 +739,14 @@
             this.panel7.Size = new System.Drawing.Size(2, 545);
             this.panel7.TabIndex = 28;
             // 
+            // flpOrderItems
+            // 
+            this.flpOrderItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpOrderItems.Location = new System.Drawing.Point(0, 45);
+            this.flpOrderItems.Name = "flpOrderItems";
+            this.flpOrderItems.Size = new System.Drawing.Size(619, 486);
+            this.flpOrderItems.TabIndex = 1;
+            // 
             // OrderDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -827,5 +838,6 @@
         private RichTextBox richTextBox1;
         private Label label18;
         private Panel panel7;
+        private FlowLayoutPanel flpOrderItems;
     }
 }

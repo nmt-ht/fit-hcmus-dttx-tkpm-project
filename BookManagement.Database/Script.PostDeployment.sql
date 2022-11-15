@@ -6,14 +6,12 @@ BEGIN
 		(NEWID(), 'than.tran', '123', 'Than', 'Tran', 0, 0, GETDATE())
 END
 GO
-DECLARE @UserID UNIQUEIDENTIFIER = NULL
-SELECT @UserID = u.Id
-FROM [User] u
-WHERE u.UserName = 'tu.nguyen'
-GO
 IF NOT EXISTS(SELECT 1 FROM dbo.Book)
 BEGIN
-
+	DECLARE @UserID UNIQUEIDENTIFIER = NULL
+	SELECT @UserID = u.Id
+	FROM [User] u
+	WHERE u.UserName = 'tu.nguyen'
 	-- Reference: https://sachhay24h.com/list-10-tac-pham-van-hoc-kinh-dien-noi-tieng-the-gioi-a638.html
 	INSERT INTO [Book] (Id, [Name], [Author], [Description], Quantity, TypeOfBook, Price, IsDeleted, CreatedDate, CreatedBy)
 	VALUES
@@ -50,6 +48,9 @@ END
 IF NOT EXISTS(SELECT 1 FROM dbo.Customer)
 BEGIN
 	DECLARE @CustomerID UNIQUEIDENTIFIER = NEWID()
+	SELECT @UserID = u.Id
+	FROM [User] u
+	WHERE u.UserName = 'tu.nguyen'
 
 	INSERT INTO Customer (Id, FirstName, LastName, Gender, Birthday, IsActive, CreatedBy, CreatedDate)
 	VALUES(@CustomerID, 'Tu', 'Nguyen', 1, '10/12/1999', 1, @UserID, GETDATE())
@@ -70,6 +71,10 @@ BEGIN
 END
 IF(NOT EXISTS(SELECT 1 FROM Inventory))
 BEGIN
+	SELECT @UserID = u.Id
+	FROM [User] u
+	WHERE u.UserName = 'tu.nguyen'
+
 	INSERT INTO Inventory(Id, AvailableQty, Book_ID_FK, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted)
 	SELECT NEWID(),  b.Quantity, b.Id, @UserID, GETDATE(), NULL, NULL, 0
 	FROM Book b
