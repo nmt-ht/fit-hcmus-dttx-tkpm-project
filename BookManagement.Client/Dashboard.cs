@@ -1,10 +1,12 @@
 ﻿using BookManagement.Business;
 using BookManagement.Business.Helper;
 using BookManagement.Client.Dialog;
+using BookManagement.Client.Dialog.Order;
 using BookManagement.Client.Forms;
 using BookManagement.Models;
 using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
+using static BookManagement.Client.DataType;
 
 namespace BookManagement
 {
@@ -14,7 +16,6 @@ namespace BookManagement
         private Panel leftBorderBtn;
         private Form currentChildform;
         public User CurrentUser { get; set; }
-
         private readonly IUserBiz _userBiz;
         private readonly IBookBiz _bookBiz;
         private readonly ICustomerBiz _customerBiz;
@@ -29,7 +30,6 @@ namespace BookManagement
             _customerBiz = customerBiz;
             _parameterBiz = parameterBiz;
         }
-
         private void InitDesignUI()
         {
             leftBorderBtn = new Panel();
@@ -40,15 +40,14 @@ namespace BookManagement
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
-
         public void DataBind()
         {
             if (CurrentUser is not null)
             {
                 lblWelcomeUser.Text = this.CurrentUser.FullName;
+                UpdateOrderTotal();
             }
         }
-
         private struct RGBColors
         {
             public static Color clrBooks = Color.FromArgb(172, 126, 241);
@@ -156,7 +155,18 @@ namespace BookManagement
             ActivateButton(sender, RGBColors.clrBooks);
             var bookDasboard = new FormBookDasboard(_bookBiz, _parameterBiz);
             bookDasboard.CurrentUser = this.CurrentUser;
+            bookDasboard.OnOrderBookDelegate += BookDasboard_OnOrderBookDelegate;
             OpenChildForm(bookDasboard);
+        }
+        private void BookDasboard_OnOrderBookDelegate(OrderCustomEventArgs orderCustomEventArgs)
+        {
+            if (orderCustomEventArgs.ReloadItem)
+                UpdateOrderTotal();
+        }
+
+        private void UpdateOrderTotal()
+        {
+            lblOrderTotal.Text = ShoppingCart.Books.Count().ToString();
         }
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
@@ -164,7 +174,6 @@ namespace BookManagement
             var formEmployee = new FormEmployee(_userBiz);
             OpenChildForm(formEmployee);
         }
-
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrCustomer);
@@ -172,28 +181,24 @@ namespace BookManagement
             formCustomer.CurrentUser = this.CurrentUser;
             OpenChildForm(formCustomer);
         }
-
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrInvocie);
             var formInvoice = new FormInvoice(_customerBiz);
             OpenChildForm(formInvoice);
         }
-
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrReport);
             var formReport = new FormReport(_customerBiz);
             OpenChildForm(formReport);
         }
-
         private void btnCaiDat_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrSetting);
-            var formSetting = new FormSetting(_customerBiz);
+            var formSetting = new FormSetting(_parameterBiz);
             OpenChildForm(formSetting);
         }
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
             this.Hide();
@@ -213,6 +218,33 @@ namespace BookManagement
         private void SetCurrentUser(UserCustomEventArgs customEventArgs)
         {
             this.CurrentUser = customEventArgs.User;
+        }
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            if(ShoppingCart.Books.Count() == 0)
+            {
+                DisplayNotification(eMessageType.Warning, "Order Confirmation", "The order has no item.");
+            }
+            else
+            {
+                using (var orderDialog = new OrderDialog())
+                {
+                    if (orderDialog.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+        }
+
+        private void DisplayNotification(eMessageType messageType, string title, string message)
+        {
+            using (var messageBox = new MessageBoxDialog())
+            {
+                messageBox.SetParametters(title, message, messageType);
+                messageBox.DataBind();
+                messageBox.ShowDialog();
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace BookManagement.Business
 {
   public  interface IParameterBiz
     {
-        IEnumerable<Parameter> GetParameter();
+        IEnumerable<Parameter> GetParameters();
         bool AddNewParameter(Parameter Parameter);
         bool DeleteParameter(Guid id);
         bool UpdateParameter(Parameter Parameter);

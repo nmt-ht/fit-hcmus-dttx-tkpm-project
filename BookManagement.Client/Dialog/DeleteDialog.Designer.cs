@@ -67,15 +67,15 @@
             this.btnYes.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnYes.FlatAppearance.BorderSize = 0;
             this.btnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnYes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnYes.ForeColor = System.Drawing.Color.White;
             this.btnYes.IconChar = FontAwesome.Sharp.IconChar.Check;
             this.btnYes.IconColor = System.Drawing.Color.Lime;
             this.btnYes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnYes.IconSize = 20;
-            this.btnYes.Location = new System.Drawing.Point(268, 256);
+            this.btnYes.Location = new System.Drawing.Point(245, 256);
             this.btnYes.Name = "btnYes";
-            this.btnYes.Size = new System.Drawing.Size(64, 36);
+            this.btnYes.Size = new System.Drawing.Size(85, 36);
             this.btnYes.TabIndex = 28;
             this.btnYes.Text = "Yes";
             this.btnYes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -106,7 +106,7 @@
             this.btnNo.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnNo.FlatAppearance.BorderSize = 0;
             this.btnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNo.ForeColor = System.Drawing.Color.White;
             this.btnNo.IconChar = FontAwesome.Sharp.IconChar.X;
             this.btnNo.IconColor = System.Drawing.Color.Red;
@@ -114,7 +114,7 @@
             this.btnNo.IconSize = 20;
             this.btnNo.Location = new System.Drawing.Point(49, 256);
             this.btnNo.Name = "btnNo";
-            this.btnNo.Size = new System.Drawing.Size(64, 36);
+            this.btnNo.Size = new System.Drawing.Size(85, 36);
             this.btnNo.TabIndex = 28;
             this.btnNo.Text = "No";
             this.btnNo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

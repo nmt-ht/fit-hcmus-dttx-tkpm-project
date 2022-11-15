@@ -1,7 +1,7 @@
 ﻿namespace BookManagement.Models
 {
-    public class ShoppingCart
+    public static class ShoppingCart
     {
-        public IList<Book> Books { get; set; } = new List<Book>();
+        public static IList<Book> Books { get; set; } = new List<Book>();
     }
 }

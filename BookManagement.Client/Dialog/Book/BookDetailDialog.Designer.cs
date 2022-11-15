@@ -46,7 +46,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnExit = new FontAwesome.Sharp.IconButton();
-            this.btnAddToCart = new FontAwesome.Sharp.IconButton();
+            this.btnAddToOrder = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -265,24 +265,24 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnAddToCart
+            // btnAddToOrder
             // 
-            this.btnAddToCart.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnAddToCart.FlatAppearance.BorderSize = 0;
-            this.btnAddToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddToCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddToCart.ForeColor = System.Drawing.Color.White;
-            this.btnAddToCart.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
-            this.btnAddToCart.IconColor = System.Drawing.Color.White;
-            this.btnAddToCart.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAddToCart.IconSize = 16;
-            this.btnAddToCart.Location = new System.Drawing.Point(346, 515);
-            this.btnAddToCart.Name = "btnAddToCart";
-            this.btnAddToCart.Size = new System.Drawing.Size(96, 26);
-            this.btnAddToCart.TabIndex = 19;
-            this.btnAddToCart.Text = "Add to Cart";
-            this.btnAddToCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddToCart.UseVisualStyleBackColor = false;
+            this.btnAddToOrder.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnAddToOrder.FlatAppearance.BorderSize = 0;
+            this.btnAddToOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddToOrder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddToOrder.ForeColor = System.Drawing.Color.White;
+            this.btnAddToOrder.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
+            this.btnAddToOrder.IconColor = System.Drawing.Color.White;
+            this.btnAddToOrder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAddToOrder.IconSize = 16;
+            this.btnAddToOrder.Location = new System.Drawing.Point(313, 512);
+            this.btnAddToOrder.Name = "btnAddToOrder";
+            this.btnAddToOrder.Size = new System.Drawing.Size(129, 29);
+            this.btnAddToOrder.TabIndex = 19;
+            this.btnAddToOrder.Text = "Add to Order";
+            this.btnAddToOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddToOrder.UseVisualStyleBackColor = false;
             // 
             // BookDetailDialog
             // 
@@ -291,7 +291,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(230)))), ((int)(((byte)(211)))));
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(454, 553);
-            this.Controls.Add(this.btnAddToCart);
+            this.Controls.Add(this.btnAddToOrder);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -346,6 +346,6 @@
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
         private FontAwesome.Sharp.IconButton btnExit;
-        private FontAwesome.Sharp.IconButton btnAddToCart;
+        private FontAwesome.Sharp.IconButton btnAddToOrder;
     }
 }

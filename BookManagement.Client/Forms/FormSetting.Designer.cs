@@ -29,6 +29,7 @@ partial class FormSetting
     {
             this.pnlEmployee = new System.Windows.Forms.Panel();
             this.pnlSettingBody = new System.Windows.Forms.Panel();
+            this.flpSetting = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.pnlTitleCustom = new BookManagement.Utility.PanelCustom();
@@ -47,6 +48,7 @@ partial class FormSetting
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.btnEdit = new FontAwesome.Sharp.IconButton();
             this.pnlEmployee.SuspendLayout();
+            this.pnlSettingBody.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.pnlTitleCustom.SuspendLayout();
@@ -67,11 +69,20 @@ partial class FormSetting
             // 
             // pnlSettingBody
             // 
+            this.pnlSettingBody.Controls.Add(this.flpSetting);
             this.pnlSettingBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSettingBody.Location = new System.Drawing.Point(0, 86);
             this.pnlSettingBody.Name = "pnlSettingBody";
             this.pnlSettingBody.Size = new System.Drawing.Size(1097, 541);
             this.pnlSettingBody.TabIndex = 1;
+            // 
+            // flpSetting
+            // 
+            this.flpSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpSetting.Location = new System.Drawing.Point(0, 0);
+            this.flpSetting.Name = "flpSetting";
+            this.flpSetting.Size = new System.Drawing.Size(1097, 541);
+            this.flpSetting.TabIndex = 0;
             // 
             // panel1
             // 
@@ -233,6 +244,7 @@ partial class FormSetting
             this.btnSearch.Text = "Search";
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnDelete
             // 
@@ -251,6 +263,7 @@ partial class FormSetting
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // panel2
             // 
@@ -278,6 +291,7 @@ partial class FormSetting
             this.btnRefresh.Text = "Refesh";
             this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnAdd
             // 
@@ -295,6 +309,7 @@ partial class FormSetting
             this.btnAdd.Text = "Add new";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtSearchText
             // 
@@ -308,6 +323,7 @@ partial class FormSetting
             this.txtSearchText.PlaceholderText = "Search";
             this.txtSearchText.Size = new System.Drawing.Size(536, 32);
             this.txtSearchText.TabIndex = 12;
+            this.txtSearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchText_KeyDown);
             // 
             // btnEdit
             // 
@@ -326,6 +342,7 @@ partial class FormSetting
             this.btnEdit.Text = "Edit";
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // FormSetting
             // 
@@ -339,6 +356,7 @@ partial class FormSetting
             this.Text = "Report";
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.pnlEmployee.ResumeLayout(false);
+            this.pnlSettingBody.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlTitle.ResumeLayout(false);
@@ -371,4 +389,5 @@ partial class FormSetting
     private Label lblValue;
     private Label lblName;
     private Label lblNo;
+    private FlowLayoutPanel flpSetting;
 }

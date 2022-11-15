@@ -4,6 +4,7 @@ using BookManagement.Client.Dialog;
 using BookManagement.Client.UC;
 using BookManagement.Models;
 using System.Windows;
+using static BookManagement.Business.Helper.OrderDelegateHandler;
 using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.Forms;
@@ -14,6 +15,7 @@ public partial class FormBookDasboard : Form
     private readonly IParameterBiz _parameterBiz;
     private ucLayout ucLayout;
     public User CurrentUser { get; set; }
+    public event OrderBookDelegate OnOrderBookDelegate;
     public FormBookDasboard(IBookBiz bookBiz, IParameterBiz parameterBiz)
     {
         InitializeComponent();
@@ -37,9 +39,16 @@ public partial class FormBookDasboard : Form
         ucLayout.OnDeleteItemDelegate += ucBooks_OnDeleteItemDelegate;
         ucLayout.OnAddBookDelegate += ucBooks_OnAddBookDelegate;
         ucLayout.OnEditBookDelegate += ucBooks_OnEditBookDelegate;
+        ucLayout.OnOrderBookDelegate += UcLayout_OnOrderBookDelegate;
         ucLayout.DataBind();
         pnlBookDasboard.Controls.Add(ucLayout);
     }
+
+    private void UcLayout_OnOrderBookDelegate(OrderCustomEventArgs orderCustomEventArgs)
+    {
+        OnOrderBookDelegate.Invoke(orderCustomEventArgs);
+    }
+
     private void ucBooks_OnEditBookDelegate(BookCustomEventArgs bookCustomEvent)
     {
         if(bookCustomEvent is not null && bookCustomEvent.Book is not null)
