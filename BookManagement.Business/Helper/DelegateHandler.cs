@@ -96,7 +96,7 @@ public class OrderCustomEventArgs : EventArgs
     public OrderCustomEventArgs(bool reloadItem) => ReloadItem = reloadItem;
     public bool ReloadItem { get; set; }
 }
-}
+
 
 public class SearchEventArgs : EventArgs
 {
