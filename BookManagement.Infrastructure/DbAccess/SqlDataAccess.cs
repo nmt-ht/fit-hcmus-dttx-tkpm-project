@@ -27,6 +27,20 @@ namespace BookManagement.Infrastructure.DataAccess.DbAccess
             }
         }
 
+        public IEnumerable<T> QueryData<T, U>(string sql, U parameters, string connectionId = "Default")
+        {
+            try
+            {
+                IDbConnection connection = new SqlConnection(_configuration.GetConnectionString(connectionId));
+                var result = connection.Query<T>(sql, parameters, commandType: CommandType.Text);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void SaveData<T>(string storedProcedure, T parameters, string connectionId = "Default")
         {
             using IDbConnection connection = new SqlConnection(_configuration.GetConnectionString(connectionId));

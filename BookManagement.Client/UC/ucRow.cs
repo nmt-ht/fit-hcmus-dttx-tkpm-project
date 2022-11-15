@@ -36,6 +36,15 @@ public partial class ucRow : UserControl
         }
     }
 
+    public void SetValues(string no, string name, string value, string type, string active)
+    {
+        lblNo.Text = no;
+        lblName.Text = name;
+        lblValue.Text = value;
+        lblType.Text = type;
+        lblActive.Text = active;
+    }
+
     private void pnlTitleCustom_MouseClick(object sender, MouseEventArgs e)
     {
         NotifyParent(this.Parameter);

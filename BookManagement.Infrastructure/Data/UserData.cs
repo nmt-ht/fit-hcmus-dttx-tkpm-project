@@ -11,7 +11,7 @@ public class UserData : IUserData
     }
     public IEnumerable<User> GetUsers()
     {
-        return _db.LoadData<User, dynamic>("spr_User_GetAllUsers", new { });
+        return _db.QueryData<User, dynamic>("SELECT * FROM [User]", new { });
     }
     public User GetUserById(Guid id)
     {

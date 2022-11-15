@@ -170,7 +170,7 @@ namespace BookManagement
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrEmployee);
-            var formEmployee = new FormEmployee(_customerBiz);
+            var formEmployee = new FormEmployee(_userBiz);
             OpenChildForm(formEmployee);
         }
         private void btnKhachHang_Click(object sender, EventArgs e)

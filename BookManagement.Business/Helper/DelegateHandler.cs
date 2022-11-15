@@ -32,6 +32,8 @@ public static class DeleteItemDelegateHandler
     public delegate void DeleteItemDelegate(DeleteItemEventArgs deleteItemEvent);
 }
 
+public delegate void SearchHandler(SearchEventArgs e);
+
 public class UserCustomEventArgs : EventArgs
 {
     public UserCustomEventArgs(User user) => User = user;
@@ -93,4 +95,15 @@ public class OrderCustomEventArgs : EventArgs
 {
     public OrderCustomEventArgs(bool reloadItem) => ReloadItem = reloadItem;
     public bool ReloadItem { get; set; }
+}
+
+
+public class SearchEventArgs : EventArgs
+{
+    public string SearchText { get; set; }
+
+    public SearchEventArgs(string searchText)
+    {
+        SearchText = searchText;
+    }
 }
