@@ -22,6 +22,12 @@ public static class ParameterDelegateHandler
     public delegate void SelectedParameterDelegate(ParameterEventArgs loginHandler);
 }
 
+public static class OrderItemDelegateHandler
+{
+    public delegate void SelectedOrderItemDelegate(OrderItemEventArgs loginHandler);
+    public delegate void UpdateTotalCustomerCost(bool value);
+}
+
 public static class ReloadDataDelegateHandler
 {
     public delegate void ReloadDataDelegate(ReloadDataEventArgs reload);
@@ -97,7 +103,6 @@ public class OrderCustomEventArgs : EventArgs
     public bool ReloadItem { get; set; }
 }
 
-
 public class SearchEventArgs : EventArgs
 {
     public string SearchText { get; set; }
@@ -106,4 +111,13 @@ public class SearchEventArgs : EventArgs
     {
         SearchText = searchText;
     }
+}
+
+public class OrderItemEventArgs: EventArgs
+{
+    public OrderItemEventArgs(OrderItem orderItem)
+    {
+        this.OrderItem = orderItem;
+    }
+    public OrderItem OrderItem { get; set; }
 }

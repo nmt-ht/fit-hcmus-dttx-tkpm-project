@@ -38,12 +38,12 @@ BEGIN
 END
 IF NOT EXISTS(SELECT 1 FROM dbo.Parameter)
 BEGIN
-	INSERT INTO [Parameter] (Id, [Name], [IsActive], ParameterType, [Value])
+	INSERT INTO [Parameter] (Id, [Name], Code, [Value], ParameterType, [IsActive])
 	VALUES
-	(NEWID(), N'Số Lượng Sách Nhập Ít Nhất', 1, 1, 150),
-	(NEWID(), N'Đầu Sách Có Lượng Tồn Ít Hơn', 1, 1, 300),
-	(NEWID(), N'Khách Hàng Nợ Không Quá ', 1, 1, 20000),
-	(NEWID(), N'Đầu Sách Có Số Lượng Tồn Sau Khi Bán Ít Nhất ', 1, 1, 20)
+	(NEWID(), N'Số Lượng Sách Nhập Ít Nhất', 'MINIMUM_ENTER_BOOK', '150', 1, 1),
+	(NEWID(), N'Đầu Sách Có Lượng Tồn Ít Hơn', 'MINIMUM_AVALAIBLE_STOCK_QTY', '300', 1, 1),
+	(NEWID(), N'Khách Hàng Nợ Không Quá', 'MINIMUM_CUSTOMER_DEBT', '20000', 1, 1),
+	(NEWID(), N'Đầu Sách Có Số Lượng Tồn Sau Khi Bán Ít Nhất ', 'MINIMUM_AVALAIBLE_STOCK_QTY_SALE', '20', 1, 1)
 END
 IF NOT EXISTS(SELECT 1 FROM dbo.Customer)
 BEGIN

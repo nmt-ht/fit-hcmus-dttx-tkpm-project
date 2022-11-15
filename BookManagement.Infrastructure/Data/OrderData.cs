@@ -24,7 +24,8 @@ public class OrderData : IOrderData
                {
                    order.Id,
                    order.Customer_ID_FK,
-                   order.CreatedBy
+                   order.CreatedBy,
+                   order.TotalPrice,
                });
 
             if (order.OrderItems.Any())

@@ -10,15 +10,11 @@
 AS
 BEGIN
 	DECLARE @TotalQuantity INT = 0;
-	DECLARE @TotalPrice MONEY = 0
 
-	SELECT @TotalPrice = SUM(oi.Price), @TotalQuantity = SUM(oi.Quantity)
+	UPDATE I
+	SET I.AvailableQty = I.AvailableQty - oi.Quantity
 	FROM [Order] o
 	JOIN OrderItem oi ON oi.Order_ID_FK = o.Id
-	WHERE o.Id = @Id
-
-	UPDATE O
-	SET O.TotalQuantity = @TotalQuantity, o.TotalPrice = @TotalPrice
-	FROM [Order] o
+	JOIN Inventory i ON i.Book_ID_FK = oi.Book_ID_FK
 	WHERE o.Id = @Id
 END

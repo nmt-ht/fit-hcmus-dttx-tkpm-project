@@ -44,12 +44,14 @@ namespace BookManagement
             services.AddSingleton<IBookData, BookData>();
             services.AddSingleton<IParameterData, ParameterData>();
             services.AddSingleton<ICustomerData, CustomerData>();
+            services.AddSingleton<IOrderData, OrderData>();
 
             //Init DI for Bussiness class
             services.AddSingleton<IUserBiz, UserBiz>();
             services.AddSingleton<IBookBiz, BookBiz>();
             services.AddSingleton<IParameterBiz, ParameterBiz>();
             services.AddSingleton<ICustomerBiz, CustomerBiz>();
+            services.AddSingleton<IOrderBiz, OrderBiz>();
         }
     }
 }

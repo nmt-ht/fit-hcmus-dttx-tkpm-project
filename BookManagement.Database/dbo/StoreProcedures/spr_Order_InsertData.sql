@@ -7,7 +7,8 @@ CREATE PROCEDURE [dbo].[spr_Order_InsertData]
 (
 	@Id UNIQUEIDENTIFIER = NULL,
 	@Customer_ID_FK UNIQUEIDENTIFIER = NULL,
-	@CreatedBy UNIQUEIDENTIFIER = NULL
+	@CreatedBy UNIQUEIDENTIFIER = NULL,
+	@TotalPrice MONEY
 )
 AS
 BEGIN
@@ -31,6 +32,11 @@ BEGIN
 
 	SET @OrderID = @OrderID + CONVERT(VARCHAR(5), @MaxId)
 
-	INSERT INTO [Order](Id, OrderId, TotalQuantity, TotalPrice, OrderDate, Customer_ID_FK, CreatedBy)
-	VALUES(@Id, @OrderID, 0, 0, GETDATE(), @Customer_ID_FK, @CreatedBy)
+	INSERT INTO [Order](Id, OrderId, TotalPrice, OrderDate, CreatedBy)
+	VALUES(@Id, @OrderID, @TotalPrice, GETDATE(), @CreatedBy)
+
+	UPDATE C
+	SET C.Order_ID_FK = @Id
+	FROM Customer c
+	WHERE c.Id = @Customer_ID_FK
 END

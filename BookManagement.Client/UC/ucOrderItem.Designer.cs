@@ -142,10 +142,21 @@
             this.numQuantity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numQuantity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numQuantity.Location = new System.Drawing.Point(389, 3);
+            this.numQuantity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numQuantity.Name = "numQuantity";
             this.numQuantity.Size = new System.Drawing.Size(80, 19);
             this.numQuantity.TabIndex = 5;
             this.numQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numQuantity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numQuantity.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // ucOrderItem
             // 

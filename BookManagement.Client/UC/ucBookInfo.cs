@@ -11,6 +11,14 @@ public partial class ucBookInfo : UserControl
     public bool IsSelected { get; set; } = false;
     public event SelectedBookDelegate OnSelectedBookDelegate;
     public event OrderBookDelegate OnOrderBookDelegate;
+    private bool IsOutOfStockItem
+    {
+        get
+        {
+            return Book is not null && Book.AvailableQty <= 0;
+        }
+    }
+
     public ucBookInfo()
     {
         InitializeComponent();
@@ -25,7 +33,7 @@ public partial class ucBookInfo : UserControl
             txtDescription.Text = Book.Description?.Length > 100 ? Book.Description?.Substring(0, 100) + "..." : Book.Description;
             string price = Book.Price.ToString("c").Replace("$", string.Empty) + " VND";
             txtPrice.Text = price;
-            txtAvailableQty.Text = Book.AvailableQty <= 0 ? "Out of Stock" : Book.AvailableQty.ToString();
+            txtAvailableQty.Text = IsOutOfStockItem ? "Out of Stock" : Book.AvailableQty.ToString();
         }
     }
 
@@ -33,6 +41,7 @@ public partial class ucBookInfo : UserControl
     {
         IsSelected = !IsSelected;
         btnAddToOrder.Visible = IsSelected;
+        btnAddToOrder.Enabled = !IsOutOfStockItem;
         NotifyParent(this.Book, IsSelected);
         BorderedSelectItem();
     }

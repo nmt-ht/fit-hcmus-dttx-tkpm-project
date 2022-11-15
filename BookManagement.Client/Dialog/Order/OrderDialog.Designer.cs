@@ -33,6 +33,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlAuthor = new System.Windows.Forms.Panel();
             this.pnlItems = new System.Windows.Forms.Panel();
+            this.flpOrderItems = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelCustom1 = new BookManagement.Utility.PanelCustom();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,7 +66,7 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblTotalCustomerCost = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cboCustomers = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -81,7 +82,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.flpOrderItems = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlItems.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,6 +94,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(95)))), ((int)(((byte)(85)))));
+            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -109,6 +110,7 @@
             this.btnSave.Text = "Place Order";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnExit
             // 
@@ -151,6 +153,14 @@
             this.pnlItems.Name = "pnlItems";
             this.pnlItems.Size = new System.Drawing.Size(619, 531);
             this.pnlItems.TabIndex = 24;
+            // 
+            // flpOrderItems
+            // 
+            this.flpOrderItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpOrderItems.Location = new System.Drawing.Point(0, 45);
+            this.flpOrderItems.Name = "flpOrderItems";
+            this.flpOrderItems.Size = new System.Drawing.Size(619, 486);
+            this.flpOrderItems.TabIndex = 1;
             // 
             // panel1
             // 
@@ -294,7 +304,7 @@
             this.pntCustomerInfo.Controls.Add(this.txtFirstName);
             this.pntCustomerInfo.Controls.Add(this.panel4);
             this.pntCustomerInfo.Controls.Add(this.panel5);
-            this.pntCustomerInfo.Controls.Add(this.label10);
+            this.pntCustomerInfo.Controls.Add(this.lblTotalCustomerCost);
             this.pntCustomerInfo.Controls.Add(this.label9);
             this.pntCustomerInfo.Controls.Add(this.cboCustomers);
             this.pntCustomerInfo.Controls.Add(this.label8);
@@ -551,17 +561,17 @@
             this.panel5.Size = new System.Drawing.Size(252, 1);
             this.panel5.TabIndex = 10;
             // 
-            // label10
+            // lblTotalCustomerCost
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(95)))), ((int)(((byte)(85)))));
-            this.label10.Location = new System.Drawing.Point(118, 432);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(196, 30);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "100.000.000 VND";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTotalCustomerCost.AutoSize = true;
+            this.lblTotalCustomerCost.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotalCustomerCost.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(95)))), ((int)(((byte)(85)))));
+            this.lblTotalCustomerCost.Location = new System.Drawing.Point(118, 432);
+            this.lblTotalCustomerCost.Name = "lblTotalCustomerCost";
+            this.lblTotalCustomerCost.Size = new System.Drawing.Size(80, 30);
+            this.lblTotalCustomerCost.TabIndex = 3;
+            this.lblTotalCustomerCost.Text = "0 VNĐ";
+            this.lblTotalCustomerCost.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
             // 
@@ -739,14 +749,6 @@
             this.panel7.Size = new System.Drawing.Size(2, 545);
             this.panel7.TabIndex = 28;
             // 
-            // flpOrderItems
-            // 
-            this.flpOrderItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpOrderItems.Location = new System.Drawing.Point(0, 45);
-            this.flpOrderItems.Name = "flpOrderItems";
-            this.flpOrderItems.Size = new System.Drawing.Size(619, 486);
-            this.flpOrderItems.TabIndex = 1;
-            // 
             // OrderDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -813,7 +815,7 @@
         private Label label8;
         private ComboBox cboCustomers;
         private Label label9;
-        private Label label10;
+        private Label lblTotalCustomerCost;
         private Label label11;
         private Label label12;
         private TextBox txtLastName;

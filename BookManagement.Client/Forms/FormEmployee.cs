@@ -53,6 +53,7 @@ public partial class FormEmployee : Form
             foreach (var user in users)
             {
                 var row = new ucRow();
+                row.AutoSize = false;
                 row.Margin = new Padding(5);
                 row.SetValues(user.Id.ToString(), user.FullName, user.UserName, user.Type.ToString(), (!user.IsDeleted).ToString());
                 ucLayout.flowLayoutBooks.Controls.Add(row);

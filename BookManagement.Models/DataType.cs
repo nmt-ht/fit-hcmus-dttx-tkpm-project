@@ -69,7 +69,9 @@ namespace BookManagement.Models
 
         public enum eParameterType
         {
-
+            Book = 1,
+            Customer = 2,
+            Inventory = 3
         }
 
         public enum eAddressType 

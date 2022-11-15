@@ -19,8 +19,9 @@ namespace BookManagement
         private readonly IBookBiz _bookBiz;
         private readonly ICustomerBiz _customerBiz;
         private readonly IParameterBiz _parameterBiz;
+        private readonly IOrderBiz _orderBiz;
 
-        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz, ICustomerBiz customerBiz, IParameterBiz parameterBiz)
+        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz, ICustomerBiz customerBiz, IParameterBiz parameterBiz, IOrderBiz orderBiz)
         {
             InitializeComponent();
             InitDesignUI();
@@ -28,7 +29,9 @@ namespace BookManagement
             _bookBiz = bookBiz;
             _customerBiz = customerBiz;
             _parameterBiz = parameterBiz;
+            _orderBiz = orderBiz;
         }
+
         private void InitDesignUI()
         {
             leftBorderBtn = new Panel();
@@ -226,9 +229,9 @@ namespace BookManagement
             }
             else
             {
-                using (var orderDialog = new OrderDialog(_customerBiz))
+                using (var orderDialog = new OrderDialog(_customerBiz, _parameterBiz, _orderBiz))
                 {
-                    orderDialog.SetParameters();
+                    orderDialog.SetParameters(this.CurrentUser);
                     orderDialog.DataBind();
                     if (orderDialog.ShowDialog() == DialogResult.OK)
                     {
