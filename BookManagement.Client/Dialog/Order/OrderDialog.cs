@@ -210,7 +210,10 @@ namespace BookManagement.Client.Dialog
         {
             var created = _orderBiz.CreateNewOrder(this.Order);
             if (created)
+            {
                 DisplayNotification(eMessageType.Info, "Order", "Create an order successfully.");
+                ShoppingCart.Books = new List<Book>();
+            }
 
             //Create Receipt
             DialogResult = DialogResult.OK;
