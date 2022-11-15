@@ -27,6 +27,8 @@ public static class DeleteItemDelegateHandler
     public delegate void DeleteItemDelegate(DeleteItemEventArgs deleteItemEvent);
 }
 
+public delegate void SearchHandler(SearchEventArgs e);
+
 public class UserCustomEventArgs : EventArgs
 {
     public UserCustomEventArgs(User user) => User = user;
@@ -68,4 +70,14 @@ public class DeleteItemEventArgs : EventArgs
 {
     public DeleteItemEventArgs(Guid id) => this.Id = id;
     public Guid Id { get; set; }
+}
+
+public class SearchEventArgs : EventArgs
+{
+    public string SearchText { get; set; }
+
+    public SearchEventArgs(string searchText)
+    {
+        SearchText = searchText;
+    }
 }

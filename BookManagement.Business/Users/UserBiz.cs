@@ -27,4 +27,9 @@ public class UserBiz : IUserBiz
     {
         return _userData.GetUserByUserName(userName);
     }
+
+    public IEnumerable<User> GetUsers()
+    {
+        return _userData.GetUsers().ToList();
+    }
 }

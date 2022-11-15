@@ -26,6 +26,8 @@ public partial class ucLayout : UserControl
     public event SelectedBookDelegate OnEditBookDelegate;
     public event SelectedCustomerDelegate OnAddCustomerDelegate;
     public event SelectedCustomerDelegate OnEditCustomerDelegate;
+    public event SearchHandler OnSearch;
+    
     public ucLayout()
     {
         InitializeComponent();
@@ -274,6 +276,7 @@ public partial class ucLayout : UserControl
             }
          
             DataBind();
+            OnSearch(new SearchEventArgs(textSearch));
         }
         else
         {

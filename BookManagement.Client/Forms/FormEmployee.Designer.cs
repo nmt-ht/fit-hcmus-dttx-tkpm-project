@@ -32,7 +32,7 @@ partial class FormEmployee
             // 
             // pnlEmployee
             // 
-            this.pnlEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(118)))), ((int)(((byte)(176)))));
+            this.pnlEmployee.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.pnlEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEmployee.Location = new System.Drawing.Point(0, 0);
             this.pnlEmployee.Name = "pnlEmployee";
@@ -49,7 +49,7 @@ partial class FormEmployee
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployee";
             this.Text = "Employee";
-            this.Load += new System.EventHandler(this.FormCustomer_Load);
+            this.Load += new System.EventHandler(this.FormEmployee_Load);
             this.ResumeLayout(false);
 
     }

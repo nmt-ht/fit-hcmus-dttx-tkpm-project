@@ -226,7 +226,7 @@ partial class ucLayout
     private FontAwesome.Sharp.IconButton btnAdd;
     private FontAwesome.Sharp.IconButton btnEdit;
     private FontAwesome.Sharp.IconButton btnDelete;
-    private FlowLayoutPanel flowLayoutBooks;
+    public FlowLayoutPanel flowLayoutBooks;
     private TextBox txtSearchText;
     private Panel panel1;
     private Panel panel2;
