@@ -353,7 +353,7 @@ partial class FormSetting
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(161)))), ((int)(((byte)(251)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSetting";
-            this.Text = "Report";
+            this.Text = "Setting";
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.pnlEmployee.ResumeLayout(false);
             this.pnlSettingBody.ResumeLayout(false);

@@ -33,7 +33,9 @@ public partial class FormInvoice : Form
     private void UcLayout_OnPaidReciptDelegate(Business.Helper.ReceiptEventArgs receiptEventArgs)
     {
         _receiptBiz.UpdateReceipt(receiptEventArgs.Receipt);
-        DataBind();
+
+        ucLayout.Receipts = GetReceipts();
+        ucLayout.DataBind();
     }
 
     private void FormCustomer_Load(object sender, EventArgs e)
