@@ -12,6 +12,7 @@ namespace BookManagement.Client.Dialog
         private readonly ICustomerBiz _customerBiz;
         private readonly IParameterBiz _parameterBiz;
         private readonly IOrderBiz _orderBiz;
+        private readonly IReceiptBiz _receiptBiz;
 
         private User CurrentUser { get; set; }
         private Order Order { get; set; }
@@ -21,7 +22,7 @@ namespace BookManagement.Client.Dialog
         private const string MINIMUM_AVALAIBLE_STOCK_QTY_SALE = "MINIMUM_AVALAIBLE_STOCK_QTY_SALE";
         private int MinAvailableToSale { get; set; } = 0;
 
-        public OrderDialog(ICustomerBiz customerBiz, IParameterBiz parameterBiz, IOrderBiz orderBiz)
+        public OrderDialog(ICustomerBiz customerBiz, IParameterBiz parameterBiz, IOrderBiz orderBiz, IReceiptBiz receiptBiz)
         {
             InitializeComponent();
             flpOrderItems.AutoScroll = true;
@@ -32,6 +33,7 @@ namespace BookManagement.Client.Dialog
             _customerBiz = customerBiz;
             _parameterBiz = parameterBiz;
             _orderBiz = orderBiz;
+            _receiptBiz = receiptBiz;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -111,6 +113,7 @@ namespace BookManagement.Client.Dialog
 
                 Order = new Order
                 {
+                    Id = Guid.NewGuid(),
                     CreatedBy = CurrentUser.Id,
                     OrderDate = DateTime.Now,
                     TotalPrice = TotalCustomerCost(),
@@ -216,6 +219,15 @@ namespace BookManagement.Client.Dialog
             }
 
             //Create Receipt
+            var receipt = new Receipt
+            {
+                Order_ID_FK = this.Order.Id,
+                TotalCustCost = TotalCustomerCost(),
+                Status = Models.DataType.eReceiptStatus.Unpaid
+            };
+
+            _receiptBiz.CreateReceipt(receipt);
+
             DialogResult = DialogResult.OK;
         }
     }

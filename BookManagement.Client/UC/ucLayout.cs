@@ -15,6 +15,7 @@ public partial class ucLayout : UserControl
     public IParameterBiz ParameterBiz { get; set; }
     public IList<Book> Books { get; set; } = new List<Book>();
     public IList<Customer> Customers { get; set; } = new List<Customer>();
+    public IList<Receipt> Receipts { get; set; } = new List<Receipt>();
     public eLayoutType LayoutType { get; set; }
     public Book SelectedBook { get; set; }
     public Customer SelectedCustomer { get; set; }
@@ -54,6 +55,27 @@ public partial class ucLayout : UserControl
             case eLayoutType.Customer:
                 BindDataForCustomer();
                 break;
+            case eLayoutType.Receipt:
+                BindDataForInvoices();
+                break;
+        }
+    }
+
+    private void BindDataForInvoices()
+    {
+        if (Receipts.Any())
+        {
+            flowLayoutBooks.Controls.Clear();
+
+            foreach (var receipt in Receipts)
+            {
+                UcReceiptInfo ucCustomerInfo = new UcReceiptInfo();
+                ucCustomerInfo.Receipt = receipt;
+                //ucCustomerInfo.DataBind();
+                ucCustomerInfo.Margin = new Padding(20);
+                //ucCustomerInfo.OnSelectedCustomerDelegate += UcCustomerInfo_OnSelectedCustomerDelegate;
+                flowLayoutBooks.Controls.Add(ucCustomerInfo);
+            }
         }
     }
 

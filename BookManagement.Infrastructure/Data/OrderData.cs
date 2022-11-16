@@ -1,7 +1,7 @@
 ﻿using BookManagement.Infrastructure.DataAccess.DbAccess;
 using BookManagement.Models;
 
-namespace BookManagement.Infrastructure.Data;
+namespace BookManagement.Infrastructure.DataAccess.Data;
 public class OrderData : IOrderData
 {
     private IBookData _bookData;
@@ -16,9 +16,6 @@ public class OrderData : IOrderData
         var result = false;
         try
         {
-            Guid orderId = Guid.NewGuid();
-            order.Id = orderId;
-
             _db.SaveData("spr_Order_InsertData",
                new
                {

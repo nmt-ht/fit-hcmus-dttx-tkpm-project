@@ -8,19 +8,19 @@ namespace BookManagement.Client.Forms;
 
 public partial class FormInvoice : Form
 {
-    private readonly ICustomerBiz _customerBiz;
+    private readonly IReceiptBiz _receiptBiz;
     public User CurrentUser { get; set; }
     private ucLayout ucLayout;
-    public FormInvoice(ICustomerBiz customerBiz)
+    public FormInvoice(IReceiptBiz receiptBiz)
     {
         InitializeComponent();
-        _customerBiz = customerBiz;
+        _receiptBiz = receiptBiz;
     }
 
     private void DataBind()
     {
         ucLayout = new ucLayout();
-        ucLayout.LayoutType = eLayoutType.Customer;
+        ucLayout.LayoutType = eLayoutType.Receipt;
         double height = SystemParameters.FullPrimaryScreenHeight;
         double width = SystemParameters.FullPrimaryScreenWidth;
         ucLayout.Size = new System.Drawing.Size((int)width - 200, (int)height);

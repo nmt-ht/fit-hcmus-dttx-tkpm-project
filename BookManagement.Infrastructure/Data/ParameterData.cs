@@ -1,7 +1,7 @@
 ﻿using BookManagement.Infrastructure.DataAccess.DbAccess;
 using BookManagement.Models;
 
-namespace BookManagement.Infrastructure.Data;
+namespace BookManagement.Infrastructure.DataAccess.Data;
 
 public class ParameterData: IParameterData
 {

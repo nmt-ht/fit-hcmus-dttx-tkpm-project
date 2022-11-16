@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Receipt]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	CreatedDate DATETIME,
+	Order_ID_FK UNIQUEIDENTIFIER, 
+	TotalCustCost MONEY,
+	[Status] TINYINT,
+    CONSTRAINT [FK_Receipt_Order] FOREIGN KEY (Order_ID_FK) REFERENCES [Order]([Id])
+)

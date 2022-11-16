@@ -102,6 +102,11 @@
     <Build Include="dbo\StoreProcedures\spr_Order_UpdateCreateOrder.sql" />
     <Build Include="dbo\StoreProcedures\spr_Order_GetOrderById.sql" />
     <Build Include="dbo\StoreProcedures\spr_Order_GetOrderItemById.sql" />
+    <Build Include="dbo\Tables\Receipt.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Receipt_Create.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Receipt_Update.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Receipt_GetAll.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Receipt_GetById.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

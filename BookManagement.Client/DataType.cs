@@ -29,7 +29,8 @@
         public enum eLayoutType
         {
             Book = 0,
-            Customer = 1
+            Customer = 1,
+            Receipt = 2
         }
     }
 }

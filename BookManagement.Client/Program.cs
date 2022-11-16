@@ -1,5 +1,4 @@
 using BookManagement.Business;
-using BookManagement.Infrastructure.Data;
 using BookManagement.Infrastructure.DataAccess.Data;
 using BookManagement.Infrastructure.DataAccess.DbAccess;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +44,7 @@ namespace BookManagement
             services.AddSingleton<IParameterData, ParameterData>();
             services.AddSingleton<ICustomerData, CustomerData>();
             services.AddSingleton<IOrderData, OrderData>();
+            services.AddSingleton<IReceiptData, ReceiptData>();
 
             //Init DI for Bussiness class
             services.AddSingleton<IUserBiz, UserBiz>();
@@ -52,6 +52,7 @@ namespace BookManagement
             services.AddSingleton<IParameterBiz, ParameterBiz>();
             services.AddSingleton<ICustomerBiz, CustomerBiz>();
             services.AddSingleton<IOrderBiz, OrderBiz>();
+            services.AddSingleton<IReceiptBiz, ReceiptBiz>();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using BookManagement.Infrastructure.Data;
+﻿using BookManagement.Infrastructure.DataAccess.Data;
 using BookManagement.Models;
 
 namespace BookManagement.Business;

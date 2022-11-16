@@ -50,13 +50,14 @@ namespace BookManagement.Models
             Biography = 18
         }
 
-        public enum eGender { 
+        public enum eGender
+        {
             Unknown = 0,
             Male = 1,
             Female = 2
         }
 
-        public enum eUserType 
+        public enum eUserType
         {
             Admin = 0,
             User = 1
@@ -64,7 +65,8 @@ namespace BookManagement.Models
 
         public enum eReceiptStatus
         {
-
+            Unpaid = 0,
+            Paid = 1
         }
 
         public enum eParameterType
@@ -74,10 +76,10 @@ namespace BookManagement.Models
             Inventory = 3
         }
 
-        public enum eAddressType 
+        public enum eAddressType
         {
             Primary = 0,
             Other = 1
-        } 
+        }
     }
 }

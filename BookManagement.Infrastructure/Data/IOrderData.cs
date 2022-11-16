@@ -1,6 +1,6 @@
 ﻿using BookManagement.Models;
 
-namespace BookManagement.Infrastructure.Data;
+namespace BookManagement.Infrastructure.DataAccess.Data;
 public interface IOrderData
 {
     bool CreateNewOrder(Order order);
