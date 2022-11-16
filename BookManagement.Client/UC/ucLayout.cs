@@ -6,6 +6,7 @@ using static BookManagement.Business.Helper.BookDelegateHandler;
 using static BookManagement.Business.Helper.CustomerDelegateHandler;
 using static BookManagement.Business.Helper.DeleteItemDelegateHandler;
 using static BookManagement.Business.Helper.OrderDelegateHandler;
+using static BookManagement.Business.Helper.ReceiptDelegateHandler;
 using static BookManagement.Business.Helper.ReloadDataDelegateHandler;
 using static BookManagement.Client.DataType;
 
@@ -30,7 +31,8 @@ public partial class ucLayout : UserControl
     public event SelectedCustomerDelegate OnEditCustomerDelegate;
     public event OrderBookDelegate OnOrderBookDelegate;
     public event SearchHandler OnSearch;
-    
+    public event PaidReciptDelegate OnPaidReciptDelegate;
+
     public ucLayout()
     {
         InitializeComponent();
@@ -49,7 +51,7 @@ public partial class ucLayout : UserControl
                 BindDataForBook();
                 if(ParameterBiz is not null)
                 {
-                    //this.LimitInputValue = ParameterBiz.Get
+                    //this.LimitInputValue = ParameterBiz.GetParameters();
                 }
                 break;
             case eLayoutType.Customer:
@@ -69,14 +71,19 @@ public partial class ucLayout : UserControl
 
             foreach (var receipt in Receipts)
             {
-                UcReceiptInfo ucCustomerInfo = new UcReceiptInfo();
-                ucCustomerInfo.Receipt = receipt;
-                //ucCustomerInfo.DataBind();
-                ucCustomerInfo.Margin = new Padding(20);
-                //ucCustomerInfo.OnSelectedCustomerDelegate += UcCustomerInfo_OnSelectedCustomerDelegate;
-                flowLayoutBooks.Controls.Add(ucCustomerInfo);
+                UcReceiptInfo ucReceiptInfo = new UcReceiptInfo();
+                ucReceiptInfo.Receipt = receipt;
+                ucReceiptInfo.DataBind();
+                ucReceiptInfo.Margin = new Padding(20);
+                ucReceiptInfo.OnPaidReciptDelegate += UcReceiptInfo_OnPaidReciptDelegate;
+                flowLayoutBooks.Controls.Add(ucReceiptInfo);
             }
         }
+    }
+
+    private void UcReceiptInfo_OnPaidReciptDelegate(ReceiptEventArgs receiptEventArgs)
+    {
+        OnPaidReciptDelegate.Invoke(receiptEventArgs);
     }
 
     private void BindDataForCustomer()

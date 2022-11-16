@@ -5,9 +5,13 @@ namespace BookManagement.Business;
 public class ReceiptBiz : IReceiptBiz
 {
     private readonly IReceiptData _receiptData;
-    public ReceiptBiz(IReceiptData receiptData)
+    private readonly IOrderBiz _orderBiz;
+    private readonly ICustomerBiz _customerBiz;
+    public ReceiptBiz(IReceiptData receiptData, IOrderBiz orderBiz, ICustomerBiz customerBiz)
     {
         _receiptData = receiptData;
+        _orderBiz = orderBiz;
+        _customerBiz = customerBiz;
     }
 
     public bool CreateReceipt(Receipt receipt)
@@ -22,7 +26,17 @@ public class ReceiptBiz : IReceiptBiz
 
     public IEnumerable<Receipt> GetReceipts()
     {
-        return _receiptData.GetReceipts();
+        var receipts =  _receiptData.GetReceipts();
+        if(receipts is not null && receipts.Any())
+        {
+            foreach(var receipt in receipts)
+            {
+                var order = _orderBiz.GetOrderById(receipt.Order_ID_FK);
+                receipt.Order = order;
+            }
+        }
+
+        return receipts.ToList();
     }
 
     public Receipt GetReceiptById(Guid id)

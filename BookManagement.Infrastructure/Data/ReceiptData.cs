@@ -11,7 +11,8 @@ public class ReceiptData : IReceiptData
     }
     public IEnumerable<Receipt> GetReceipts()
     {
-        return _db.LoadData<Receipt, dynamic>("spr_Receipt_GetAll", new { });
+        var receipts = _db.LoadData<Receipt, dynamic>("spr_Receipt_GetAll", new { });
+        return receipts;
     }
     public Receipt GetReceiptById(Guid id)
     {

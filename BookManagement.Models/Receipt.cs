@@ -9,5 +9,6 @@ namespace BookManagement.Models
         public DateTime? CreatedDate { get; set; }
         public decimal TotalCustCost { get; set; }
         public Guid Order_ID_FK { get; set; }
+        public Order Order { get; set; }
     }
 }
