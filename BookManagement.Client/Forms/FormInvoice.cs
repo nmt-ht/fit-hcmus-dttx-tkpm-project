@@ -27,7 +27,14 @@ public partial class FormInvoice : Form
         ucLayout.Size = new System.Drawing.Size((int)width - 200, (int)height);
         ucLayout.DataBind();
         ucLayout.OnPaidReciptDelegate += UcLayout_OnPaidReciptDelegate;
+        ucLayout.OnReloadDataDelegate += UcLayout_OnReloadDataDelegate;
         pnlInvocie.Controls.Add(ucLayout);
+    }
+
+    private void UcLayout_OnReloadDataDelegate(Business.Helper.ReloadDataEventArgs reload)
+    {
+        ucLayout.Receipts = GetReceipts();
+        ucLayout.DataBind();
     }
 
     private void UcLayout_OnPaidReciptDelegate(Business.Helper.ReceiptEventArgs receiptEventArgs)

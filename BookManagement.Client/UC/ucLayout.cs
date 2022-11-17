@@ -61,6 +61,26 @@ public partial class ucLayout : UserControl
                 BindDataForInvoices();
                 break;
         }
+
+        EnableButtons();
+    }
+    
+    private void EnableButtons()
+    {
+        switch (LayoutType)
+        {
+            case eLayoutType.Book:
+            case eLayoutType.Customer:
+                btnAdd.Enabled = true;
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                break;
+            case eLayoutType.Receipt:
+                btnAdd.Enabled = false;
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+                break;
+        }
     }
 
     private void BindDataForInvoices()
@@ -310,11 +330,16 @@ public partial class ucLayout : UserControl
                                          || x.LastName.ToLower().Contains(textSearch)).ToList();
                     this.Customers = customerSearchRes;
                     break;
-                
+                case eLayoutType.Receipt:
+                    var receiptSearch = this.Receipts.Where(x => x.Order.OrderId.ToLower().Contains(textSearch)
+                                         || x.Order.Customer.FullName.ToLower().Contains(textSearch)).ToList();
+                    this.Receipts = receiptSearch;
+                    break;
             }
          
             DataBind();
-            OnSearch(new SearchEventArgs(textSearch));
+            //OnSearch(new SearchEventArgs(textSearch));
+            OnSearch?.Invoke(new SearchEventArgs(textSearch));
         }
         else
         {
