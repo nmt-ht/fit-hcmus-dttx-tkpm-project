@@ -1,9 +1,10 @@
 # Project
 FIT - HCMUS - Đào tạo từ xa - Thiết kế phần mềm
+Project name: Book Management
 
 # Framework
 .NET 6
 # Database
-MS Microsoft
+MS SQL Server, SQL
 # UI
-Winform Application
+Winform Application, Font Awesome
