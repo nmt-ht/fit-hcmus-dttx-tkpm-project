@@ -17,7 +17,7 @@ public partial class ucLayout : UserControl
     public IList<Book> Books { get; set; } = new List<Book>();
     public IList<Customer> Customers { get; set; } = new List<Customer>();
     public IList<Receipt> Receipts { get; set; } = new List<Receipt>();
-    public eLayoutType LayoutType { get; set; }
+    public eLayoutType? LayoutType { get; set; }
     public Book SelectedBook { get; set; }
     public Customer SelectedCustomer { get; set; }
     private bool IsEdited { get; set; } = false;
@@ -33,6 +33,9 @@ public partial class ucLayout : UserControl
     public event SearchHandler OnSearch;
     public event PaidReciptDelegate OnPaidReciptDelegate;
 
+    public event AddItemDelegate OnAddItem;
+    public event EditItemDelegate OnEditItem;
+    
     public ucLayout()
     {
         InitializeComponent();
@@ -214,6 +217,7 @@ public partial class ucLayout : UserControl
                 }
                 break;
         }
+        OnAddItem?.Invoke(e);
     }
 
     private void btnEdit_Click(object sender, EventArgs e)
@@ -250,6 +254,7 @@ public partial class ucLayout : UserControl
                 }
                 break;
         }
+        OnEditItem?.Invoke(e);
     }
 
     private void btnDelete_Click(object sender, EventArgs e)
@@ -281,6 +286,7 @@ public partial class ucLayout : UserControl
                 }
                 break;
         }
+        OnDeleteItemDelegate?.Invoke(new DeleteItemEventArgs(Guid.Empty));
     }
 
     private void DisplayNotification(eMessageType messageType, string title, string message)
@@ -421,5 +427,17 @@ public partial class ucLayout : UserControl
                 }
                 break;
         }
+    }
+
+    public void ShowEditActions()
+    {
+        btnEdit.Enabled = btnDelete.Enabled = true;
+        btnEdit.BackColor = btnDelete.BackColor = Color.Lavender;
+    }
+
+    public void HideEditActions()
+    {
+        btnEdit.Enabled = btnDelete.Enabled = false;
+        btnEdit.BackColor = btnDelete.BackColor = Color.Linen;
     }
 }
