@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[BookStock]
+﻿CREATE TABLE [dbo].[InventorySnapshot]
 (
 	[sYear] VARCHAR(4) NOT NULL , 
     [sMonth] VARCHAR(2) NOT NULL,
@@ -11,3 +11,4 @@
 	UserDate SMALLDATETIME,
 	PRIMARY KEY([sYear],[sMonth],Book_ID_FK)
 )
+

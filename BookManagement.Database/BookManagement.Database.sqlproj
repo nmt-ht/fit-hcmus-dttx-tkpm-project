@@ -107,7 +107,8 @@
     <Build Include="dbo\StoreProcedures\spr_Receipt_Update.sql" />
     <Build Include="dbo\StoreProcedures\spr_Receipt_GetAll.sql" />
     <Build Include="dbo\StoreProcedures\spr_Receipt_GetById.sql" />
-    <Build Include="dbo\Tables\BookStock.sql" />
+    <Build Include="dbo\StoreProcedures\spr_Report_GetStockForBook.sql" />
+    <Build Include="dbo\Tables\InventorySnapshot.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

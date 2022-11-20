@@ -539,7 +539,7 @@
   <DataSets>
     <DataSet Name="BCTonSachDataset">
       <Query>
-        <DataSourceName>BookManagementDBDataSet1</DataSourceName>
+        <DataSourceName>BookManagementDBDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -582,11 +582,11 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BookManagementDBDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\LENOVO\Desktop\fit-hcmus-dttx-tkpm-project-develop-20221118-23hNew\BookManagement.Client\BookManagementDBDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>spr_Inventory_GetAll</rd:TableName>
+        <rd:SchemaPath>D:\New folder (2)\BookManagement.Client\BookManagementDBDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>spr_Report_GetStockForBook</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>spr_Inventory_GetAllTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>spr_Report_GetStockForBookTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

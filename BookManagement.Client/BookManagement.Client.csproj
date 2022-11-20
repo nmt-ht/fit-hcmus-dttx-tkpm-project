@@ -6,16 +6,24 @@
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>241b29c4-98ac-4fa3-b3ae-9fd2297e9526</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
+	  <None Remove="Report\ReportWHStock.rdlc" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Content Include="appsettings.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Report\ReportWHStock.rdlc">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -27,7 +35,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
 		<PackageReference Include="FontAwesome.Sharp" Version="6.1.1" />
-		<PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
+		<PackageReference Include="Microsoft.ReportViewer.Windows" Version="11.0.3452" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -38,6 +46,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="BookManagementDBDataSet.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>BookManagementDBDataSet.xsd</DependentUpon>
+	  </Compile>
 	  <Compile Update="Dialog\MessageBoxDialog.cs">
 	    <SubType>Form</SubType>
 	  </Compile>
@@ -77,8 +90,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="Report\ReportWHStock.rdlc">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <None Update="BookManagementDBDataSet.xsd">
+	    <Generator>MSDataSetGenerator</Generator>
+	    <LastGenOutput>BookManagementDBDataSet.Designer.cs</LastGenOutput>
 	  </None>
 	  <None Update="Resources\loading.gif">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>

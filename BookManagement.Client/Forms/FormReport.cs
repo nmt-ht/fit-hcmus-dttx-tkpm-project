@@ -4,9 +4,9 @@ namespace BookManagement.Client.Forms;
 
 public partial class FormReport : Form
 {
-    private IBookStockBiz _bookStockBiz;
+    private IInventorySnapshotBiz _bookStockBiz;
     private bool IsBinded = false;
-    public FormReport(IBookStockBiz bookStockBiz)
+    public FormReport(IInventorySnapshotBiz bookStockBiz)
     {
         InitializeComponent();
         _bookStockBiz = bookStockBiz;

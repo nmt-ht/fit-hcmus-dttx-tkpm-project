@@ -7,29 +7,29 @@ namespace BookManagement.Client
 {
     public partial class RptWHStock : Form
     {
-        private readonly IBookStockBiz _bookStockBiz;
-        public RptWHStock(IBookStockBiz bookStockBiz)
+        private readonly IInventorySnapshotBiz _inventorySnapshotBiz;
+        public RptWHStock(IInventorySnapshotBiz inventorySnapshotBiz)
         {
             InitializeComponent();
-            _bookStockBiz = bookStockBiz;
-            reportViewer1.LocalReport.ReportEmbeddedResource = "ReportWHStock.rdlc";
+            _inventorySnapshotBiz = inventorySnapshotBiz;
+            reportViewer1.LocalReport.ReportEmbeddedResource = "BookManagement.Client.Report.ReportWHStock.rdlc";
             var dataSource = GetDataSource();
             reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("BCTonSachDataset", dataSource));
             reportViewer1.RefreshReport();
         }
 
-        private IList<BookStock> GetDataSource()
+        private IList<InventorySnapshot> GetDataSource()
         {
-            return _bookStockBiz.GetBookStocks().ToList();
+            return _inventorySnapshotBiz.GetInventorySnapshots().ToList();
         }
 
         public DataTable ToDataTable()
         {
-            List<BookStock> items = new List<BookStock>();
-            items = _bookStockBiz.GetBookStocks().ToList();
-            var tb = new DataTable(typeof(BookStock).Name);
+            List<InventorySnapshot> items = new List<InventorySnapshot>();
+            items = _inventorySnapshotBiz.GetInventorySnapshots().ToList();
+            var tb = new DataTable(typeof(InventorySnapshot).Name);
 
-            PropertyInfo[] props = typeof(BookStock).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            PropertyInfo[] props = typeof(InventorySnapshot).GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
             foreach (PropertyInfo prop in props)
             {
@@ -37,7 +37,7 @@ namespace BookManagement.Client
                 tb.Columns.Add(prop.Name, t);
             }
 
-            foreach (BookStock item in items)
+            foreach (InventorySnapshot item in items)
             {
                 var values = new object[props.Length];
 
