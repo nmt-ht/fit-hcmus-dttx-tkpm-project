@@ -11,7 +11,7 @@ public class UserData : IUserData
     }
     public IEnumerable<User> GetUsers()
     {
-        return _db.QueryData<User, dynamic>("SELECT * FROM [User]", new { });
+        return _db.QueryData<User, dynamic>("SELECT * FROM [User] Where IsDeleted = 0", new { });
     }
     public User GetUserById(Guid id)
     {
@@ -49,6 +49,7 @@ public class UserData : IUserData
             _db.SaveData("spr_User_UpdateData",
             new
             {
+                user.Id,
                 user.FirstName,
                 user.LastName,
                 user.UserName,
