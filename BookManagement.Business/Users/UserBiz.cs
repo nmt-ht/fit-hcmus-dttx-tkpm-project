@@ -32,4 +32,14 @@ public class UserBiz : IUserBiz
     {
         return _userData.GetUsers().ToList();
     }
+
+    public bool DeleteUser(Guid userId)
+    {
+        return _userData.DeleteUser(userId);
+    }
+
+    public bool UpdateUser(User user)
+    {
+        return _userData.UpdateUser(user);
+    }
 }

@@ -11,6 +11,9 @@
     <Compile Update="Dialog\Customer\AddEditCustomerDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Dialog\Employee\EmployeeDetailsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Dialog\LoginDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -36,6 +39,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UC\ucCustomerInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UC\ucEmployeeInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UC\ucLayout.cs">

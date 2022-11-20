@@ -1,6 +1,7 @@
 ﻿using BookManagement.Business.Helper;
 using BookManagement.Client.Forms;
 using BookManagement.Models;
+using System.Data;
 using static BookManagement.Business.Helper.ParameterDelegateHandler;
 
 namespace BookManagement.Client.UC;
@@ -48,7 +49,8 @@ public partial class ucRow : UserControl
     private void pnlTitleCustom_MouseClick(object sender, MouseEventArgs e)
     {
         NotifyParent(this.Parameter);
-        FormSettingMaster.ResetBackColor();
+        OnRowSelected?.Invoke(new string[] { lblNo.Text, lblName.Text, lblValue.Text, lblType.Text, lblActive.Text });
+        FormSettingMaster?.ResetBackColor();
         this.pnlTitleCustom.GradientTopColor = Color.FromArgb(107, 131, 239);
         this.pnlTitleCustom.GradientBottomColor = Color.FromArgb(195, 121, 225);
     }
@@ -56,6 +58,7 @@ public partial class ucRow : UserControl
     public int Index { get; set; }
     public Parameter Parameter { get; set; }
     public event SelectedParameterDelegate OnSelectedParameterDelegate;
+    public event SelectedRowDelegate OnRowSelected;
     public void NotifyParent(Parameter parameter)
     {
         if (OnSelectedParameterDelegate != null)

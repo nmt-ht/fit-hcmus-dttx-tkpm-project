@@ -155,7 +155,7 @@
             this.lblNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlTitleCustom_MouseClick);
             // 
-            // ucSetting
+            // ucRow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(161)))), ((int)(((byte)(251)))));
@@ -163,7 +163,7 @@
             this.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "ucSetting";
+            this.Name = "ucRow";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.Size = new System.Drawing.Size(780, 30);
             this.pnlTitleCustom.ResumeLayout(false);

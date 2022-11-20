@@ -7,4 +7,6 @@ public interface IUserBiz
     User GetUserByUserName(string userName);
     bool AddUser(User user);
     bool CheckExistingUser(string userName);
+    bool DeleteUser(Guid userId);
+    bool UpdateUser(User user);
 }

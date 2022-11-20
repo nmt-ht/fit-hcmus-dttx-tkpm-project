@@ -1,4 +1,5 @@
 ﻿using BookManagement.Models;
+using System.Data;
 
 namespace BookManagement.Business.Helper;
 
@@ -50,6 +51,10 @@ public static class OrderDelegateHandler
 {
     public delegate void OrderBookDelegate(OrderCustomEventArgs orderCustomEventArgs);
 }
+
+public delegate void AddItemDelegate(EventArgs eventArgs);
+public delegate void EditItemDelegate(EventArgs eventArgs);
+public delegate void SelectedRowDelegate(string[] items);
 
 public class BookCustomEventArgs : EventArgs
 {
