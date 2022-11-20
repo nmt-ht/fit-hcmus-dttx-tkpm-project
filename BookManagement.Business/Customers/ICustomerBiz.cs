@@ -7,6 +7,7 @@ namespace BookManagement.Business
         bool AddNewCustomer(Customer customer);
         bool DeleteCustomer(Guid id);
         IEnumerable<Customer> GetCustomers();
+        Customer GetCustomerById(Guid id);
         bool UpdateCustomer(Customer customer);
     }
 }

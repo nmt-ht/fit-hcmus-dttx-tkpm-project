@@ -20,6 +20,11 @@ public class CustomerBiz : ICustomerBiz
         return _customerData.DeleteCustomer(id);
     }
 
+    public Customer GetCustomerById(Guid id)
+    {
+        return _customerData.GetCustomerById(id);
+    }
+
     public IEnumerable<Customer> GetCustomers()
     {
         return _customerData.GetCustomers();

@@ -32,11 +32,7 @@ BEGIN
 
 	SET @OrderID = @OrderID + CONVERT(VARCHAR(5), @MaxId)
 
-	INSERT INTO [Order](Id, OrderId, TotalPrice, OrderDate, CreatedBy)
-	VALUES(@Id, @OrderID, @TotalPrice, GETDATE(), @CreatedBy)
-
-	UPDATE C
-	SET C.Order_ID_FK = @Id
-	FROM Customer c
-	WHERE c.Id = @Customer_ID_FK
+	INSERT INTO [Order](Id, OrderId, TotalPrice, OrderDate, CreatedBy, Customer_ID_FK)
+	VALUES(@Id, @OrderID, @TotalPrice, GETDATE(), @CreatedBy, @Customer_ID_FK)
+	
 END

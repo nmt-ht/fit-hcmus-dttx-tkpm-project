@@ -26,8 +26,15 @@ public class CustomerData : ICustomerData
     }
     public Customer GetCustomerById(Guid id)
     {
-        var results = _db.LoadData<Customer, dynamic>("spr_Customer_GetCustomerById", new { Id = id });
-        return results.FirstOrDefault();
+        var results = _db.LoadData<Customer, dynamic>("spr_Customer_GetCustomerById", new { Id = id }).FirstOrDefault();
+        var customerAddresss = _db.LoadData<CustomerAddress, dynamic>("spr_Customer_GetCustomerAddresses", new { });
+        foreach (var address in customerAddresss)
+        {
+            if (address.Customer_ID_FK == results.Id)
+                results.Addresses.Add(address);
+        }
+
+        return results;
     }
     public bool InsertCustomer(Customer customer)
     {

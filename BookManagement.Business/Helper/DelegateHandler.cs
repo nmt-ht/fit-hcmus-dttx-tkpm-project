@@ -5,27 +5,32 @@ namespace BookManagement.Business.Helper;
 
 public static class UserDelegateHandler
 {
-    public delegate void UserDelegate(UserCustomEventArgs loginHandler);
+    public delegate void UserDelegate(UserCustomEventArgs userCustomEventArgs);
 }
 
 public static class BookDelegateHandler
 {
-    public delegate void SelectedBookDelegate(BookCustomEventArgs loginHandler);
+    public delegate void SelectedBookDelegate(BookCustomEventArgs bookCustomEventArgs);
 }
 
 public static class CustomerDelegateHandler
 {
-    public delegate void SelectedCustomerDelegate(CustomerCustomEventArgs loginHandler);
+    public delegate void SelectedCustomerDelegate(CustomerCustomEventArgs customerCustomEventArgs);
 }
 
 public static class ParameterDelegateHandler
 {
-    public delegate void SelectedParameterDelegate(ParameterEventArgs loginHandler);
+    public delegate void SelectedParameterDelegate(ParameterEventArgs parameterEventArgs);
+}
+
+public static class ReceiptDelegateHandler
+{
+    public delegate void PaidReciptDelegate(ReceiptEventArgs receiptEventArgs);
 }
 
 public static class OrderItemDelegateHandler
 {
-    public delegate void SelectedOrderItemDelegate(OrderItemEventArgs loginHandler);
+    public delegate void SelectedOrderItemDelegate(OrderItemEventArgs orderItemEventArgs);
     public delegate void UpdateTotalCustomerCost(bool value);
 }
 
@@ -125,4 +130,13 @@ public class OrderItemEventArgs: EventArgs
         this.OrderItem = orderItem;
     }
     public OrderItem OrderItem { get; set; }
+}
+
+public class ReceiptEventArgs: EventArgs
+{
+    public ReceiptEventArgs(Receipt receipt)
+    {
+        this.Receipt = receipt;
+    }
+    public Receipt Receipt { get; set; }
 }

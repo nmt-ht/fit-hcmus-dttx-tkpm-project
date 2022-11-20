@@ -17,9 +17,8 @@ BEGIN
 	WHERE r.Id = @Id AND r.Order_ID_FK = @Order_ID_FK
 
 	UPDATE cus
-	SET cus.Debt = cus.Debt - r.TotalCustCost
+	SET cus.Debt = cus.Debt - o.TotalPrice
 	FROM Customer cus
-	JOIN [Order] o ON o.Id = cus.Order_ID_FK
-	JOIN Receipt r ON r.Order_ID_FK = o.Id
-	WHERE r.Id = @Id AND o.Id = @Order_ID_FK
+	JOIN [Order] o ON o.Customer_ID_FK = cus.Id
+	WHERE o.Id = @Order_ID_FK
 END

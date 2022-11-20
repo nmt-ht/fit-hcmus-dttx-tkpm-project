@@ -42,7 +42,7 @@ public class OrderData : IOrderData
                 });
             }
 
-            _db.SaveData("spr_Order_UpdateCreateOrder", new { });
+            _db.SaveData("spr_Order_UpdateCreateOrder", new { Id = order.Id });
             result = true;
         }
         catch (Exception ex)

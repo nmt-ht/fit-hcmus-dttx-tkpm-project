@@ -7,7 +7,8 @@ CREATE PROCEDURE [dbo].[spr_Receipt_Create]
 (
 	@Order_ID_FK UNIQUEIDENTIFIER,
 	@TotalCustCost MONEY,
-	@Status TINYINT
+	@Status TINYINT,
+	@Customer_ID_FK UNIQUEIDENTIFIER = NULL
 )
 AS
 BEGIN
@@ -16,9 +17,7 @@ BEGIN
 	VALUES(@ReceiptId, GETDATE(), @Order_ID_FK, @TotalCustCost, @Status)
 
 	UPDATE cus
-	SET cus.Debt = cus.Debt - r.TotalCustCost
+	SET cus.Debt = cus.Debt - @TotalCustCost
 	FROM Customer cus
-	JOIN [Order] o ON o.Id = cus.Order_ID_FK
-	JOIN Receipt r ON r.Order_ID_FK = o.Id
-	WHERE r.Id = @ReceiptId AND o.Id = @Order_ID_FK
+	WHERE cus.Id = @Customer_ID_FK
 END

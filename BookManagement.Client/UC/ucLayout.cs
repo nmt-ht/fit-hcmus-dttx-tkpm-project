@@ -6,6 +6,7 @@ using static BookManagement.Business.Helper.BookDelegateHandler;
 using static BookManagement.Business.Helper.CustomerDelegateHandler;
 using static BookManagement.Business.Helper.DeleteItemDelegateHandler;
 using static BookManagement.Business.Helper.OrderDelegateHandler;
+using static BookManagement.Business.Helper.ReceiptDelegateHandler;
 using static BookManagement.Business.Helper.ReloadDataDelegateHandler;
 using static BookManagement.Client.DataType;
 
@@ -30,6 +31,8 @@ public partial class ucLayout : UserControl
     public event SelectedCustomerDelegate OnEditCustomerDelegate;
     public event OrderBookDelegate OnOrderBookDelegate;
     public event SearchHandler OnSearch;
+    public event PaidReciptDelegate OnPaidReciptDelegate;
+
     public event AddItemDelegate OnAddItem;
     public event EditItemDelegate OnEditItem;
     
@@ -51,7 +54,7 @@ public partial class ucLayout : UserControl
                 BindDataForBook();
                 if(ParameterBiz is not null)
                 {
-                    //this.LimitInputValue = ParameterBiz.Get
+                    //this.LimitInputValue = ParameterBiz.GetParameters();
                 }
                 break;
             case eLayoutType.Customer:
@@ -59,6 +62,26 @@ public partial class ucLayout : UserControl
                 break;
             case eLayoutType.Receipt:
                 BindDataForInvoices();
+                break;
+        }
+
+        EnableButtons();
+    }
+    
+    private void EnableButtons()
+    {
+        switch (LayoutType)
+        {
+            case eLayoutType.Book:
+            case eLayoutType.Customer:
+                btnAdd.Enabled = true;
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                break;
+            case eLayoutType.Receipt:
+                btnAdd.Enabled = false;
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
                 break;
         }
     }
@@ -71,14 +94,19 @@ public partial class ucLayout : UserControl
 
             foreach (var receipt in Receipts)
             {
-                UcReceiptInfo ucCustomerInfo = new UcReceiptInfo();
-                ucCustomerInfo.Receipt = receipt;
-                //ucCustomerInfo.DataBind();
-                ucCustomerInfo.Margin = new Padding(20);
-                //ucCustomerInfo.OnSelectedCustomerDelegate += UcCustomerInfo_OnSelectedCustomerDelegate;
-                flowLayoutBooks.Controls.Add(ucCustomerInfo);
+                UcReceiptInfo ucReceiptInfo = new UcReceiptInfo();
+                ucReceiptInfo.Receipt = receipt;
+                ucReceiptInfo.DataBind();
+                ucReceiptInfo.Margin = new Padding(20);
+                ucReceiptInfo.OnPaidReciptDelegate += UcReceiptInfo_OnPaidReciptDelegate;
+                flowLayoutBooks.Controls.Add(ucReceiptInfo);
             }
         }
+    }
+
+    private void UcReceiptInfo_OnPaidReciptDelegate(ReceiptEventArgs receiptEventArgs)
+    {
+        OnPaidReciptDelegate.Invoke(receiptEventArgs);
     }
 
     private void BindDataForCustomer()
@@ -308,10 +336,15 @@ public partial class ucLayout : UserControl
                                          || x.LastName.ToLower().Contains(textSearch)).ToList();
                     this.Customers = customerSearchRes;
                     break;
-                
+                case eLayoutType.Receipt:
+                    var receiptSearch = this.Receipts.Where(x => x.Order.OrderId.ToLower().Contains(textSearch)
+                                         || x.Order.Customer.FullName.ToLower().Contains(textSearch)).ToList();
+                    this.Receipts = receiptSearch;
+                    break;
             }
          
             DataBind();
+            //OnSearch(new SearchEventArgs(textSearch));
             OnSearch?.Invoke(new SearchEventArgs(textSearch));
         }
         else

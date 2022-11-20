@@ -5,5 +5,7 @@
 	TotalPrice MONEY,
 	OrderDate DATETIME,
 	CreatedBy UNIQUEIDENTIFIER, 
-    CONSTRAINT [FK_Order_User] FOREIGN KEY (CreatedBy) REFERENCES [User](Id)
+	Customer_ID_FK UNIQUEIDENTIFIER, 
+    CONSTRAINT [FK_Order_User] FOREIGN KEY (CreatedBy) REFERENCES [User](Id), 
+    CONSTRAINT [FK_Order_Customer] FOREIGN KEY (Customer_ID_FK) REFERENCES [Customer](Id)
 )

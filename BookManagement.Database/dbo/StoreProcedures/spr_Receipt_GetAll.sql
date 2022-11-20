@@ -6,5 +6,5 @@
 CREATE PROCEDURE [dbo].[spr_Receipt_GetAll]
 AS
 BEGIN
-	SELECT * FROM Receipt WHERE Status = 0 -- unpaid
+	SELECT * FROM Receipt
 END
