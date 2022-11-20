@@ -1,6 +1,6 @@
-# Project
-FIT - HCMUS - Đào tạo từ xa - Thiết kế phần mềm
-## Project name: Book Management
+
+# Book Management
+The .NET application using Winform and Font Awesome
 
 ### Framework
 .NET 6
