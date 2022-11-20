@@ -5,6 +5,6 @@ FIT - HCMUS - Đào tạo từ xa - Thiết kế phần mềm
 ### Framework
 .NET 6
 ### Database
-MS SQL Server, SQL
+MS SQL Server, SQL, Dapper
 ### UI
 Winform Application, Font Awesome
