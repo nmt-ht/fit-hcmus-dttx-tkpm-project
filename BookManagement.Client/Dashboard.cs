@@ -21,8 +21,9 @@ namespace BookManagement
         private readonly IParameterBiz _parameterBiz;
         private readonly IOrderBiz _orderBiz;
         private readonly IReceiptBiz _receiptBiz;
+        private readonly IBookStockBiz _bookStockBiz;
 
-        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz, ICustomerBiz customerBiz, IParameterBiz parameterBiz, IOrderBiz orderBiz, IReceiptBiz receiptBiz)
+        public Dashboard(IUserBiz userBiz, IBookBiz bookBiz, ICustomerBiz customerBiz, IParameterBiz parameterBiz, IOrderBiz orderBiz, IReceiptBiz receiptBiz, IBookStockBiz bookStockBiz)
         {
             InitializeComponent();
             InitDesignUI();
@@ -32,6 +33,7 @@ namespace BookManagement
             _parameterBiz = parameterBiz;
             _orderBiz = orderBiz;
             _receiptBiz = receiptBiz;
+            _bookStockBiz = bookStockBiz;
         }
 
         private void InitDesignUI()
@@ -194,7 +196,7 @@ namespace BookManagement
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.clrReport);
-            var formReport = new FormReport(_customerBiz);
+            var formReport = new FormReport(_bookStockBiz);
             OpenChildForm(formReport);
         }
         private void btnCaiDat_Click(object sender, EventArgs e)

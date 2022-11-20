@@ -1,35 +1,54 @@
 ﻿using BookManagement.Business;
-using BookManagement.Client.UC;
-using BookManagement.Models;
-using System.Windows;
-using static BookManagement.Client.DataType;
 
 namespace BookManagement.Client.Forms;
 
 public partial class FormReport : Form
 {
-    private readonly ICustomerBiz _customerBiz;
-    public User CurrentUser { get; set; }
-    private ucLayout ucLayout;
-    public FormReport(ICustomerBiz customerBiz)
+    private IBookStockBiz _bookStockBiz;
+    private bool IsBinded = false;
+    public FormReport(IBookStockBiz bookStockBiz)
     {
         InitializeComponent();
-        _customerBiz = customerBiz;
-    }
-
-    private void DataBind()
-    {
-        ucLayout = new ucLayout();
-        ucLayout.LayoutType = eLayoutType.Customer;
-        double height = SystemParameters.FullPrimaryScreenHeight;
-        double width = SystemParameters.FullPrimaryScreenWidth;
-        ucLayout.Size = new System.Drawing.Size((int)width - 200, (int)height);
-        ucLayout.DataBind();
-        pnlEmployee.Controls.Add(ucLayout);
+        _bookStockBiz = bookStockBiz;
     }
 
     private void FormCustomer_Load(object sender, EventArgs e)
     {
-        DataBind();
+        LoadDataForCombobox();
+        IsBinded = true;
+    }
+
+    private void LoadDataForCombobox()
+    {
+        cboReport.Items.Clear();
+        cboReport.DataSource = GetReports();
+    }
+
+    private List<string> GetReports()
+    {
+        return new List<string>()
+        {
+            "None",
+            "WHStockReport",
+            "DebtReport"
+        };
+    }
+
+    private void cboReport_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if(cboReport.SelectedIndex != -1 && cboReport.SelectedIndex != 0 && IsBinded)
+        {
+            switch (cboReport.SelectedIndex)
+            {
+                case 1:
+                    var formReport = new RptWHStock(_bookStockBiz);
+                    formReport.ShowDialog();
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

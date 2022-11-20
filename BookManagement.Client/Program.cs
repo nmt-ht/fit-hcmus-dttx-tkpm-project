@@ -45,6 +45,7 @@ namespace BookManagement
             services.AddSingleton<ICustomerData, CustomerData>();
             services.AddSingleton<IOrderData, OrderData>();
             services.AddSingleton<IReceiptData, ReceiptData>();
+            services.AddSingleton<IBookStockData, BookStockData>();
 
             //Init DI for Bussiness class
             services.AddSingleton<IUserBiz, UserBiz>();
@@ -53,6 +54,7 @@ namespace BookManagement
             services.AddSingleton<ICustomerBiz, CustomerBiz>();
             services.AddSingleton<IOrderBiz, OrderBiz>();
             services.AddSingleton<IReceiptBiz, ReceiptBiz>();
+            services.AddSingleton<IBookStockBiz, BookStockBiz>();
         }
     }
 }
