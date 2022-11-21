@@ -35,7 +35,8 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
 		<PackageReference Include="FontAwesome.Sharp" Version="6.1.1" />
-		<PackageReference Include="Microsoft.ReportViewer.Windows" Version="11.0.3452" />
+		<PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
+		<PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -46,11 +47,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="BookManagementDBDataSet.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>BookManagementDBDataSet.xsd</DependentUpon>
-	  </Compile>
 	  <Compile Update="Dialog\MessageBoxDialog.cs">
 	    <SubType>Form</SubType>
 	  </Compile>

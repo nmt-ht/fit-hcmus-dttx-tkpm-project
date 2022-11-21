@@ -66,9 +66,5 @@
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Update="BookManagementDBDataSet.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
+  <ItemGroup />
 </Project>

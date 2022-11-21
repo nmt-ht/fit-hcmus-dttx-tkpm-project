@@ -37,7 +37,7 @@
             this.reportViewer1.Location = new System.Drawing
                 .Point(0, 0);
             this.reportViewer1.Name = "ReportViewer1l";
-            //this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(866, 434);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
@@ -53,9 +53,8 @@
 
         }
 
-        #endregion
-
-
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+
+        #endregion
     }
 }
