@@ -19,6 +19,4 @@ public class InventorySnapshotData:IInventorySnapshotData
         var results = _db.LoadData<InventorySnapshot, dynamic>("spr_BookStock_GetBookStockId", new { IndexNo = id });
         return results.FirstOrDefault();
     }
-
-   
 }

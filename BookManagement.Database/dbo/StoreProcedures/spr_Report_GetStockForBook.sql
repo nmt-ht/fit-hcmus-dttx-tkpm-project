@@ -1,6 +1,4 @@
-﻿
-
-CREATE PROCEDURE [dbo].[spr_Report_GetStockForBook]
+﻿CREATE PROCEDURE [dbo].[spr_Report_GetStockForBook]
 AS
 BEGIN
 	SET NOCOUNT OFF; 
@@ -19,6 +17,7 @@ BEGIN
 		) WHBook ON WHBook.Id = i.Book_ID_FK
 	LEFT JOIN InventorySnapshot bs ON bs.Book_ID_FK=i.Book_ID_FK AND bs.sYear=Year(DateAdd(month,-1,(bs.UserDate))) 
 				AND bs.sMonth=Month(DateAdd(month,-1,(bs.UserDate)))
-	SELECT * FROM  InventorySnapshot
-END
 
+	SELECT ROW_NUMBER() OVER(ORDER BY Name ASC) AS ID, sYear [Year], sMonth [Month], Name, ISNULL(AvailableQty, 0) AvailableQty, TotalQuantity, StockQty
+	FROM  InventorySnapshot
+END

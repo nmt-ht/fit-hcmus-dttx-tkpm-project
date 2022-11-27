@@ -24,8 +24,8 @@ namespace BookManagement.Client.Dialog
             SelectedBook = book;
             Action = action;
             Books = books;
-            LimitInputValue = limitInputValue;
-            MinimunAvaialbleQty = minimumAvailableQty;
+            LimitInputValue = limitInputValue > 0 ? limitInputValue: LimitInputValue;
+            MinimunAvaialbleQty = minimumAvailableQty > 0 ? minimumAvailableQty : MinimunAvaialbleQty;
         }
         public void DataBind()
         {
@@ -192,7 +192,7 @@ namespace BookManagement.Client.Dialog
             var result = true;
             var orderedQty = 0;
             int.TryParse(txtQuantity.Text, out orderedQty);
-            if (orderedQty >= 0 && orderedQty < LimitInputValue)
+            if (orderedQty >= 0 && orderedQty < LimitInputValue && Action == eAction.Add)
             {
                 errorProviderBook.SetError(txtPrice, "Quantity is greater than or equal 150.");
                 result = false;
